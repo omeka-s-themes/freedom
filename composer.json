@@ -1,0 +1,7 @@
+{
+    "name": "omeka-s-themes/freedom",
+    "type": "omeka-s-theme",
+    "require": {
+        "omeka/omeka-s": "*"
+    }
+}

@@ -1,0 +1,52 @@
+/*
+Theme Name: Freedom
+Theme URI: https://github.com/nelsonamaya82/theme-freedom
+Author: Out of the Bugs
+Author URI: https://www.outofthebugs.com
+Description: A Modern Omeka S Theme
+Version: 1.0.0
+Omeka Version Constraint: ^4.0.0
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: freedom
+*/
+
+/*--------------------------------------------------------------
+# Variables and mixins
+--------------------------------------------------------------*/
+@import "abstracts/abstracts";
+
+/*--------------------------------------------------------------
+# Generic
+--------------------------------------------------------------*/
+
+/* Normalize
+--------------------------------------------- */
+@import "generic/normalize";
+
+/* Box sizing
+--------------------------------------------- */
+@import "generic/box-sizing";
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "base/base";
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "components/components";
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+/* Accessibility
+--------------------------------------------- */
+@import "utilities/accessibility";
+
+/* Alignments
+--------------------------------------------- */
+@import "utilities/alignments";

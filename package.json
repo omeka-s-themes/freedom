@@ -1,0 +1,38 @@
+{
+  "name": "freedom-theme",
+  "version": "1.0.0",
+  "description": "An Omeka S Theme.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelsonamaya82/theme-freedom.git"
+  },
+  "keywords": [
+    "omeka-s",
+    "theme"
+  ],
+  "author": "RRCHNM",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nelsonamaya82/theme-freedom/issues"
+  },
+  "homepage": "https://github.com/nelsonamaya82/theme-freedom#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.2.1",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^5.0.0"
+  },
+  "browserslist": [
+    "> 5%",
+    "> 1% in US"
+  ],
+  "dependencies": {
+    "minimist": "^1.2.6",
+    "sass": "^1.58.3"
+  }
+}
