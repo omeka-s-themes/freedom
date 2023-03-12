@@ -6,11 +6,11 @@ $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1')
 $this->headTitle($siteTitle)->setSeparator(' · ');
 $this->headTitle()->append($this->setting('installation_title', 'Omeka S'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
+$this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->jsTranslate();
-$headerLayout = ($this->themeSetting('header_layout')) ? $this->themeSetting('header_layout') : 'left';
 $banner = $this->themeSettingAssetUrl('banner');
 $bannerHeight = $this->themeSetting('banner_height');
 $bannerHeightMobile = $this->themeSetting('banner_height_mobile');
@@ -58,13 +58,9 @@ $userBar = $this->userBar();
 	<?php echo $this->htmlElement('body'); ?>
 		<a id="skipnav" href="#content"><?php echo $this->translate('Skip to main content'); ?></a>
 		<?php echo $userBar; ?>
-		<header>
-			<?php if ($headerLayout == 'left'): ?>
-				<?php echo $this->partial('common/header-left'); ?>
-			<?php else: ?>
-				<?php echo $this->partial('common/header-center'); ?>
-			<?php endif; ?>
-		</header>
+
+		<?php echo $this->partial('common/header'); ?>
+
 		<?php if ($banner): ?>
 		<div class="banner">
 			<img src="<?php echo $this->themeSettingAssetUrl('banner'); ?>" title="Banner">

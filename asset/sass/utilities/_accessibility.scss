@@ -1,3 +1,20 @@
+#skipnav {
+	position: fixed;
+	top: $font__line-height-body;
+	left: 50%;
+	border: 1px solid $color__gray-67;
+	transform: translateX(-50%);
+	z-index: -5;
+	padding: 1rem;
+	background-color: $color__white;
+	opacity: 0;
+	
+	&:focus {
+		z-index: 1000;
+		opacity: 1;
+	}
+}
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	border: 0;

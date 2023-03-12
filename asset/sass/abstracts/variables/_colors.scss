@@ -1,5 +1,5 @@
-$color__primary: #e77f11; //buttons
-$color__primary-light: #f39f1b; //icons
+$color__primary: #e77f11;
+$color__primary-light: #f39f1b;
 $color__secondary: #394f68;
 $color__secondary-light: #eef7fa;
 $color__accent: #cd700f;
@@ -9,9 +9,9 @@ $color__error: #ee001d;
 $color__bg-body: #fff;
 
 // Grayscale
-$color__black: #333; //headings
+$color__black: #333;
 $color__gray-33: #555;
-$color__gray-40: #666; //main text
+$color__gray-40: #666;
 $color__gray-47: #777;
 $color__gray-60: #999;
 $color__gray-67: #aaa;
@@ -46,3 +46,10 @@ $color__tag-22: #a6dfff;
 $color__tag-23: #c6faea;  
 $color__tag-24: #9cffe1;
 $color__tag-25: #5affcb;
+
+//Applications
+$color__headings: $color__black;
+$color__main-text: $color__gray-40;
+$color__buttons: $color__primary;
+$color__icons: $color__primary-light;
+$color__link: $color__secondary;

@@ -1,0 +1,34 @@
+<?php 
+	$header_layout = ($this->themeSetting('header_layout')) ?? 'left';
+?>
+<header class="main-header main-header--<?php echo $this->escapeHtml( $header_layout ); ?>">
+
+	<div class="main-header__top-bar container">
+		<a class="main-header__advanced-search" href="#">Advanced Search</a>
+		<div class="main-header__search-form">
+			<?php echo $this->partial('common/search-form'); ?>
+		</div>
+	</div>
+	<hr class="align-full">
+
+	<div class="main-header__main-bar container">
+		<div class="main-header__site-title">
+			<a href="<?php echo $site->url(); ?>">
+			<?php if ($this->themeSetting('logo')): ?>
+				<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $this->escapeHtml( $siteTitle ); ?>" />
+			<?php else: ?>
+				<?php echo $this->escapeHtml( $site->title() ); ?>
+			<?php endif; ?>
+			</a>
+		</div>
+
+		<nav class="main-nav">
+			<?php
+			echo $site->publicNav()->menu()->renderMenu(null, [
+				'maxDepth' => $this->themeSetting('nav_depth') - 1
+			]);
+			?>
+		</nav>
+	</div>
+
+</header>
