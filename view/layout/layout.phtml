@@ -9,8 +9,12 @@ $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+$this->headScript()->prependFile($this->assetUrl('js/script.js'));
+$this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->jsTranslate();
+$header_layout = ($this->themeSetting('header_layout')) ?? 'inline';
+$body_class = 'main-header--' . $header_layout;
 $banner = $this->themeSettingAssetUrl('banner');
 $bannerHeight = $this->themeSetting('banner_height');
 $bannerHeightMobile = $this->themeSetting('banner_height_mobile');
@@ -26,36 +30,9 @@ $userBar = $this->userBar();
 		<?php echo $this->headLink(); ?>
 		<?php echo $this->headStyle(); ?>
 		<?php echo $this->headScript(); ?>
-		
-		<style>
-			<?php if ($accentColor = $this->themeSetting('accent_color')): ?>
-			a:link,
-			a:visited {
-				color: <?php echo $accentColor; ?>
-			}
-			
-			a:active,
-			a:hover {
-				color: <?php echo $accentColor; ?>;
-				opacity: .75;
-			}
-			<?php endif; ?>
-
-			.banner {
-				height: <?php echo ($bannerHeight !== '') ? $bannerHeight: 'auto'  ?>;
-				align-items: <?php echo $bannerPosition; ?>;
-			}
-			<?php if ($bannerHeightMobile !== ''): ?>
-				@media screen and (max-width:640px) {
-					.banner {
-						height: <?php echo $bannerHeightMobile; ?>;
-					}
-				}
-			<?php endif; ?>
-		</style>
 	</head>
 
-	<?php echo $this->htmlElement('body'); ?>
+	<?php echo $this->htmlElement('body')->appendAttribute('class', $body_class); ?>
 		<a id="skipnav" href="#content"><?php echo $this->translate('Skip to main content'); ?></a>
 		<?php echo $userBar; ?>
 
