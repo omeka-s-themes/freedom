@@ -12,7 +12,7 @@
 		<div class="main-header__site-title">
 			<a href="<?php echo $site->url(); ?>">
 			<?php if ($this->themeSetting('logo')): ?>
-				<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $this->escapeHtml( $siteTitle ); ?>" />
+				<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $this->escapeHtml( $site->title() ); ?>" />
 			<?php else: ?>
 				<?php echo $this->escapeHtml( $site->title() ); ?>
 			<?php endif; ?>
