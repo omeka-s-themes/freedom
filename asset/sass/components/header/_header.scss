@@ -56,12 +56,13 @@
 
 	&__site-title {
 		flex-shrink: 0;
+		max-width: 30%;
 
 		a {
 			display: block;
 			font-weight: 600;
 			font-size: 1.2rem;
-			line-height: 1;
+			line-height: 1.2;
 		}
 
 		img {
