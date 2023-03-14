@@ -46,12 +46,7 @@ $userBar = $this->userBar();
 		<div id="content" role="main">
 			<?php echo $this->content; ?>
 		</div>
-		<footer>
-			<?php if ($footerContent = $this->themeSetting('footer')): ?>
-			<?php echo $footerContent; ?>
-			<?php else: ?>
-				<?php echo $this->translate('Powered by Omeka S'); ?>
-			<?php endif; ?>
-		</footer>
+
+		<?php echo $this->partial('common/footer'); ?>
 	</body>
 </html>

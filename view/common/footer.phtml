@@ -1,0 +1,50 @@
+<footer class="main-footer">
+
+	<div class="main-footer__top">
+		<div class="container main-footer__top-container">
+
+			<div class="main-footer__col1">
+				<?php if ($footer_logo = $this->themeSetting('footer_logo')): ?>
+					<img src="<?php echo $this->themeSettingAssetUrl('footer_logo'); ?>" alt="<?php echo $this->escapeHtml( $site->title() ); ?>" />
+				<?php endif; ?>
+
+				<div class="footer_site_info">
+					<?php if ($footer_site_info = $this->themeSetting('footer_site_info')): ?>
+						<?php echo $footer_site_info; ?>
+					<?php endif; ?>
+				</div>
+			</div>
+			
+			<div class="main-footer__col2">
+				<?php
+					echo $site->publicNav()->menu()->renderMenu(null, [
+						'maxDepth' => $this->themeSetting('footer_menu_depth') - 1
+					]);
+				?>
+			</div>
+
+			<div class="main-footer__col3">
+				<?php if ($footer_content = $this->themeSetting('footer_content')): ?>
+					<?php echo $footer_content; ?>
+				<?php endif; ?>
+			</div>
+
+		</div>
+	</div>
+
+	<hr class="align-full">
+
+	<div class="main-footer__bottom">
+		<div class="container main-footer__bottom-container">
+			<div class="copyright">
+				<?php if ($footer_copyright = $this->themeSetting('footer_copyright')): ?>
+					<?php echo $footer_copyright; ?>
+				<?php else: ?>
+					<?php echo $this->translate('Powered by Omeka S'); ?>
+				<?php endif; ?>
+			</div>
+			<div class="social-network"></div>
+		</div>
+	</div>
+
+</footer>

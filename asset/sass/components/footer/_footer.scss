@@ -1,0 +1,31 @@
+.main-footer {
+    color: $color__secondary-light;
+    font-size: 0.875rem;
+
+    &__top {
+        background-color: $color__secondary;
+        padding: 75px 0;
+    }
+
+    &__top-container {
+        display: flex;
+    }
+
+    &__col1 {
+
+        img {
+            margin-bottom: 30px;
+            max-width: 120px;
+        }
+    }
+
+    &__bottom {
+        background-color: $color__secondary-dark;
+        padding: 35px 0;
+    }
+
+    hr {
+        margin-bottom: 0
+    }
+
+}
