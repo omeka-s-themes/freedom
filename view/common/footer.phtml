@@ -1,33 +1,78 @@
+<?php
+$escapeHtml        = $this->plugin('escapeHtml');
+$escapeHtmlAttr    = $this->plugin('escapeHtmlAttr');
+$footer_logo       = $this->themeSetting( 'footer_logo' );
+$footer_site_info  = $this->themeSetting( 'footer_site_info' );
+$footer_menu       = $this->themeSetting( 'footer_menu' );
+$footer_menu_depth = $this->themeSetting('footer_menu_depth');
+$footer_content    = $this->themeSetting( 'footer_content' );
+$social_networks   = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
+
+$additional_classes = '';
+
+if ( ! $footer_menu ) {
+	$additional_classes .= ' no-menu';
+} elseif ( ! $footer_logo && ! $footer_site_info && ! $footer_content ) {
+	$additional_classes .= ' menu-only';
+}
+
+if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) {
+	$additional_classes .= ' all-columns';
+
+	if ( $footer_menu_depth > 1 ) {
+		$additional_classes .= ' menu-depth-2';
+	}
+}
+?>
+
 <footer class="main-footer">
 
 	<div class="main-footer__top">
-		<div class="container main-footer__top-container">
+		<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
 
-			<div class="main-footer__col1">
-				<?php if ($footer_logo = $this->themeSetting('footer_logo')): ?>
-					<img src="<?php echo $this->themeSettingAssetUrl('footer_logo'); ?>" alt="<?php echo $this->escapeHtml( $site->title() ); ?>" />
-				<?php endif; ?>
+			<!-- Column 1 -->
+			<?php if ( $footer_logo || $footer_site_info ) : ?>
 
-				<div class="footer_site_info">
-					<?php if ($footer_site_info = $this->themeSetting('footer_site_info')): ?>
-						<?php echo $footer_site_info; ?>
+				<div class="main-footer__col1">
+					<?php if ( $footer_logo ): ?>
+						<img
+							src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
+							alt="<?php echo $escapeHtml( $site->title() ); ?>"
+							style="<?php echo $footer_site_info ? 'margin-bottom: 30px;' : ''; ?>" />
+					<?php endif; ?>
+
+					<div class="footer_site_info">
+						<?php if ( $footer_site_info ) : ?>
+							<?php echo $footer_site_info; ?>
+						<?php endif; ?>
+					</div>
+				</div>
+				
+			<?php endif; ?>
+
+			<!-- Column 2 -->
+			<?php if ( $footer_menu ) : ?>
+			
+				<div class="main-footer__col2">
+					<?php
+						echo $site->publicNav()->menu()->renderMenu(null, [
+							'maxDepth' => $footer_menu_depth - 1
+						]);
+					?>
+				</div>
+
+			<?php endif; ?>
+
+			<!-- Column 3 -->
+			<?php if ( $footer_content ) : ?>
+
+				<div class="main-footer__col3">
+					<?php if ( $footer_content ) : ?>
+						<?php echo $footer_content; ?>
 					<?php endif; ?>
 				</div>
-			</div>
-			
-			<div class="main-footer__col2">
-				<?php
-					echo $site->publicNav()->menu()->renderMenu(null, [
-						'maxDepth' => $this->themeSetting('footer_menu_depth') - 1
-					]);
-				?>
-			</div>
 
-			<div class="main-footer__col3">
-				<?php if ($footer_content = $this->themeSetting('footer_content')): ?>
-					<?php echo $footer_content; ?>
-				<?php endif; ?>
-			</div>
+			<?php endif; ?>
 
 		</div>
 	</div>
@@ -36,14 +81,23 @@
 
 	<div class="main-footer__bottom">
 		<div class="container main-footer__bottom-container">
-			<div class="copyright">
-				<?php if ($footer_copyright = $this->themeSetting('footer_copyright')): ?>
+			<div class="main-footer__copyright">
+				<?php if ( $footer_copyright = $this->themeSetting( 'footer_copyright' ) ) : ?>
 					<?php echo $footer_copyright; ?>
 				<?php else: ?>
-					<?php echo $this->translate('Powered by Omeka S'); ?>
+					<?php echo $this->translate( 'Powered by Omeka S' ); ?>
 				<?php endif; ?>
 			</div>
-			<div class="social-network"></div>
+			<div class="main-footer__social-network">
+				<?php foreach ( $social_networks as $social_network ) : ?>
+					<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
+						<a href="<?php echo $social_network_url; ?>">
+							<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
+								alt="<?php echo $escapeHtmlAttr( $social_network ); ?>">
+						</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 
