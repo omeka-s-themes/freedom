@@ -19,12 +19,20 @@
 			</a>
 		</div>
 
-		<nav class="main-nav">
-			<?php
-			echo $site->publicNav()->menu()->renderMenu(null, [
-				'maxDepth' => $this->themeSetting('nav_depth') - 1
-			]);
-			?>
+		<nav class="main-navigation">
+			<div class="main-navigation__container">
+				<?php
+				echo $site->publicNav()->menu()->renderMenu(null, [
+					'addClassToListItem' => true,
+					'maxDepth' => $this->themeSetting('nav_depth') - 1
+				]);
+				?>
+			</div>
+			<div class="main-navigation__toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
 		</nav>
 	</div>
 

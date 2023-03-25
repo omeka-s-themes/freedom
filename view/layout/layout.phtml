@@ -9,7 +9,6 @@ $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 $this->headLink()->prependStylesheet('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-$this->headScript()->prependFile($this->assetUrl('js/script.js'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->jsTranslate();
@@ -48,5 +47,9 @@ $userBar = $this->userBar();
 		</div>
 
 		<?php echo $this->partial('common/footer'); ?>
+		<?php echo $this->partial('common/menu-drawer'); ?>
+
+		<script src="<?php echo $this->assetUrl('js/script.js'); ?>"></script>
+		<script src="<?php echo $this->assetUrl('js/navigation.js'); ?>"></script>
 	</body>
 </html>
