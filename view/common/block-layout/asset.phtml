@@ -1,0 +1,26 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$decoration = $this->themeSetting('assets_decoration');
+?>
+
+<div class="assets <?php echo $escape($className); ?> <?php echo $escape($alignment); ?>">
+  <?php foreach ($attachments as $attachment): ?>
+    <?php $asset = $attachment['asset']; ?>
+    <div class="asset <?php echo in_array('large', $decoration) ? 'decoration' : ''; ?>">
+        <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'square') : ''; ?>
+        <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
+        <?php if ($page): ?>
+            <a href="<?php echo $escape($page->siteUrl()); ?>">
+                <?php echo $assetImage; ?>
+                <?php $altLinkTitle = ($attachment['alt_link_title'] !== '') ? $escape($attachment['alt_link_title']) : false; ?>
+                <span class="link-title"><?php echo ($altLinkTitle) ? $altLinkTitle : $escape($page->title()); ?></span>
+            </a>
+        <?php else: ?>
+            <?php echo $assetImage; ?>
+        <?php endif; ?>
+        <?php if ($attachment['caption'] !== ''): ?>
+        <div class="caption"><?php echo $escape($attachment['caption']); ?></div>
+        <?php endif; ?>
+    </div>
+  <?php endforeach; ?>
+</div>

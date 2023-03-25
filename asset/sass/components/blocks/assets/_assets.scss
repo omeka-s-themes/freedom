@@ -1,0 +1,24 @@
+.assets {
+    &.inline {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        @media(min-width: $md) {
+            flex-direction: row;
+        }
+    }
+
+    .asset {
+        &.decoration{
+            img {
+                outline: 1px solid $color__white;
+                outline-offset: -10px;
+
+                @media(min-width: $md) {
+                    outline-offset: -20px;
+                }
+            }
+        } 
+    }
+}
