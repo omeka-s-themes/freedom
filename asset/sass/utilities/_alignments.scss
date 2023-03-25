@@ -1,4 +1,4 @@
-.align-left {
+.alignleft {
 
 	/*rtl:ignore*/
 	float: left;
@@ -8,7 +8,7 @@
 	margin-bottom: 1.5rem;
 }
 
-.align-right {
+.alignright {
 
 	/*rtl:ignore*/
 	float: right;
@@ -18,23 +18,23 @@
 	margin-bottom: 1.5rem;
 }
 
-.align-center {
+.aligncenter {
 	clear: both;
 	@include center-block;
 	margin-bottom: 1.5em;
 }
 
-.align-full {
+.alignfull {
 	margin: 0 calc(50% - 50vw) 1.5rem;
 	max-width: 100vw;
 }
 
-.align-wide {
+.alignwide {
 	margin: 0 calc(25% - 25vw) 1.5rem;
 	max-width: 100vw;
 }
 
-.align-narrow {
+.alignnarrow {
 	@include center-block;
     max-width: 1024px;
     width: 100%;

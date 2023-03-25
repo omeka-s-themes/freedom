@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     onScroll();
 
     function onScroll(scrollPos) {
-        if(scrollPos > 20 && scrollDirection == 'down') {
+        if(scrollPos > 60 && scrollDirection == 'down') {
             mainHeader.style.top = - (mainHeaderTopBar.offsetHeight) + 'px';
             menuDrawer.style.top = mainHeaderMainBar.offsetHeight + 'px';
         } else {

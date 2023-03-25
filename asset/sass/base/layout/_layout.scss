@@ -15,6 +15,11 @@ body {
     @include container;
 }
 
+#main-content {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
 @import "left-right-sidebar"; 
 @import "left-sidebar";
 @import "no-sidebar";
