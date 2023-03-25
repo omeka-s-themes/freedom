@@ -79,7 +79,10 @@
 
 			&.active {
 				background-color: $color__primary;
-				font-weight: bold;
+
+				> a {
+					font-weight: bold;
+				}
 			}
 		}
 	
