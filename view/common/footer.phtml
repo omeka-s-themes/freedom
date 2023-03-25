@@ -1,6 +1,7 @@
 <?php
-$escapeHtml        = $this->plugin('escapeHtml');
-$escapeHtmlAttr    = $this->plugin('escapeHtmlAttr');
+$escHtml = $this->plugin('escapeHtml');
+$escAttr = $this->plugin('escapeHtmlAttr');
+
 $footer_logo       = $this->themeSetting( 'footer_logo' );
 $footer_site_info  = $this->themeSetting( 'footer_site_info' );
 $footer_menu       = $this->themeSetting( 'footer_menu' );
@@ -37,7 +38,7 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 					<?php if ( $footer_logo ): ?>
 						<img
 							src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
-							alt="<?php echo $escapeHtml( $site->title() ); ?>"
+							alt="<?php echo $escHtml( $site->title() ); ?>"
 							style="<?php echo $footer_site_info ? 'margin-bottom: 30px;' : ''; ?>" />
 					<?php endif; ?>
 
@@ -77,7 +78,7 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 		</div>
 	</div>
 
-	<hr class="align-full">
+	<hr class="alignfull">
 
 	<div class="main-footer__bottom">
 		<div class="container main-footer__bottom-container">
@@ -93,7 +94,7 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 					<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
 						<a href="<?php echo $social_network_url; ?>">
 							<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
-								alt="<?php echo $escapeHtmlAttr( $social_network ); ?>">
+								alt="<?php echo $escAttr( $social_network ); ?>">
 						</a>
 					<?php endif; ?>
 				<?php endforeach; ?>

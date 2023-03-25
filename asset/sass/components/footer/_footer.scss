@@ -1,4 +1,5 @@
 .main-footer {
+    clear: both;
     color: $color__secondary-light;
     font-size: 0.875rem;
 
@@ -9,9 +10,9 @@
 
     &__top-container {
         display: flex;
+        gap: 60px;
 
         > div {
-            //min-width: 25%;
             flex-grow: 1;
             position: relative;
             
@@ -28,7 +29,7 @@
                     background-color: #EEF7FA;
                     position: absolute;
                     top: 0;
-                    left: 30px;
+                    left: -30px;
                     opacity: 0.2;
                 }
             }
@@ -61,11 +62,6 @@
         }
     }
 
-    &__col2,
-    &__col3 {
-        padding-left: 60px;
-    }
-
     &__col1 {
 
         img {
@@ -80,21 +76,14 @@
         .navigation {
             display: flex;
             flex-wrap: wrap;
+            gap: 40px;
             list-style: none;
             margin-left: 0;
             padding-left: 0;
 
-/*             .menu-only & {
-                justify-content: center;
-            } */
-
             > li { 
                 margin-bottom: 30px;
                 max-width: 20%;
-
-                &:not(:last-child) {
-                    padding-right: 40px;
-                }
 
                 > a { //Links 1st level
                     font-weight: 600;
