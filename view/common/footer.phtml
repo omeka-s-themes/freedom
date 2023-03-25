@@ -28,6 +28,7 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 
 <footer class="main-footer">
 
+	<!-- Footer Top -->
 	<div class="main-footer__top">
 		<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
 
@@ -80,15 +81,11 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 
 	<hr class="alignfull">
 
+	<!-- Footer Bottom -->
 	<div class="main-footer__bottom">
 		<div class="container main-footer__bottom-container">
-			<div class="main-footer__copyright">
-				<?php if ( $footer_copyright = $this->themeSetting( 'footer_copyright' ) ) : ?>
-					<?php echo $footer_copyright; ?>
-				<?php else: ?>
-					<?php echo $this->translate( 'Powered by Omeka S' ); ?>
-				<?php endif; ?>
-			</div>
+
+			<!-- Social Networks -->
 			<div class="main-footer__social-network">
 				<?php foreach ( $social_networks as $social_network ) : ?>
 					<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
@@ -98,6 +95,15 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 						</a>
 					<?php endif; ?>
 				<?php endforeach; ?>
+			</div>
+
+			<!-- Copyright -->
+			<div class="main-footer__copyright">
+				<?php if ( $footer_copyright = $this->themeSetting( 'footer_copyright' ) ) : ?>
+					<?php echo $footer_copyright; ?>
+				<?php else: ?>
+					<?php echo $this->translate( 'Powered by Omeka S' ); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
