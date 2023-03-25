@@ -1,0 +1,36 @@
+<?php
+$escHtml = $this->plugin('escapeHtml');
+$escAttr = $this->plugin('escapeHtmlAttr');
+
+$banner = $this->themeSettingAsset('banner');
+$bannerWidth = $this->themeSetting('banner_width') ?? '';
+$bannerHeight = $this->themeSetting('banner_height') ?? '';
+$bannerVerticalPosition = ($this->themeSetting('banner_v_position')) ?? 'center';
+$bannerHorizontalPosition = ($this->themeSetting('banner_h_position')) ?? 'center';
+
+$bannerHeading = $this->themeSetting('banner_heading');
+$bannerDescription = $this->themeSetting('banner_description');
+$bannerContentPosition = $this->themeSetting('banner_content_position') ?? 'left';
+
+$bannerInlineStyles = '';
+$imageInlineStyles = '';
+
+$bannerInlineStyles .= $bannerHeight ? "height: {$bannerHeight};" : '';
+$imageInlineStyles .= "object-position: {$bannerHorizontalPosition} {$bannerVerticalPosition};";
+?>
+
+<?php if ( $banner ) : ?>
+    <div class="banner <?php echo $bannerWidth; ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
+
+        <?php echo $this->thumbnail($banner, 'large', ['style' => $imageInlineStyles, 'role' => 'presentation', 'aria-hidden' => 'true']); ?>
+
+        <div class="banner__content banner__content--<?php echo $bannerContentPosition; ?>">
+            <?php if($bannerHeading) : ?>
+                <h1><?php echo $escHtml($bannerHeading); ?></h1>
+            <?php endif; ?>
+            <?php if($bannerDescription) : ?>
+                <p><?php echo $escHtml($bannerDescription); ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
