@@ -17,11 +17,16 @@ $bannerHeightProperty = $bannerHeading || $bannerDescription ? 'min-height' : 'h
 $bannerInlineStyles = '';
 $imageInlineStyles = '';
 
-$bannerInlineStyles .= $bannerHeight ? "{$bannerHeightProperty}: {$bannerHeight};" : '';
+if ($bannerHeight) {
+    $bannerInlineStyles .= "{$bannerHeightProperty}: {$bannerHeight};";
+} else {
+    $bannerInlineStyles .= "{$bannerHeightProperty}: 30vh;";
+}
+
 $imageInlineStyles .= "object-position: {$bannerHorizontalPosition} {$bannerVerticalPosition};";
 ?>
 
-<?php if ( $banner ) : ?>
+<?php if ($banner) : ?>
     <div class="banner <?php echo $bannerWidth; ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
 
         <?php echo $this->thumbnail($banner, 'large', ['style' => $imageInlineStyles, 'role' => 'presentation', 'aria-hidden' => 'true']); ?>

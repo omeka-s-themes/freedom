@@ -4,7 +4,11 @@ html, body {
 }
 
 body {
-    padding-top: 160px;
+    padding-top: 133px;
+
+    @media (min-width: $lg) {
+        padding-top: 160px;
+    }
 
     &.main-header--center {
         padding-top: 230px;

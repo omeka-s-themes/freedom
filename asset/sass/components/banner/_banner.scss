@@ -1,24 +1,69 @@
 .banner {
+    display: flex;
+    align-items: center;
     position: relative;
 
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: #000;
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
     img {
+        position: absolute;
         object-fit: cover;
         width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
     }
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        position: absolute;
-        height: 100%;
-        left: 0;
-        right: 0;
+        position: relative;
         margin-left: auto;
         margin-right: auto;
-        top: 0;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
         width: 80%;
-        z-index: 1;
+        color: $color__white;
+        z-index: 2;
+
+        &--left {
+            align-items: flex-start;
+        }
+
+        &--center {
+            text-align: center;
+            align-items: center;
+            max-width: 1000px;
+
+            h1, p {
+                max-width: none !important;
+            }
+        }
+
+        &--right {
+            text-align: right;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: $color__white;
+            max-width: 800px;
+        }
+
+        p {
+            font-size: 1.5625rem;
+            max-width: 800px;
+            margin-bottom: 0;
+        }
     }
 }
