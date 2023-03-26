@@ -4,6 +4,9 @@ $userBar = $this->userBar();
 $header_layout = ($this->themeSetting('header_layout')) ?? 'inline';
 $body_class = 'main-header--' . $header_layout;
 $bannerHeightMobile = $this->themeSetting('banner_height_mobile');
+$bannerHeading = $this->themeSetting('banner_heading');
+$bannerDescription = $this->themeSetting('banner_description');
+$bannerHeightProperty = $bannerHeading || $bannerDescription ? 'min-height' : 'height';
 
 $this->htmlElement('html')->setAttribute('lang', $this->lang());
 $this->headMeta()->setCharset('utf-8');
@@ -33,7 +36,7 @@ $this->trigger('view.layout');
 			<?php if($bannerHeightMobile): ?>
 				@media screen and (max-width:768px) {
 					.banner {
-						height: <?php echo $bannerHeightMobile; ?> !important;
+						<?php echo "{$bannerHeightProperty}: {$bannerHeightMobile} !important;"; ?>
 					}
 				}
 			<?php endif; ?>

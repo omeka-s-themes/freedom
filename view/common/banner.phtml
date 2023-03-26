@@ -12,10 +12,12 @@ $bannerHeading = $this->themeSetting('banner_heading');
 $bannerDescription = $this->themeSetting('banner_description');
 $bannerContentPosition = $this->themeSetting('banner_content_position') ?? 'left';
 
+$bannerHeightProperty = $bannerHeading || $bannerDescription ? 'min-height' : 'height';
+
 $bannerInlineStyles = '';
 $imageInlineStyles = '';
 
-$bannerInlineStyles .= $bannerHeight ? "height: {$bannerHeight};" : '';
+$bannerInlineStyles .= $bannerHeight ? "{$bannerHeightProperty}: {$bannerHeight};" : '';
 $imageInlineStyles .= "object-position: {$bannerHorizontalPosition} {$bannerVerticalPosition};";
 ?>
 
