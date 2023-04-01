@@ -2,7 +2,6 @@ h1,
 h2,
 h3,
 h4 {
-	clear: both;
 	color: $color__headings;
 	font-family: $font__headings;
 	margin-top: 0;
@@ -10,13 +9,13 @@ h4 {
 
 h5,
 h6 {
-	clear: both;
 	color: $color__headings;
 	font-family: $font__body;
 	margin-top: 0;
 }
 
 h1 {
+	clear: both;
 	font-size: $font__h1-sm-size; //40px
 	font-weight: 500;
 	line-height: $font__headings-line-height;
