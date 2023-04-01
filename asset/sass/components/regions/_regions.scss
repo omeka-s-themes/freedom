@@ -1,0 +1,40 @@
+.regions-container {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 3rem;
+
+    .main-region {
+        width: 100%;
+    }
+
+    .left-sidebar-region,
+    .right-sidebar-region {
+        flex-shrink: 0;
+        position: relative;
+        width: 27%;
+    }
+
+    .left-sidebar-region {
+        &::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: $color__hr;
+            top: 0;
+            right: -30px;
+        }
+    }
+
+    .right-sidebar-region {
+        &::before {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: $color__hr;
+            top: 0;
+            left: -30px;
+        }
+    }
+}

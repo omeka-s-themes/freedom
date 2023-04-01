@@ -1,0 +1,58 @@
+<?php
+$translate = $this->plugin('translate');
+$item = $media->item();
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
+$this->htmlElement('body')->appendAttribute('class', 'media resource show');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+// Media tag
+$resourceClassId = 0; // Media items don't have a resource class ID, so we assign 0 by default.
+$resourceClassColor = $this->UniqueColorFromId($resourceClassId, 'pastel');
+
+// Regions
+$mainBlockContent = $this->resourcePageBlocks($media);
+$mainHasBlocks = $mainBlockContent->hasBlocks();
+$leftSidebarBlockContent = $this->resourcePageBlocks($media, 'left');
+$leftSidebarHasBlocks = $leftSidebarBlockContent->hasBlocks();
+$rightSidebarBlockContent = $this->resourcePageBlocks($media, 'right');
+$rightSidebarHasBlocks = $rightSidebarBlockContent->hasBlocks();
+?>
+
+<div class="item-tag" style="background-color: <?php echo $resourceClassColor; ?>"><?php echo $translate('Media'); ?></div>
+<?php echo $this->pageTitle($media->displayTitle(null, $valueLang), 1); ?>
+
+<?php $this->trigger('view.show.before'); ?>
+
+<?php if ($mainHasBlocks || $leftSidebarHasBlocks || $rightSidebarHasBlocks): ?>
+
+    <div class="regions-container">
+        <?php if ($leftSidebarHasBlocks): ?>
+            <div class="left-sidebar-region">
+                <?php echo $leftSidebarBlockContent->getBlocks(); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($mainHasBlocks): ?>
+            <div class="main-region">
+                <?php echo $mainBlockContent->getBlocks(); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($rightSidebarHasBlocks): ?>
+            <div class="right-sidebar-region">
+                <?php echo $rightSidebarBlockContent->getBlocks(); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+<?php endif; ?>
+
+<p class="media-parent-item textcenter">
+    <?php echo sprintf($translate('Part of %s'), $item->link($item->displayTitle(null, $valueLang))); ?>
+</p>
+
+<?php $this->trigger('view.show.after'); ?>

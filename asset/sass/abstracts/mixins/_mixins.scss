@@ -22,3 +22,11 @@
         padding: 0 30px;
     }
 }
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}

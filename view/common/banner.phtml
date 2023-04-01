@@ -33,10 +33,10 @@ $imageInlineStyles .= "object-position: {$bannerHorizontalPosition} {$bannerVert
 
         <div class="banner__content banner__content--<?php echo $bannerContentPosition; ?>">
             <?php if($bannerHeading) : ?>
-                <h1><?php echo $escHtml($bannerHeading); ?></h1>
+                <h2 class="banner__heading"><?php echo $escHtml($bannerHeading); ?></h2>
             <?php endif; ?>
             <?php if($bannerDescription) : ?>
-                <p><?php echo $escHtml($bannerDescription); ?></p>
+                <p class="banner__description"><?php echo $escHtml($bannerDescription); ?></p>
             <?php endif; ?>
         </div>
     </div>

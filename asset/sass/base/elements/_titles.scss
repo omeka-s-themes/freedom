@@ -1,0 +1,18 @@
+.title {
+    display: block;
+    border-bottom: 1px solid $color__hr;
+    padding-bottom: 1rem;
+    position: relative;
+    width: 100%;
+
+    &::after {
+        display: block;
+        content: "";
+        background-color: $color__primary;
+        bottom: -1px;
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 64px;
+    }
+}

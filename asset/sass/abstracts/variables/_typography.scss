@@ -1,7 +1,31 @@
 $font__headings: "Noto Serif", serif;
 $font__body: "Open Sans", sans-serif;
-$font__base-size: 1rem;
 $font__code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", courier, monospace;
-$font__line-height-body: 1.5;
-$font__line-height-pre: 1.6;
+
+$font__sm-size: 0.75rem; // 12px
+$font__base-size: 1rem;
+
+$font__base-line-height: 1.5;
+
+$font__h1-sm-size: 2.5rem; // 40px
+$font__h1-base-size: 3.125rem; // 50px
+
+$font__h2-sm-size: 2.1875rem; // 35px
+$font__h2-base-size: 2.5rem; // 40px
+
+$font__h3-sm-size: 1.875rem; // 30px
+$font__h3-base-size: 2.1875rem; // 35px
+
+$font__h4-sm-size: 1.56rem; // 25px
+$font__h4-base-size: 1.875rem; // 30px
+
+$font__h5-sm-size: 1.125rem; // 18px
+$font__h5-base-size: 1.375rem; // 22px
+
+$font__h6-sm-size: 1rem; // 16px
+$font__h6-base-size: 1.125rem; //18px
+
+$font__headings-line-height: 1.2;
+
+$font__pre-base-line-height: 1.6;

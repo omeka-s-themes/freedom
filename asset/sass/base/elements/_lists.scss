@@ -18,7 +18,13 @@ li > ol {
 }
 
 dt {
-	font-weight: 700;
+	color: $color__black;
+	font-size: $font__h6-sm-size; //18px
+	font-weight: 600;
+
+	@media (min-width: $md) {
+		font-size: $font__h6-base-size; //30px
+	}
 }
 
 dd {

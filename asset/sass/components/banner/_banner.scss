@@ -45,7 +45,8 @@
             align-items: center;
             max-width: 1000px;
 
-            h1, p {
+            .banner__heading,
+            .banner__description {
                 max-width: none !important;
             }
         }
@@ -54,16 +55,17 @@
             text-align: right;
             align-items: flex-end;
         }
+    }
 
-        h1 {
-            color: $color__white;
-            max-width: 800px;
-        }
+    &__heading {
+        color: $color__white;
+        font-size: $font__h1-base-size;
+        max-width: 800px;
+    }
 
-        p {
-            font-size: 1.5625rem;
-            max-width: 800px;
-            margin-bottom: 0;
-        }
+    &__description {
+        font-size: 1.5625rem;
+        max-width: 800px;
+        margin-bottom: 0;
     }
 }
