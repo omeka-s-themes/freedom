@@ -2,26 +2,35 @@
 $escHtml = $this->plugin('escapeHtml');
 $escAttr = $this->plugin('escapeHtmlAttr');
 
-$footer_logo       = $this->themeSetting( 'footer_logo' );
-$footer_site_info  = $this->themeSetting( 'footer_site_info' );
-$footer_menu       = $this->themeSetting( 'footer_menu' );
-$footer_menu_depth = $this->themeSetting('footer_menu_depth');
-$footer_content    = $this->themeSetting( 'footer_content' );
-$social_networks   = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
+$footerLogo      = $this->themeSetting( 'footer_logo' );
+$footerSiteInfo  = $this->themeSetting( 'footer_site_info' );
+$footerMenu      = $this->themeSetting( 'footer_menu' );
+$footerMenuDepth = $this->themeSetting('footer_menu_depth');
+$footerContent   = $this->themeSetting( 'footer_content' );
+$socialNetworks  = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
 
 $additional_classes = '';
 
-if ( ! $footer_menu ) {
+if ( ! $footerMenu ) {
 	$additional_classes .= ' no-menu';
-} elseif ( ! $footer_logo && ! $footer_site_info && ! $footer_content ) {
+} elseif ( ! $footerLogo && ! $footerSiteInfo && ! $footerContent ) {
 	$additional_classes .= ' menu-only';
 }
 
-if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) {
+if ( $footerMenu && ( $footerLogo || $footerSiteInfo ) && $footerContent ) {
 	$additional_classes .= ' all-columns';
 
-	if ( $footer_menu_depth > 1 ) {
+	if ( $footerMenu_depth > 1 ) {
 		$additional_classes .= ' menu-depth-2';
+	}
+}
+
+$hasSocialNetworks = false;
+
+foreach ( $socialNetworks as $social_network ) {
+	if ( $this->themeSetting( "{$social_network}_url" ) ) {
+		$hasSocialNetworks = true;
+		break;
 	}
 }
 ?>
@@ -29,24 +38,24 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 <footer class="main-footer">
 
 	<!-- Footer Top -->
-	<?php if ( $footer_logo || $footer_site_info || $footer_menu || $footer_content ): ?>
+	<?php if ( $footerLogo || $footerSiteInfo || $footerMenu || $footerContent ): ?>
 		<div class="main-footer__top">
 			<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
 
 				<!-- Column 1 -->
-				<?php if ( $footer_logo || $footer_site_info ) : ?>
+				<?php if ( $footerLogo || $footerSiteInfo ) : ?>
 
 					<div class="main-footer__col1">
-						<?php if ( $footer_logo ): ?>
+						<?php if ( $footerLogo ): ?>
 							<img
 								src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
 								alt="<?php echo $escHtml( $site->title() ); ?>"
-								style="<?php echo $footer_site_info ? 'margin-bottom: 30px;' : ''; ?>" />
+								style="<?php echo $footerSiteInfo ? 'margin-bottom: 30px;' : ''; ?>" />
 						<?php endif; ?>
 
 						<div class="footer_site_info">
-							<?php if ( $footer_site_info ) : ?>
-								<?php echo $footer_site_info; ?>
+							<?php if ( $footerSiteInfo ) : ?>
+								<?php echo $footerSiteInfo; ?>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -54,12 +63,12 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 				<?php endif; ?>
 
 				<!-- Column 2 -->
-				<?php if ( $footer_menu ) : ?>
+				<?php if ( $footerMenu ) : ?>
 				
 					<div class="main-footer__col2">
 						<?php
 							echo $site->publicNav()->menu()->renderMenu(null, [
-								'maxDepth' => $footer_menu_depth - 1
+								'maxDepth' => $footerMenuDepth - 1
 							]);
 						?>
 					</div>
@@ -67,11 +76,11 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 				<?php endif; ?>
 
 				<!-- Column 3 -->
-				<?php if ( $footer_content ) : ?>
+				<?php if ( $footerContent ) : ?>
 
 					<div class="main-footer__col3">
-						<?php if ( $footer_content ) : ?>
-							<?php echo $footer_content; ?>
+						<?php if ( $footerContent ) : ?>
+							<?php echo $footerContent; ?>
 						<?php endif; ?>
 					</div>
 
@@ -85,19 +94,21 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 
 	<!-- Footer Bottom -->
 	<div class="main-footer__bottom">
-		<div class="container main-footer__bottom-container">
+		<div class="container main-footer__bottom-container <?php echo $hasSocialNetworks ? 'has-social-networks' : ''; ?>">
 
 			<!-- Social Networks -->
-			<div class="main-footer__social-network">
-				<?php foreach ( $social_networks as $social_network ) : ?>
-					<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
-						<a href="<?php echo $social_network_url; ?>">
-							<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
-								alt="<?php echo $escAttr( $social_network ); ?>">
-						</a>
-					<?php endif; ?>
-				<?php endforeach; ?>
-			</div>
+			<?php if ($hasSocialNetworks) : ?>
+				<div class="main-footer__social-network">
+					<?php foreach ( $socialNetworks as $social_network ) : ?>
+						<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
+							<a href="<?php echo $social_network_url; ?>">
+								<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
+									alt="<?php echo $escAttr( $social_network ); ?>">
+							</a>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 
 			<!-- Copyright -->
 			<div class="main-footer__copyright">
