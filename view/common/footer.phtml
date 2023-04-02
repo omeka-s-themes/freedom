@@ -29,55 +29,57 @@ if ( $footer_menu && ( $footer_logo || $footer_site_info ) && $footer_content ) 
 <footer class="main-footer">
 
 	<!-- Footer Top -->
-	<div class="main-footer__top">
-		<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
+	<?php if ( $footer_logo || $footer_site_info || $footer_menu || $footer_content ): ?>
+		<div class="main-footer__top">
+			<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
 
-			<!-- Column 1 -->
-			<?php if ( $footer_logo || $footer_site_info ) : ?>
+				<!-- Column 1 -->
+				<?php if ( $footer_logo || $footer_site_info ) : ?>
 
-				<div class="main-footer__col1">
-					<?php if ( $footer_logo ): ?>
-						<img
-							src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
-							alt="<?php echo $escHtml( $site->title() ); ?>"
-							style="<?php echo $footer_site_info ? 'margin-bottom: 30px;' : ''; ?>" />
-					<?php endif; ?>
+					<div class="main-footer__col1">
+						<?php if ( $footer_logo ): ?>
+							<img
+								src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
+								alt="<?php echo $escHtml( $site->title() ); ?>"
+								style="<?php echo $footer_site_info ? 'margin-bottom: 30px;' : ''; ?>" />
+						<?php endif; ?>
 
-					<div class="footer_site_info">
-						<?php if ( $footer_site_info ) : ?>
-							<?php echo $footer_site_info; ?>
+						<div class="footer_site_info">
+							<?php if ( $footer_site_info ) : ?>
+								<?php echo $footer_site_info; ?>
+							<?php endif; ?>
+						</div>
+					</div>
+					
+				<?php endif; ?>
+
+				<!-- Column 2 -->
+				<?php if ( $footer_menu ) : ?>
+				
+					<div class="main-footer__col2">
+						<?php
+							echo $site->publicNav()->menu()->renderMenu(null, [
+								'maxDepth' => $footer_menu_depth - 1
+							]);
+						?>
+					</div>
+
+				<?php endif; ?>
+
+				<!-- Column 3 -->
+				<?php if ( $footer_content ) : ?>
+
+					<div class="main-footer__col3">
+						<?php if ( $footer_content ) : ?>
+							<?php echo $footer_content; ?>
 						<?php endif; ?>
 					</div>
-				</div>
-				
-			<?php endif; ?>
 
-			<!-- Column 2 -->
-			<?php if ( $footer_menu ) : ?>
-			
-				<div class="main-footer__col2">
-					<?php
-						echo $site->publicNav()->menu()->renderMenu(null, [
-							'maxDepth' => $footer_menu_depth - 1
-						]);
-					?>
-				</div>
+				<?php endif; ?>
 
-			<?php endif; ?>
-
-			<!-- Column 3 -->
-			<?php if ( $footer_content ) : ?>
-
-				<div class="main-footer__col3">
-					<?php if ( $footer_content ) : ?>
-						<?php echo $footer_content; ?>
-					<?php endif; ?>
-				</div>
-
-			<?php endif; ?>
-
+			</div>
 		</div>
-	</div>
+	<?php endif; ?>	
 
 	<hr class="alignfull">
 

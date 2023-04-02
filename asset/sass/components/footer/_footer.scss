@@ -188,12 +188,16 @@
         align-items: center;
         flex-direction: column;
         gap: 30px;
-        justify-content: space-between;
+        justify-content: center;
         text-align: center;
 
         @media (min-width: $lg) {
             flex-direction: row;
             text-align: left;
+        }
+
+        &--all {
+            justify-content: space-between;
         }
     }
 
