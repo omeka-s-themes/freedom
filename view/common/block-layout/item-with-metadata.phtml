@@ -53,7 +53,7 @@ $decoration = $this->themeSetting('assets_decoration');
             <!-- Thumbnail -->
             <?php if ($primaryMedia): ?>
                 <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
-                    <?php echo $this->thumbnail($primaryMedia, 'square', ['class' => 'item-thumbnail']); ?>
+                    <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail']); ?>
                 </div>
             <?php endif; ?>
 

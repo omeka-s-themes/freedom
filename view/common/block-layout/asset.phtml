@@ -7,7 +7,7 @@ $decoration = $this->themeSetting('assets_decoration');
   <?php foreach ($attachments as $attachment): ?>
     <?php $asset = $attachment['asset']; ?>
     <div class="asset <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
-        <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'square') : ''; ?>
+        <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'large') : ''; ?>
         <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
         <?php if ($page): ?>
             <a href="<?php echo $escape($page->siteUrl()); ?>">
