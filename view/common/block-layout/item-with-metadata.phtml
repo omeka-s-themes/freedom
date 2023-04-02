@@ -8,9 +8,6 @@ $decoration = $this->themeSetting('assets_decoration');
     <?php foreach($attachments as $attachment): ?>
         <?php
             $item = $attachment->item();
-            $resourceClass = $item->resourceClass();
-            $resourceClassId = $resourceClass->id();
-            $resourceClassColor = $this->UniqueColorFromId($resourceClassId, 'pastel');
             $primaryMedia = $item->primaryMedia();
         ?>
         <?php if (empty($item)) continue; ?>
@@ -41,9 +38,7 @@ $decoration = $this->themeSetting('assets_decoration');
 
         <!-- Header -->
         <div class="item-with-metadata__header">
-            <?php if($resourceClassId): ?>
-                <div class="item-tag" style="background-color: <?php echo $resourceClassColor; ?>"><?php echo $item->displayResourceClassLabel(); ?></div>
-            <?php endif; ?>
+            <?php echo $this->ResourceTags($item); ?>
             <h3 class="item-with-metadata__heading"><?php echo $title; ?></h3>
         </div>
 
@@ -58,7 +53,7 @@ $decoration = $this->themeSetting('assets_decoration');
             <?php endif; ?>
 
             <!-- Metadata -->
-            <div class="item-with-metadata__metadata">
+            <div class="metadata">
                 <?php echo $item->displayValues($options); ?>
                 <?php if($item->itemSets()): ?>
                     <dl class="item-sets">

@@ -1,40 +1,76 @@
 .regions-container {
     display: flex;
+    flex-direction: column;
     gap: 60px;
     margin-bottom: 3rem;
+    padding-bottom: 50px;
+    border-bottom: 1px solid $color__hr;
+
+    @media (min-width: $md) {
+        flex-direction: row;
+    }
 
     .main-region {
+        order: -1;
         width: 100%;
+
+        @media (min-width: $md) {
+            order: initial;
+        }
     }
 
-    .left-sidebar-region,
-    .right-sidebar-region {
+    .sidebar-region {
         flex-shrink: 0;
         position: relative;
-        width: 27%;
-    }
+        width: 100%;
 
-    .left-sidebar-region {
+        @media (min-width: $md) {
+            width: 27%;
+        }
+
         &::after {
             content: "";
             position: absolute;
             width: 1px;
-            height: 100%;
+            height: calc(100% + 100px);
             background-color: $color__hr;
-            top: 0;
-            right: -30px;
+            top: -50px;
+        }
+
+        &--left {
+            &::after {
+                right: -30px;
+            }
+        }
+    
+        &--right {
+            &::after {
+                left: -30px;
+            }
         }
     }
 
-    .right-sidebar-region {
-        &::before {
-            content: "";
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            background-color: $color__hr;
-            top: 0;
-            left: -30px;
+    &--all {
+        flex-direction: column !important;
+
+        @media (min-width: $xl) {
+            flex-direction: row !important;
+        }
+
+        .main-region {
+            order: -1 !important;
+
+            @media (min-width: $xl) {
+                order: initial !important;
+            }
+        }
+
+        .sidebar-region {
+            width: 100% !important;
+
+            @media (min-width: $xl) {
+                width: 27% !important;
+            }
         }
     }
 }

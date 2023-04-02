@@ -1,51 +1,56 @@
 <?php
 $translate = $this->plugin('translate');
-$item = $media->item();
+$escape = $this->plugin('escapeHtml');
 
 $this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
-$this->htmlElement('body')->appendAttribute('class', 'media resource show');
+$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+
+$embedMedia = $this->siteSetting('item_media_embed', false);
+$itemMedia = $item->media();
+$showLayout = $this->themeSetting('show_layout');
+$mediaDisplay = $this->themeSetting('media_display');
 
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
 
 // Regions
-$mainBlockContent = $this->resourcePageBlocks($media);
+$mainBlockContent = $this->resourcePageBlocks($item);
 $mainHasBlocks = $mainBlockContent->hasBlocks();
-$leftSidebarBlockContent = $this->resourcePageBlocks($media, 'left');
+$leftSidebarBlockContent = $this->resourcePageBlocks($item, 'left');
 $leftSidebarHasBlocks = $leftSidebarBlockContent->hasBlocks();
-$rightSidebarBlockContent = $this->resourcePageBlocks($media, 'right');
+$rightSidebarBlockContent = $this->resourcePageBlocks($item, 'right');
 $rightSidebarHasBlocks = $rightSidebarBlockContent->hasBlocks();
 ?>
 
-<?php echo $this->ResourceTags($media); ?>
-<?php echo $this->pageTitle($media->displayTitle(null, $valueLang), 1); ?>
+<?php echo $this->ResourceTags($item); ?>
+<?php echo $this->pageTitle($item->displayTitle(null, $valueLang), 1); ?>
 
 <?php $this->trigger('view.show.before'); ?>
 
 <?php if ($mainHasBlocks || $leftSidebarHasBlocks || $rightSidebarHasBlocks): ?>
 
-    <div class="regions-container">
-        <?php if ($leftSidebarHasBlocks): ?>
+    <div class="regions-container <?php echo $mainHasBlocks && $leftSidebarHasBlocks && $rightSidebarHasBlocks ? 'regions-container--all' : ''; ?>">
+        <?php if ($leftSidebarHasBlocks && $blockContent = $leftSidebarBlockContent->getBlocks()): ?>
             <div class="sidebar-region sidebar-region--left">
                 <div class="metadata">
-                    <?php echo $leftSidebarBlockContent->getBlocks(); ?>
+                    <?php echo $blockContent; ?>
                 </div>
             </div>
         <?php endif; ?>
 
-        <?php if ($mainHasBlocks): ?>
+        <?php if ($mainHasBlocks && $blockContent = $mainBlockContent->getBlocks()): ?>
             <div class="main-region">
                 <div class="metadata">
-                    <?php echo $mainBlockContent->getBlocks(); ?>
+                    <?php echo $blockContent; ?>
                 </div>
             </div>
         <?php endif; ?>
 
-        <?php if ($rightSidebarHasBlocks): ?>
+        <?php if ($rightSidebarHasBlocks && $blockContent = $rightSidebarHasBlocks->getBlocks()): ?>
             <div class="sidebar-region sidebar-region--right">
                 <div class="metadata">
-                    <?php echo $rightSidebarBlockContent->getBlocks(); ?>
+                    <?php echo $blockContent; ?>
                 </div>
             </div>
         <?php endif; ?>
