@@ -13,11 +13,13 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
-textarea {
+textarea,
+select {
 	border: 1px solid $color__gray-80;
 	padding: 10px 15px;
 	border-radius: 3px;
 	line-height: 1;
+	width: 100%;
 
 	&:focus {
 
@@ -29,5 +31,39 @@ textarea {
 }
 
 select {
+	position: relative;
+	-moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+	background-image: url("../img/arrow-down.svg");
+    background-position: calc(100% - 15px) center;
+    background-size: 18px;
+    background-repeat: no-repeat;
+}
 
+label,
+.label {
+	color: $color__black;
+}
+
+.field {
+	box-shadow: 0px 1px 6px rgba($color__black, 0.25);
+	padding: 20px 25px;
+	margin-bottom: 25px;
+}
+
+button.add-value,
+button.remove-value {
+	background-color: $color__white;
+    border: 1px solid $color__secondary-light;
+    border-radius: 50%;
+    cursor: pointer;
+    color: $color__primary;
+    width: 35px;
+    height: 35px;
+    padding: 5px 9px;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	flex-shrink: 0;
 }

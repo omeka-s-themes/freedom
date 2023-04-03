@@ -1,0 +1,36 @@
+.item-showcase {
+    border-top: none !important;
+    border-bottom: none !important;
+    gap: 25px;
+    text-align: left !important;
+
+    .resource.item {
+        width: 100% !important;
+        max-width: 325px;
+        box-shadow: 0px 1px 6px rgba($color__black, 0.25);
+        padding: 0 !important;
+
+        h3 {
+            color: $color__headings;
+            font-family: $font__body;
+            font-weight: 600;
+            margin: 1rem 0 !important;
+            padding: 0 10px;
+        }
+
+        .caption {
+            padding: 0 10px 15px;
+        }
+
+        img {
+            max-height: none !important;
+            height: 150px;
+            width: 100% !important;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        padding: 15px;
+    }
+}
