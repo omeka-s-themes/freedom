@@ -1,3 +1,78 @@
-.annotation.collapsible {
-    display: none;
+.annotation-btn {
+    display: inline-block;
+    padding: 0 5px;
+    position: relative;
+
+    &:hover {
+        .annotation-tooltip {
+			height: auto;
+            opacity: 1;
+            padding: 18px;
+        }
+    }
+
+    .has-annotation {
+        color: $color__link;
+    }
+
+    .annotation-tooltip {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        transition: opacity 0.3s ease-out;
+        z-index: 2;
+
+        @media (min-width: $lg) {
+            bottom: 5px;
+        }
+
+        &__wrapper {
+            background-color: $color__white;
+            border: 1px solid $color__hr;
+            border-radius: 10px 10px 10px 0;
+            box-shadow: 0px 1px 20px rgba($color__black, 0.25);
+            font-size: $font__xs-size;
+            width: 230px;
+            height: auto;
+            padding: 15px 15px 30px;
+
+            @media (min-width: $lg) {
+                padding: 15px;
+            }
+
+            &.below-button {
+                border-radius: 0 10px 10px 10px;
+            }
+        }
+
+        &__heading {
+            font-size: $font__sm-size;
+        }
+
+        .property:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        dt {
+            float: left;
+            font-size: $font__xs-size;
+            margin-bottom: 0.5rem;
+            padding-right: 10px;
+            width: 70px !important;
+        }
+
+        dd {
+            font-size: $font__xs-size;
+            margin: 0;
+            margin-left: 70px !important;
+
+            &.resource.media img {
+                display: block;
+                max-width: 80px;
+            }
+        }
+    }
 }

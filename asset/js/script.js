@@ -37,4 +37,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
 
+    // Annotations tooltip position
+
+    const annotationBtns = document.querySelectorAll('.annotation-btn');
+
+    annotationBtns.forEach((annotationBtn) => {
+        const annotationTooltip = annotationBtn.querySelector('.annotation-tooltip');
+        const annotationTooltipWrapper = annotationTooltip.querySelector('.annotation-tooltip__wrapper');
+
+        const eventList = ['click', 'mouseover'];
+        eventList.forEach((event) => {
+            annotationBtn.addEventListener(event, setAnnotationTooltipPos);
+        });
+
+        function setAnnotationTooltipPos() {
+            const annotationBtnOffset = annotationBtn.getBoundingClientRect();
+            const { top, left } = annotationBtnOffset;
+            const distanceToRightEdge = window.innerWidth - (left + annotationBtn.offsetWidth);
+            
+            if (distanceToRightEdge < (annotationTooltipWrapper.offsetWidth + 15)) {
+                annotationTooltip.style.left = (distanceToRightEdge - annotationTooltipWrapper.offsetWidth - 15) + 'px';
+            } else {
+                annotationTooltip.style.left = '0px';
+            }
+
+            if ((top - mainHeader.offsetHeight - mainHeader.offsetTop) < (annotationTooltipWrapper.offsetHeight + 15)) {
+                annotationTooltip.style.bottom = (- annotationTooltipWrapper.offsetHeight - 20) + 'px';
+                annotationTooltipWrapper.classList.add('below-button');
+            } else {
+                annotationTooltip.style.bottom = '10px';
+                annotationTooltipWrapper.classList.remove('below-button');
+
+                if (annotationTooltip.style.left == '0px') {
+                    annotationTooltip.style.bottom = '5px';
+                }
+            }
+        }
+    });
 });

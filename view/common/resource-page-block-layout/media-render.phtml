@@ -1,0 +1,6 @@
+<?php
+$decoration = $this->themeSetting('assets_decoration');
+?>
+<div class="<?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
+    <?php echo $resource->render(); ?>
+</div>

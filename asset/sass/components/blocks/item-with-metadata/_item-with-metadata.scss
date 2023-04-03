@@ -1,5 +1,6 @@
 .item-with-metadata {
     box-shadow: 0px 1px 6px rgba($color__black, 0.25);
+    overflow: initial !important;
 
     &__header {
         border: 1px solid $color__hr;

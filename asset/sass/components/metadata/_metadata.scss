@@ -28,6 +28,7 @@
     
             dt {
                 margin-bottom: 0.5rem;
+                padding-right: 15px;
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {
