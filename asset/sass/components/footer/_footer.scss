@@ -124,6 +124,12 @@
                 justify-content: flex-start;
             }
 
+            li {
+                &::before {
+                    content: none !important;
+                }
+            }
+
             > li {
                 @media (min-width: $md) {
                     max-width: 20%;

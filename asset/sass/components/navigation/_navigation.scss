@@ -79,6 +79,12 @@
 		.main-header--inline & {
 			margin-right: -15px;
 		}
+
+		li {
+			&::before {
+				content: none !important;
+			}
+		}
 	
 		> li { //main menu items
 			cursor: pointer;

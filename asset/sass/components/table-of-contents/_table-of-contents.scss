@@ -1,0 +1,44 @@
+.toc-block {
+
+    > ul {
+        border-left: none !important;
+
+        > li {
+            margin-bottom: 2rem !important;
+
+            &:before {
+                @include font-awesome;
+                content: "\f054" !important;
+                display: inline-block;
+                font-weight: 600;
+                font-size: .75rem;
+                color: $color__primary-light;
+                margin-right: 15px;
+            }
+        
+            > a {
+                font-weight: 600 !important;
+                font-size: 1.125rem;
+            }
+
+        }
+
+        ul {
+            > li {
+                margin-bottom: 0.3rem;
+
+                &:before {
+                    @include font-awesome;
+                    content: "\f111" !important;
+                    font-weight: 600;
+                    font-size: .4rem;
+                    color: $color__primary-light !important;
+                    margin-right: 15px;
+                }
+    
+            }
+        }
+        
+    }
+    
+}

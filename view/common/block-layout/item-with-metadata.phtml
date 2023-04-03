@@ -36,47 +36,49 @@ $decoration = $this->themeSetting('assets_decoration');
         }
         ?>
 
-        <!-- Header -->
-        <div class="item-with-metadata__header">
-            <?php echo $this->ResourceTags($item); ?>
-            <h3 class="item-with-metadata__heading"><?php echo $title; ?></h3>
-        </div>
-
-        <!-- Content -->
-        <div class="item-with-metadata__content">
-
-            <!-- Thumbnail -->
-            <?php if ($primaryMedia): ?>
-                <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
-                    <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail']); ?>
-                </div>
-            <?php endif; ?>
-
-            <!-- Metadata -->
-            <div class="metadata">
-                <?php echo $item->displayValues($options); ?>
-                <?php if($item->itemSets()): ?>
-                    <dl class="item-sets">
-                        <div class="property">
-                            <dt><?php echo $translate('Item sets'); ?></dt>
-                            <?php foreach ($item->itemSets() as $itemSet): ?>
-                            <dd class="value"><?php echo $itemSet->link($itemSet->displayTitle()); ?></dd>
-                            <?php endforeach; ?>
-                        </div>
-                    </dl>
-                <?php endif; ?>
-                <?php if($item->media()): ?>
-                    <dl class="media-list">
-                        <div class="property">
-                            <dt><?php echo $translate('Media'); ?></dt>
-                            <?php foreach ($item->media() as $media): ?>
-                            <dd class="value <?php echo is_array($decoration) && in_array('thumbnails', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>"><?php echo $media->linkPretty('square', $media->displayTitle(), ['class' => 'media resource']); ?></dd>
-                            <?php endforeach; ?>
-                        </div>
-                    </dl>
-                <?php endif; ?>
+        <div class="item-with-metadata__container">
+            <!-- Header -->
+            <div class="item-with-metadata__header">
+                <?php echo $this->ResourceTags($item); ?>
+                <h3 class="item-with-metadata__heading"><?php echo $title; ?></h3>
             </div>
 
+            <!-- Content -->
+            <div class="item-with-metadata__content">
+
+                <!-- Thumbnail -->
+                <?php if ($primaryMedia): ?>
+                    <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
+                        <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail']); ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Metadata -->
+                <div class="metadata">
+                    <?php echo $item->displayValues($options); ?>
+                    <?php if($item->itemSets()): ?>
+                        <dl class="item-sets">
+                            <div class="property">
+                                <dt><?php echo $translate('Item sets'); ?></dt>
+                                <?php foreach ($item->itemSets() as $itemSet): ?>
+                                <dd class="value"><?php echo $itemSet->link($itemSet->displayTitle()); ?></dd>
+                                <?php endforeach; ?>
+                            </div>
+                        </dl>
+                    <?php endif; ?>
+                    <?php if($item->media()): ?>
+                        <dl class="media-list">
+                            <div class="property">
+                                <dt><?php echo $translate('Media'); ?></dt>
+                                <?php foreach ($item->media() as $media): ?>
+                                <dd class="value <?php echo is_array($decoration) && in_array('thumbnails', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>"><?php echo $media->linkPretty('square', $media->displayTitle(), ['class' => 'media resource']); ?></dd>
+                                <?php endforeach; ?>
+                            </div>
+                        </dl>
+                    <?php endif; ?>
+                </div>
+
+            </div>
         </div>
 
     <?php endforeach; ?>
