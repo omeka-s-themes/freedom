@@ -4,6 +4,11 @@
     color: $color__black;
     font-size: $font__xs-size;
     font-weight: 600;
-    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     padding: 5px 10px;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }

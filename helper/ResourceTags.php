@@ -18,7 +18,7 @@ class ResourceTags extends AbstractHelper
             return '';
         }
 
-        $tagsHtml = '';
+        $tagsHtml = '<div class="resource-tags">';
 
         // Resource Type Tag ('Item', 'Item set', 'Media').
 
@@ -60,6 +60,8 @@ class ResourceTags extends AbstractHelper
                 $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
             }
         }
+
+        $tagsHtml .= '</div>';
 
         return $tagsHtml;
     }
