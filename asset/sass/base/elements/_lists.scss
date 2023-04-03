@@ -1,14 +1,28 @@
 ul,
 ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0;
+	padding-left: 1.5rem;
 }
 
 ul {
-	list-style: disc;
+	list-style: none;
 }
 
 ol {
 	list-style: decimal;
+}
+
+li {
+	margin-bottom: 0.3rem;
+
+	&:before {
+		@include font-awesome;
+		content: "\f111" !important;
+		font-weight: 600;
+		font-size: .4rem;
+		color: $color__primary-light !important;
+		margin-right: 15px;
+	}
 }
 
 li > ul,
