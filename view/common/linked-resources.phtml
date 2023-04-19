@@ -72,8 +72,8 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
         <h6 class="linked-resource-heading accordion__heading">
             <button class="linked-resource-property accordion__trigger"
                     type="button"
-                    aria-expanded="true"
-                    aria-controls="sect-<?php echo $values[0]['property_id']; ?>"
+                    aria-expanded="false"
+                    aria-controls="accordion__panel-<?php echo $values[0]['property_id']; ?>"
                     id="accordion-<?php echo $values[0]['property_id']; ?>">
                 <span class="accordion__title">
                     <?php echo $this->escapeHtml($caption); ?>
@@ -83,7 +83,7 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
         </h6>
 
         <div class="linked-resource-property__panel accordion__panel"
-            id="sect-<?php echo $values[0]['property_id']; ?>"
+            id="accordion__panel-<?php echo $values[0]['property_id']; ?>"
             role="region"
             aria-labelledby="accordion-<?php echo $values[0]['property_id']; ?>">
             <?php foreach ($values as $value): ?>

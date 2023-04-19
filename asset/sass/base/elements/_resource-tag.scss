@@ -1,14 +1,19 @@
-.resource-tag {
-    display: inline-block;
-    border-radius: 3px;
-    color: $color__black;
-    font-size: $font__xs-size;
-    font-weight: 600;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    padding: 5px 10px;
+.resource-tags {
+    display: flex;
+    flex-shrink: 0;
 
-    &:last-child {
-        margin-right: 0;
+    .resource-tag {
+        display: inline-block;
+        border-radius: 3px;
+        color: $color__black;
+        font-size: $font__xs-size;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 5px 10px;
+    
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }

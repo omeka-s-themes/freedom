@@ -77,13 +77,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // Accordion
 
-    const acc = document.getElementsByClassName('accordion__trigger');
-    var i;
+    const accordionTrigger = document.getElementsByClassName('accordion__trigger');
 
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener('click', function() {
+    for (let i = 0; i < accordionTrigger.length; i++) {
+        accordionTrigger[i].addEventListener('click', function() {
             this.classList.toggle('active');
-            var panel = this.parentElement.nextElementSibling;
+            this.setAttribute('aria-expanded', this.classList.contains('active'));
+            this.parentElement.parentElement.classList.toggle('active');
+            const panel = this.parentElement.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
@@ -91,4 +92,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         });
     }
+
+    function refreshPanelsHeight() {
+        for (let i = 0; i < accordionTrigger.length; i++) {
+            const panel = accordionTrigger[i].parentElement.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        }
+    }
+
+    const expandCollapseBtns = document.querySelectorAll('.resources-linked__expand-collapse-btn');
+
+    expandCollapseBtns.forEach((expandCollapseBtn) => {
+        expandCollapseBtn.addEventListener('click', function() {
+            if (this.innerText.toLowerCase() === 'expand all') {
+                this.innerText = 'Collapse all';
+            } else {
+                this.innerText = 'Expand all'
+            }
+
+            const accordionTriggers = this.parentElement.nextElementSibling.querySelectorAll('.accordion__trigger');
+            accordionTriggers.forEach((accordionTrigger) => {
+                accordionTrigger.click();
+            });
+        });
+    });
+
+    // Resize Events
+
+    timeout = false,
+    delay = 250;
+
+    onResize();
+
+    function onResize() {
+        refreshPanelsHeight();
+    }
+
+    window.addEventListener('resize', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(onResize, delay);
+    });
 });

@@ -7,12 +7,12 @@
 
     > div:not(:last-child),
     .media-render:not(:last-child) {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     dl {
         margin-top: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
 
         &:last-child {
             margin-bottom: 0;

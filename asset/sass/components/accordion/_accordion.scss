@@ -2,8 +2,7 @@
     &__container {
         background-color: $color__white;
         border: 1px solid $color__hr;
-        //box-shadow: 0px 1px 10px 2px rgba($color__black, 0.25);
-        margin-bottom: 30px;
+        margin-bottom: 1rem;
     }
 
     &__heading {
@@ -15,22 +14,22 @@
         border-bottom: 1px solid $color__hr;
         color: $color__black;
         font-size: 1.125rem;
-        padding: 15px;
+        outline: none;
+        padding: 15px 60px 15px 15px;
         position: relative;
         text-align: left;
         text-transform: none;
-        width: 100%;
-        outline: none;
         transition: 0.4s;
+        width: 100%;
 
         &::before {
             content: "";
-            width: 3px;
-            height: 100%;
-            position: absolute;
             background-color: $color__primary;
+            height: 100%;
             left: 0;
+            position: absolute;
             top: 0;
+            width: 3px;
         }
 
         &:hover,
@@ -41,22 +40,28 @@
     }
 
     &__icon {
-        border: solid currentcolor;
-        border-width: 0 2px 2px 0;
-        color: $color__primary;
-        height: 12px;
+        background: url("../img/arrow-down.svg") no-repeat center;
+        background-size: 65%;
+        border: 1px solid $color__secondary-light;
+        border-radius: 50%;
+        height: 34px;
         pointer-events: none;
         position: absolute;
-        right: 2em;
+        right: 20px;
         top: 50%;
-        transform: translateY(-60%) rotate(45deg);
-        width: 12px;
+        transform: translateY(-50%) rotate(0);
+        transition: transform 0.3s;
+        width: 34px;
+
+        .accordion__trigger.active & {
+            transform: translateY(-50%) rotate(-180deg);
+        }
     }
 
     &__panel {
-        padding: 0 25px;
         max-height: 0;
         overflow: hidden;
+        padding: 0 25px;
         transition: max-height 0.4s ease-out;
     }
 }
