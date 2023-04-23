@@ -14,7 +14,8 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea,
-select {
+select,
+.chosen-container-single .chosen-single {
 	border: 1px solid $color__gray-80;
 	padding: 10px 15px;
 	border-radius: 3px;
@@ -30,15 +31,18 @@ select {
 	}
 }
 
-select {
+select, 
+.chosen-container-single .chosen-single {
 	position: relative;
-	-moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
+	-moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
 	background-image: url("../img/arrow-down.svg");
     background-position: calc(100% - 15px) center;
     background-size: 18px;
     background-repeat: no-repeat;
+	height: 44px;
+	padding-right: 45px;
 }
 
 label,
