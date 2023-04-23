@@ -3,18 +3,33 @@
     border-bottom: none !important;
     gap: 25px;
     text-align: left !important;
+    margin-bottom: 3rem !important;
+
+    &__content {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &__media {
+        display: block;
+    }
 
     .resource.item {
         width: 100% !important;
         max-width: 325px;
         box-shadow: 0px 1px 6px rgba($color__black, 0.25);
         padding: 0 !important;
+        display: flex;
+        flex-direction: column;
 
         h3 {
             color: $color__headings;
             font-family: $font__body;
             font-weight: 600;
-            margin: 1rem 0 !important;
+            margin: 0 0 1rem !important;
             padding: 0 10px;
         }
 
@@ -28,9 +43,5 @@
             width: 100% !important;
             object-fit: cover;
         }
-    }
-
-    &__content {
-        padding: 15px;
     }
 }
