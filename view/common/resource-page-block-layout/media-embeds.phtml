@@ -1,9 +1,9 @@
 <?php
 $resourceMedia = $resource->media();
-$decoration = $this->themeSetting('assets_decoration');
+$decoration = $this->themeSetting('image_decoration');
 ?>
 <?php if ($resourceMedia): ?>
-<div class="media-embeds <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
+<div class="media-embeds <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
     <?php foreach ($resourceMedia as $media): ?>
     <?php echo $media->render(); ?>
     <?php endforeach; ?>

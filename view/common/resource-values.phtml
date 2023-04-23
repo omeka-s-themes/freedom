@@ -1,7 +1,7 @@
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
-$decoration = $this->themeSetting('assets_decoration');
+$decoration = $this->themeSetting('image_decoration');
 
 if ($this->status()->isSiteRequest()) {
     $labelInfo = $this->siteSetting('property_label_information');
@@ -43,7 +43,7 @@ if ($this->status()->isSiteRequest()) {
             $class[] = 'resource';
             $class[] = $escape($value->valueResource()->resourceName());
 
-            if ('media' == $value->valueResource()->resourceName() && is_array($decoration) && in_array('thumbnails', $decoration)) {
+            if ('media' == $value->valueResource()->resourceName() && is_array($decoration) && in_array('media', $decoration)) {
                 $class[] = 'decoration decoration--thumbnail';
             }
         } elseif ('uri' == $valueType) {

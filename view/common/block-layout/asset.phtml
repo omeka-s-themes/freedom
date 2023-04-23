@@ -1,12 +1,12 @@
 <?php
 $escape = $this->plugin('escapeHtml');
-$decoration = $this->themeSetting('assets_decoration');
+$decoration = $this->themeSetting('image_decoration');
 ?>
 
 <div class="assets <?php echo $escape($className); ?> <?php echo $escape($alignment); ?>">
   <?php foreach ($attachments as $attachment): ?>
     <?php $asset = $attachment['asset']; ?>
-    <div class="asset <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
+    <div class="asset <?php echo is_array($decoration) && in_array('asset', $decoration) ? 'decoration' : ''; ?>">
         <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'large') : ''; ?>
         <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
         <?php if ($page): ?>

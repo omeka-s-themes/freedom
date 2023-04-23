@@ -1,3 +1,7 @@
+<?php
+$decoration = $this->themeSetting('image_decoration');
+?>
+
 <div class="item-showcase">
 <?php foreach ($attachments as $attachment): ?>
     <div class="item resource">
@@ -9,24 +13,31 @@
         <?php
         $media = $attachment->media() ?: $item->primaryMedia();
         if ($media):
-            echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType));
+            $mediaClass = 'item-showcase__media';
+            if (is_array($decoration) && in_array('media', $decoration)) {
+                $mediaClass .= ' decoration';
+            }
+            echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType), null, ['class' => $mediaClass]);
         endif;
         ?>
         <div class="item-showcase__content">
             <?php echo $this->ResourceTags($item); ?>
-            <?php $showTitleOption = $this->showTitleOption; ?>
-            <?php if ($showTitleOption == 'item_title'): ?>
-            <h3><?php echo $item->link($item->displayTitle()); ?></h3>
-            <?php elseif ($showTitleOption == 'file_name'): ?>
-            <h3><?php echo $media->displayTitle(); ?></h3>
-            <?php endif; ?>
+            <div class="item-showcase__text">
+                <?php $showTitleOption = $this->showTitleOption; ?>
+                <?php if ($showTitleOption == 'item_title'): ?>
+                <h3><?php echo $item->link($item->displayTitle()); ?></h3>
+                <?php elseif ($showTitleOption == 'file_name'): ?>
+                <h3><?php echo $media->displayTitle(); ?></h3>
+                <?php endif; ?>
         <?php if (!$caption): ?>
+            </div>
         </div>
         <?php endif; ?>
     <?php endif; ?>
 
     <?php if ($caption): ?>
-        <div class="caption"><?php echo $caption; ?></div>
+                <div class="caption"><?php echo $caption; ?></div>
+            </div>
         </div>
     <?php endif; ?>
     </div>

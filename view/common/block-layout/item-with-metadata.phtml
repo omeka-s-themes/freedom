@@ -2,7 +2,7 @@
 
 $translate = $this->plugin('translate');
 $showLocale = (bool) $this->siteSetting('show_locale_label', true);
-$decoration = $this->themeSetting('assets_decoration');
+$decoration = $this->themeSetting('image_decoration');
 ?>
 <div class="item-with-metadata">
     <?php foreach($attachments as $attachment): ?>
@@ -48,7 +48,7 @@ $decoration = $this->themeSetting('assets_decoration');
 
                 <!-- Thumbnail -->
                 <?php if ($primaryMedia): ?>
-                    <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('large', $decoration) ? 'decoration' : ''; ?>">
+                    <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
                         <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail']); ?>
                     </div>
                 <?php endif; ?>
@@ -71,7 +71,7 @@ $decoration = $this->themeSetting('assets_decoration');
                             <div class="property">
                                 <dt><?php echo $translate('Media'); ?></dt>
                                 <?php foreach ($item->media() as $media): ?>
-                                <dd class="value <?php echo is_array($decoration) && in_array('thumbnails', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>"><?php echo $media->linkPretty('square', $media->displayTitle(), ['class' => 'media resource']); ?></dd>
+                                <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>"><?php echo $media->linkPretty('square', $media->displayTitle(), ['class' => 'media resource']); ?></dd>
                                 <?php endforeach; ?>
                             </div>
                         </dl>
