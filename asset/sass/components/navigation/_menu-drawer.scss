@@ -84,6 +84,10 @@
 					font-weight: bold;
 				}
 			}
+
+			&::before {
+				content: none !important;
+			}
 		}
 	
 		a {
@@ -117,6 +121,10 @@
 				li {
 					// Position `.sub-menu .menu-item` as static so tertiary sub-menus are positioned properly
 					position: static;
+
+					&::before {
+						content: none !important;
+					}
 				}
 			}
 
