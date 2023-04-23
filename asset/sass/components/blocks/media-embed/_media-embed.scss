@@ -1,4 +1,26 @@
 .file {
     border-top: none !important;
     border-bottom: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    &.left .item.resource,
+    &.right .item.resource {
+
+        &:first-of-type {
+            padding-top: 0.6rem !important;
+        }
+    }
+
+    &.left .item.resource {
+        margin: 0 0.5rem 1rem 0 !important;
+    }
+
+    &.right .item.resource {
+        margin: 0 0 1rem 0.5rem !important;
+    }
+
+    &.center {
+        margin-bottom: 1.5rem !important;
+    }
 }
