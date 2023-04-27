@@ -18,50 +18,67 @@ class ResourceTags extends AbstractHelper
             return '';
         }
 
-        $tagsHtml = '<div class="resource-tags">';
+        $view = $this->getView();
 
-        // Resource Type Tag ('Item', 'Item set', 'Media').
+        $resource_tags = $view->themeSetting('resource_tags');
 
-        $resourceName = $resource->resourceName();
+        $tagsHtml = '';
 
-        if ($resourceName) {
-            $mapResourceName = array(
-                'items' => array(
-                    'id' => 0,
-                    'label' => 'Item'
-                ),
-                'item-sets' => array(
-                    'id' => 1,
-                    'label' => 'Item set'
-                ),
-                'media' => array(
-                    'id' => 2,
-                    'label' => 'Media'
-                )
-            );
+        if (is_array($resource_tags) && (in_array('resource_type', $resource_tags) || in_array('resource_class', $resource_tags))) {
 
-            if (array_key_exists($resourceName, $mapResourceName)) {
-                $tagColor = $this->getUniqueColorFromId($mapResourceName[$resourceName]['id'], 'pastel');
-                $tagLabel = $mapResourceName[$resourceName]['label'];
-                $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
+            $tagsHtml .= '<div class="resource-tags">';
+
+            // Resource Type Tag ('Item', 'Item set', 'Media').
+
+            if (in_array('resource_type', $resource_tags)) {
+
+                $resourceName = $resource->resourceName();
+
+                if ($resourceName) {
+                    $mapResourceName = array(
+                        'items' => array(
+                            'id' => 0,
+                            'label' => 'Item'
+                        ),
+                        'item-sets' => array(
+                            'id' => 1,
+                            'label' => 'Item set'
+                        ),
+                        'media' => array(
+                            'id' => 2,
+                            'label' => 'Media'
+                        )
+                    );
+    
+                    if (array_key_exists($resourceName, $mapResourceName)) {
+                        $tagColor = $this->getUniqueColorFromId($mapResourceName[$resourceName]['id'], 'pastel');
+                        $tagLabel = $mapResourceName[$resourceName]['label'];
+                        $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
+                    }
+                }
             }
-        }
 
-        // Resource Class Tag.
+            
 
-        $resourceClass = $resource->resourceClass();
+            // Resource Class Tag.
 
-        if ($resourceClass) {
-            $resourceClassId = $resourceClass->id();
+            if (in_array('resource_class', $resource_tags)) {
+                
+                $resourceClass = $resource->resourceClass();
 
-            if ($resourceClassId) {
-                $tagColor = $this->getUniqueColorFromId((int) $resourceClassId + 10, 'pastel'); // Offset of 10 for Resource Types.
-                $tagLabel = $resource->displayResourceClassLabel();
-                $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
+                if ($resourceClass) {
+                    $resourceClassId = $resourceClass->id();
+
+                    if ($resourceClassId) {
+                        $tagColor = $this->getUniqueColorFromId((int) $resourceClassId + 10, 'pastel'); // Offset of 10 for Resource Types.
+                        $tagLabel = $resource->displayResourceClassLabel();
+                        $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
+                    }
+                }
             }
-        }
 
-        $tagsHtml .= '</div>';
+            $tagsHtml .= '</div>';
+        }
 
         return $tagsHtml;
     }
