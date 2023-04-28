@@ -134,4 +134,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         clearTimeout(timeout);
         timeout = setTimeout(onResize, delay);
     });
+
+    // Masonry
+
+    var masonry = new MiniMasonry({
+        container: '.resource-grid',
+        gutter: 27,
+        surroundingGutter: false
+    });
 });

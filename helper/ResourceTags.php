@@ -40,12 +40,12 @@ class ResourceTags extends AbstractHelper
                             'id' => 0,
                             'label' => 'Item'
                         ),
-                        'item-sets' => array(
-                            'id' => 1,
+                        'item_sets' => array(
+                            'id' => 7,
                             'label' => 'Item set'
                         ),
                         'media' => array(
-                            'id' => 2,
+                            'id' => 3,
                             'label' => 'Media'
                         )
                     );
@@ -70,7 +70,7 @@ class ResourceTags extends AbstractHelper
                     $resourceClassId = $resourceClass->id();
 
                     if ($resourceClassId) {
-                        $tagColor = $this->getUniqueColorFromId((int) $resourceClassId + 10, 'pastel'); // Offset of 10 for Resource Types.
+                        $tagColor = $this->getUniqueColorFromId((int) $resourceClassId + 10, 'pastel'); // Offset of 50 for Resource Types.
                         $tagLabel = $resource->displayResourceClassLabel();
                         $tagsHtml .= '<div class="resource-tag" style="background-color: ' . $tagColor . ';">' . $tagLabel . '</div>';
                     }

@@ -1,0 +1,89 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid $color__hr;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 30px;
+    padding-top: 30px;
+    width: 100%;
+
+    .pager-wrapper {
+        flex-shrink: 0;
+    }
+
+    input[type=text] {
+        margin: 0 0.3rem;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .row-count {
+        color: $color__secondary-text;
+        font-size: $font__sm-size;
+        margin-right: 1rem;
+    }
+
+    .pager {
+        label,
+        .page-count {
+            color: $color__secondary-text;
+        }
+
+        .gotopage-btn {
+            margin-left: 0.3rem;
+            padding: 8px 15px;
+            width: 54px;
+        }
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        background-color: $color__white;
+        border: 1px solid $color__primary;
+        border-radius: 3px;
+        color: $color__primary;
+        flex-shrink: 0;
+        font-size: 1.4rem;
+        height: 40px;
+        justify-content: center;
+        position: relative;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        width: 37px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            background: url(../img/arrow-down.svg) center no-repeat;
+            height: 9px;
+            transform: rotate(90deg);
+            width: 15px;
+        }
+
+        &:hover:not(.disabled) {
+            background-color: $color__primary;
+
+            &::before {
+                filter: brightness(0) invert(1);
+            }
+        }
+
+        &.next {
+            &::before {
+                transform: rotate(-90deg);
+            }
+        }
+
+        &.disabled {
+            color: $color__disabled;
+            border-color: $color__disabled;
+
+            &::before {
+                filter: saturate(0);
+            }
+        }
+    }
+}

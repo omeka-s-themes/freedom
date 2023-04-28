@@ -1,0 +1,26 @@
+.resource .description {
+    overflow-wrap: break-word;
+
+    &.fadeout {
+        position: relative;
+        max-height: 6.2rem;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            background: linear-gradient(to right, rgba($color__white, 0), rgba($color__white, 1) 60%);
+            height: 1.7rem;
+            left: 50%;
+            position: absolute;
+            right: 0;
+            top: 4.5rem;
+        }
+    }
+
+    &.ellipsis {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }    
+}

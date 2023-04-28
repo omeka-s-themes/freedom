@@ -5,11 +5,6 @@ $escape = $this->plugin('escapeHtml');
 $this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 
-$embedMedia = $this->siteSetting('item_media_embed', false);
-$itemMedia = $item->media();
-$showLayout = $this->themeSetting('show_layout');
-$mediaDisplay = $this->themeSetting('media_display');
-
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;

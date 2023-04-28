@@ -1,0 +1,44 @@
+<?php
+$translate = $this->plugin('translate');
+?>
+<nav class="pagination" role="navigation">
+    <?php if ($totalCount): ?>
+
+        <?php
+        $from = $offset + 1;
+        $to = ($currentPage < $pageCount) ? $offset + $perPage : $totalCount;
+        $results = $totalCount === 1 ? 'result' : 'results';
+        ?>
+        <span class="row-count"><?php echo sprintf($translate('Showing %1$s to %2$s of %3$s %4$s'), $from, $to, $totalCount, $results); ?></span>
+
+        <div class="pager-wrapper">
+            <!-- Prev Button -->
+            <?php if ($currentPage != 1): ?>
+                <?php echo $this->hyperlink('', $previousPageUrl, ['class' => 'previous o-icon-prev button', 'title' => $translate('Previous'), 'aria-label' => $translate('Previous')]); ?>
+            <?php else: ?>
+                <span class="prev o-icon-prev button disabled" disabled></span>
+            <?php endif; ?>
+
+            <!-- Pager -->
+            <form class="pager" method="GET" action="">
+                <?php echo $this->queryToHiddenInputs(['page']); ?>
+                <label>
+                    <?php echo $translate('Page'); ?>
+                    <input type="text" id="" name="page" class="page-input-top" value="<?php echo $currentPage; ?>" size="4" <?php echo ($pageCount == 1) ? 'readonly' : ''; ?> aria-label="<?php echo $translate('Page'); ?>">
+                </label>
+                <span class="page-count"><?php echo sprintf($translate('of %s'), $pageCount); ?></span>
+                <input type="submit" class="gotopage-btn" value="Go">
+            </form>
+
+            <!-- Next Button -->
+            <?php if ($currentPage < $pageCount): ?>
+                <?php echo $this->hyperlink('', $nextPageUrl, ['class' => 'next o-icon-next button', 'title' => $translate('Next'), 'aria-label' => $translate('Next')]); ?>
+            <?php else: ?>
+                <span class="next o-icon-next button disabled" disabled></span>
+            <?php endif; ?>
+        </div>
+
+    <?php else: ?>
+        <?php echo $translate('0 results'); ?>
+    <?php endif; ?>
+</nav>

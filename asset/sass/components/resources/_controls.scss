@@ -1,0 +1,49 @@
+.browse-controls {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color__hr;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+    .page-input-top {
+        width: auto;
+    }
+
+    input[type=text],
+    select {
+        padding: 8px 10px;
+    }
+
+    select {
+        padding-right: 45px;
+    }
+
+    .layout-toggle {
+        display: flex;
+        gap: 20px;
+    }
+
+    .sorting {
+        display: flex;
+        gap: 15px;
+        margin-left: auto;
+
+        button {
+            padding: 10px 15px;
+        }
+    }
+
+    .advanced-search-container {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 1rem;
+        width: 100%;
+
+        a {
+            font-size: $font__xs-size;
+            text-transform: uppercase;
+        }
+    }
+}

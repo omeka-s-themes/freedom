@@ -9,6 +9,7 @@ input[type="submit"] {
 	color: $color__white;
 	padding: 10px 40px;
 	text-transform: uppercase;
+	transition: all 0.3s ease;
 	-webkit-appearance: none;
     -moz-appearance: none;
 	
@@ -23,7 +24,6 @@ input[type="submit"] {
 			background-color: $color__buttons;
 			color: $color__white;
 		}
-
 	}
 
 	&:hover,
@@ -35,6 +35,27 @@ input[type="submit"] {
 	&:disabled,
 	&[disabled]
 	&.disabled {
-		background-color: $color__gray-67;
+		background-color: $color__disabled;
+		cursor: default;
+	}
+
+	&.icon-btn {
+		padding: 0;
+		background-color: transparent !important;
+		color: $color__buttons;
+		font-size: 1.7rem;
+		line-height: 1;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: $color__accent;
+		}
+
+		&:disabled,
+		&[disabled]
+		&.disabled {
+			color: $color__disabled;
+		}
 	}
 }
