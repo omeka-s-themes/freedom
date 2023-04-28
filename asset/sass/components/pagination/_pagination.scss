@@ -10,7 +10,10 @@
     width: 100%;
 
     .pager-wrapper {
+        display: flex;
+        align-items: center;
         flex-shrink: 0;
+        gap: 1.5rem;
     }
 
     input[type=text] {
