@@ -1,0 +1,53 @@
+.faceted-browse-page {
+
+    #section-sidebar {
+        background-color: $color__secondary-light;
+        padding: 1.6rem;
+    }
+
+    #categories-return {
+        display: block;
+        text-decoration: none;
+
+        &::before {
+            @include font-awesome;
+			content: "\f053";
+            font-size: .8rem;
+            padding-right: 5px;
+        }
+    }
+
+    .categories-container legend,
+    .facets-container legend {
+        color: $color__headings;
+        font-family: $font__headings;
+        font-weight: 400;
+        line-height: $font__headings-line-height;
+    }
+
+    .categories-container legend {
+        font-size: $font__h3-sm-size;
+        margin-bottom: 1.1rem;
+    }
+
+    .facets-container legend {
+        font-size: $font__h4-sm-size;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-left: 1rem !important;
+
+        li {
+            &::before {
+                content: none !important;
+            }
+        }
+    }
+
+    label input {
+        margin: 0 0.6rem 0 0 !important;
+    }
+
+}
+
