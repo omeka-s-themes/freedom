@@ -1,0 +1,84 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->headScript()->appendFile($this->assetUrl('js/browse.js'));
+$this->headScript()->appendFile($this->assetUrl('js/minimasonry.min.js'));
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+$layoutSetting = $this->themeSetting('browse_layout');
+$bodyTruncate = $this->themeSetting('truncate_body_property');
+$gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
+$listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
+$currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
+$isGrid = ($currentLayout == 'grid') ? true : false;
+$queryUrl = $this->url(
+    'site/resource', ['controller' => $this->resourceType, 'action' => 'browse'], ['query' => $this->query], true
+);
+?>
+
+<div class="preview-block clearfix">
+
+    <?php if ($this->heading): ?>
+        <div class="preview-header">
+            <h3><?php echo $this->hyperlink($this->heading, $queryUrl); ?></h3>
+            <?php
+            if ($this->linkText):
+                echo $this->hyperlink($this->linkText, $queryUrl);
+            endif;
+            ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (strpos($layoutSetting, 'toggle') !== false): ?>
+        <div class="browse-controls">
+            <div class="layout-toggle">
+                <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid icon-btn o-icon-grid" <?php echo $gridState; ?>></button>
+                <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list icon-btn o-icon-list" <?php echo $listState; ?>></button>        
+            </div>
+        </div>
+    <?php endif; ?>
+
+
+    <ul class="resources <?php echo ($isGrid) ? 'resource-grid' : 'resource-list'; ?>">
+        <?php
+        $headingTerm = $this->siteSetting('browse_heading_property_term');
+        $bodyTerm = $this->siteSetting('browse_body_property_term');
+        foreach ($this->resources as $resource):
+            $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle(null, ($valueLang));
+            $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(null, ($valueLang));
+            $primaryMedia = $resource->primaryMedia();
+            ?>
+            <li class="<?php echo $this->resourceType; ?> resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
+                <!-- Thumbnail -->
+                <?php if ($primaryMedia): ?>
+                    <div class="resource__thumbnail <?php echo $decorationClass; ?>">
+                        <?php echo $resource->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Content -->
+                <div class="resource__content">
+                    <?php echo $this->ResourceTags($resource); ?>
+                    <!-- Metadata -->
+                    <div class="resource__meta <?php echo ($isGrid) ? '' : 'media-object-section'; ?>">
+                        <?php echo $resource->link($heading); ?>
+                        <?php if ($body): ?>
+                            <div class="description <?php echo ($bodyTruncate) ? $bodyTruncate : ''; ?>"><?php echo $escape($body); ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
+
+    <?php
+    if ($this->linkText && !$this->heading):
+        echo $this->hyperlink($this->linkText, $queryUrl, ['class' => 'browse-all']);
+    endif;
+    ?>
+
+</div>

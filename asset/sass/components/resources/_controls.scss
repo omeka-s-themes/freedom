@@ -3,13 +3,10 @@
     align-items: center;
     border-bottom: 1px solid $color__hr;
     flex-wrap: wrap;
+    gap: 1.5rem;
     justify-content: space-between;
     margin-bottom: 30px;
     padding-bottom: 30px;
-
-    .page-input-top {
-        width: auto;
-    }
 
     input[type=text],
     select {
@@ -38,7 +35,6 @@
     .advanced-search-container {
         display: flex;
         justify-content: flex-end;
-        padding-top: 1rem;
         width: 100%;
 
         a {

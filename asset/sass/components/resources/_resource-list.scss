@@ -1,0 +1,38 @@
+.resource-list {
+    height: auto !important;
+    padding-left: 0;
+
+    .resource {
+        display: flex;
+        background-color: $color__white;
+        border: $color__hr;
+        box-shadow: 0px 1px 6px rgba($color__black, 0.25);
+        transform: none !important;
+        width: 100% !important;
+
+        &::before {
+            content: none !important;
+        }
+
+        &__thumbnail {
+            flex-shrink: 0;
+            line-height: 1;
+            margin: 15px 15px 15px auto;
+            order: 1;
+
+            img {
+                height: 100px;
+                object-fit: cover;
+                width: 100px;
+            }
+        }
+
+        &__content {
+            padding: 15px;
+        }
+
+        &__meta {
+            padding: 5px 10px;
+        }
+    }
+}

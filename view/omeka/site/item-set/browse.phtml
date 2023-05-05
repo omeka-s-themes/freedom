@@ -1,0 +1,78 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->headScript()->appendFile($this->assetUrl('js/browse.js'));
+$this->headScript()->appendFile($this->assetUrl('js/minimasonry.min.js'));
+$this->htmlElement('body')->appendAttribute('class', 'item-set resource browse');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+$layoutSetting = $this->themeSetting('browse_layout');
+$gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
+$listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
+$isGrid = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? true : false;
+$bodyTerm = $this->siteSetting('browse_body_property_term');
+$bodyTruncate = $this->themeSetting('truncate_body_property');
+$decoration = $this->themeSetting('image_decoration');
+$decorationClass = '';
+
+if (is_array($decoration) && in_array('media', $decoration)) {
+    $decorationClass = $isGrid ? 'decoration' : 'decoration decoration--thumbnail';
+}
+?>
+
+<?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+
+<?php echo $this->searchFilters(); ?>
+
+<div class="browse-controls">
+    <?php if (strpos($layoutSetting, 'toggle') !== false): ?>
+        <div class="layout-toggle">
+            <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid icon-btn o-icon-grid" <?php echo $gridState; ?>></button>
+            <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list icon-btn o-icon-list" <?php echo $listState; ?>></button>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->browse()->renderSortSelector('item_sets'); ?>
+    <div class="advanced-search-container">
+        <?php echo $this->hyperlink($translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?>
+    </div>
+</div>
+
+<?php $this->trigger('view.browse.before'); ?>
+
+<ul class="resources <?php echo ($isGrid) ? 'resource-grid' : 'resource-list'; ?>">
+    
+    <?php
+    foreach ($itemSets as $itemSet):
+        $body = $bodyTerm ? $itemSet->value($bodyTerm, ['lang' => ($valueLang)]) : $itemSet->displayDescription(null, ($valueLang));
+        $primaryMedia = $itemSet->primaryMedia();
+        ?>
+        <li class="item-set resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
+            <!-- Thumbnail -->
+            <?php if ($primaryMedia): ?>
+                <div class="resource__thumbnail <?php echo $decorationClass; ?>">
+                    <?php echo $itemSet->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Content -->
+            <div class="resource__content">
+                <?php echo $this->ResourceTags($itemSet); ?>
+                <!-- Metadata -->
+                <div class="resource__meta <?php echo ($isGrid) ? '' : 'media-object-section'; ?>">
+                    <?php echo $itemSet->link($itemSet->displayTitle(null, $valueLang)); ?>
+                    <?php if ($body): ?>
+                        <div class="description <?php echo ($bodyTruncate) ? $bodyTruncate : ''; ?>"><?php echo $escape($body); ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+
+</ul>
+
+<?php $this->trigger('view.browse.after'); ?>
+
+<?php echo $this->pagination(); ?>

@@ -1,0 +1,21 @@
+.preview-block {
+    margin: 1rem 0 4rem !important;
+    overflow: visible !important;
+
+    .browse-all {
+        border: 1px solid $color__primary;
+        border-radius: 3px;
+        color: $color__primary;
+        float: right;
+        padding: 12px 48px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        transition-property: color, bacground-color;
+
+        &:hover {
+            background-color: $color__primary;
+            color: $color__white;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+const freedomScripts = () => {
 
     // Scrolling Events
 
@@ -134,12 +134,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         clearTimeout(timeout);
         timeout = setTimeout(onResize, delay);
     });
+}
 
-    // Masonry
-
-    var masonry = new MiniMasonry({
-        container: '.resource-grid',
-        gutter: 27,
-        surroundingGutter: false
-    });
-});
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', freedomScripts);
+} else {
+    freedomScripts();
+}
