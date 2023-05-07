@@ -42,7 +42,7 @@ $rightSidebarHasBlocks = $rightSidebarBlockContent->hasBlocks();
             </div>
         <?php endif; ?>
 
-        <?php if ($rightSidebarHasBlocks && $blockContent = $rightSidebarHasBlocks->getBlocks()): ?>
+        <?php if ($rightSidebarHasBlocks && $blockContent = $rightSidebarBlockContent->getBlocks()): ?>
             <div class="sidebar-region sidebar-region--right">
                 <div class="metadata">
                     <?php echo $blockContent; ?>

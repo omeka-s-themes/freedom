@@ -1,6 +1,8 @@
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
+$thumbnail = $this->plugin('thumbnail');
+
 $this->headScript()->appendFile($this->assetUrl('js/browse.js'));
 $this->headScript()->appendFile($this->assetUrl('js/minimasonry.min.js'));
 
@@ -17,6 +19,12 @@ $isGrid = ($currentLayout == 'grid') ? true : false;
 $queryUrl = $this->url(
     'site/resource', ['controller' => $this->resourceType, 'action' => 'browse'], ['query' => $this->query], true
 );
+
+$showThumbnail = in_array('thumbnail', $this->components);
+$showHeading = in_array('resource-heading', $this->components);
+$showBody = in_array('resource-body', $this->components);
+$headingTerm = $this->siteSetting('browse_heading_property_term');
+$bodyTerm = $this->siteSetting('browse_body_property_term');
 ?>
 
 <div class="preview-block clearfix">
@@ -24,11 +32,6 @@ $queryUrl = $this->url(
     <?php if ($this->heading): ?>
         <div class="preview-header">
             <h3><?php echo $this->hyperlink($this->heading, $queryUrl); ?></h3>
-            <?php
-            if ($this->linkText):
-                echo $this->hyperlink($this->linkText, $queryUrl);
-            endif;
-            ?>
         </div>
     <?php endif; ?>
 
@@ -44,31 +47,29 @@ $queryUrl = $this->url(
 
     <ul class="resources <?php echo ($isGrid) ? 'resource-grid' : 'resource-list'; ?>">
         <?php
-        $headingTerm = $this->siteSetting('browse_heading_property_term');
-        $bodyTerm = $this->siteSetting('browse_body_property_term');
         foreach ($this->resources as $resource):
-            $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle(null, ($valueLang));
+            $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, ($valueLang));
             $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(null, ($valueLang));
             $primaryMedia = $resource->primaryMedia();
             ?>
             <li class="<?php echo $this->resourceType; ?> resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
                 <!-- Thumbnail -->
-                <?php if ($primaryMedia): ?>
+                <?php if ($showThumbnail) : ?>
                     <div class="resource__thumbnail <?php echo $decorationClass; ?>">
-                        <?php echo $resource->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                        <?php echo $resource->linkRaw($this->thumbnail($resource, 'large')); ?>
                     </div>
                 <?php endif; ?>
 
                 <!-- Content -->
                 <div class="resource__content">
-                    <?php echo $this->ResourceTags($resource); ?>
-                    <!-- Metadata -->
-                    <div class="resource__meta <?php echo ($isGrid) ? '' : 'media-object-section'; ?>">
-                        <?php echo $resource->link($heading); ?>
-                        <?php if ($body): ?>
-                            <div class="description <?php echo ($bodyTruncate) ? $bodyTruncate : ''; ?>"><?php echo $escape($body); ?></div>
-                        <?php endif; ?>
-                    </div>
+                    <?php if ($showHeading) : ?>
+                        <?php echo $this->ResourceTags($resource); ?>
+                        <?php echo $resource->link($escape($heading)); ?>
+                    <?php endif; ?>
+
+                    <?php if ($showBody && $body): ?>
+                        <div class="description <?php echo ($bodyTruncate) ? $bodyTruncate : ''; ?>"><?php echo $escape($body); ?></div>
+                    <?php endif; ?>
                 </div>
             </li>
 
@@ -76,7 +77,7 @@ $queryUrl = $this->url(
     </ul>
 
     <?php
-    if ($this->linkText && !$this->heading):
+    if ($this->linkText):
         echo $this->hyperlink($this->linkText, $queryUrl, ['class' => 'browse-all']);
     endif;
     ?>
