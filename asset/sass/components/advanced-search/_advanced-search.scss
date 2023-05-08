@@ -1,0 +1,73 @@
+#advanced-search {
+    .multi-value {
+        .field-meta {
+            margin-bottom: 1rem;
+        }
+
+        .value {
+            align-items: center;
+            flex-wrap: wrap;
+
+            &:first-child .logical-operator:first-child {
+                display: none;
+            }
+
+            &:only-child {
+                .sub-label:last-of-type {
+                    margin: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        .sub-label {
+            width: 100%;
+
+            &:last-of-type {
+                margin-right: 15px;
+            }
+
+            @media (min-width: $md) {
+                margin-right: 15px;
+            }
+
+            &.logical-operator {
+                width: 100% !important;
+            }
+        }
+
+        button.remove-value {
+            margin: 6px 0 0;
+        }
+    }
+
+    #property-queries {
+        .value {
+            &:only-child {
+                .sub-label:last-of-type {
+                    @media (min-width: $md) {
+                        width: 29.2%;
+                    }
+                }
+            }
+        }
+
+        .sub-label {
+            &:last-of-type {
+                width: 82%;
+
+                @media (min-width: $sm) {
+                    width: 90%;
+                }
+
+                @media (min-width: $md) {
+                    width: 29.2%;
+                }
+            }
+
+            @media (min-width: $md) {
+                width: 29.2%;
+            }
+        }
+    }
+}

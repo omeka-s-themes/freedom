@@ -25,7 +25,16 @@ $rightSidebarHasBlocks = $rightSidebarBlockContent->hasBlocks();
 
 <?php if ($mainHasBlocks || $leftSidebarHasBlocks || $rightSidebarHasBlocks): ?>
 
-    <div class="regions-container <?php echo $mainHasBlocks && $leftSidebarHasBlocks && $rightSidebarHasBlocks ? 'regions-container--all' : ''; ?>">
+    <?php
+    $additionalContainerClasses = '';
+    if ($mainHasBlocks && $leftSidebarHasBlocks && $rightSidebarHasBlocks) {
+        $additionalContainerClasses = 'regions-container--all';
+    } elseif ($mainHasBlocks && !$leftSidebarHasBlocks && !$rightSidebarHasBlocks) {
+        $additionalContainerClasses = 'regions-container--main';
+    }
+    ?>
+
+    <div class="regions-container <?php echo $additionalContainerClasses; ?>">
         <?php if ($leftSidebarHasBlocks && $blockContent = $leftSidebarBlockContent->getBlocks()): ?>
             <div class="sidebar-region sidebar-region--left">
                 <div class="metadata">

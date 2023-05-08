@@ -22,6 +22,10 @@ body {
 #main-content {
     padding-top: 3rem;
     padding-bottom: 4rem;
+
+    body.items.search & {
+        max-width: 900px;
+    }
 }
 
 @import "left-right-sidebar"; 

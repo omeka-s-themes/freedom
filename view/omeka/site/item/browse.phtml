@@ -46,7 +46,14 @@ if (is_array($decoration) && in_array('media', $decoration)) {
 
     <?php if ($mainHasBlocks || $leftSidebarHasBlocks || $rightSidebarHasBlocks): ?>
 
-        <div class="regions-container <?php echo $mainHasBlocks && $leftSidebarHasBlocks && $rightSidebarHasBlocks ? 'regions-container--all' : ''; ?>">
+        <?php
+        $additionalContainerClasses = '';
+        if ($mainHasBlocks && $leftSidebarHasBlocks && $rightSidebarHasBlocks) {
+            $additionalContainerClasses = 'regions-container--all';
+        }
+        ?>
+
+        <div class="regions-container <?php echo $additionalContainerClasses; ?>">
             <?php if ($leftSidebarHasBlocks && $blockContent = $leftSidebarBlockContent->getBlocks()): ?>
                 <div class="sidebar-region sidebar-region--left">
                     <div class="metadata">

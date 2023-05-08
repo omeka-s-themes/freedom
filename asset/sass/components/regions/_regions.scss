@@ -50,6 +50,12 @@
         }
     }
 
+    &--main {
+        margin: 0 auto;
+        max-width: 900px;
+        width: 100%;
+    }
+
     &--all {
         flex-direction: column !important;
 

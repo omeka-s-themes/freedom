@@ -1,0 +1,17 @@
+<?php
+$this->htmlElement('body')->appendAttribute('class', 'page browse');
+?>
+
+<?php echo $this->pageTitle($this->translate('Pages'), 1); ?>
+
+<?php if ($pages): ?>
+    <ul class="pages-list">
+        <?php foreach ($pages as $page): ?>
+            <li class="page"><?php echo $page->link($page->title()); ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p><?php echo $this->translate('No pages found'); ?></p>
+<?php endif; ?>
+
+<?php echo $this->pagination(); ?>

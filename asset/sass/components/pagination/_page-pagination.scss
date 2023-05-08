@@ -1,0 +1,15 @@
+.site-page-pagination {
+    display: flex;
+    border-bottom: 1px solid $color__hr;
+    border-top: 1px solid $color__hr;
+    gap: 1rem;
+    justify-content: center;
+    margin: 30px 0;
+    padding: 30px 0;
+
+    a {
+        @include secondary-button;
+        font-size: $font__xs-size;
+        padding: 10px 14px;
+    }
+}

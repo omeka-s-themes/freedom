@@ -35,3 +35,57 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
+
+@mixin button {
+    appearance: none;
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 10px 40px;
+    text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+}
+
+@mixin primary-button {
+    @include button;
+    background-color: $color__buttons;
+	border: none;
+	color: $color__white;
+
+	&:hover:not(.disabled),
+	&:active:not(.disabled),
+	&:focus:not(.disabled) {
+		background-color: $color__accent;
+	}
+
+    &:disabled,
+	&[disabled]
+	&.disabled {
+		background-color: $color__disabled;
+		cursor: default;
+	}
+}
+
+@mixin secondary-button {
+    @include button;
+    background-color: $color__white;
+    border: 1px solid $color__buttons;
+    color: $color__buttons;
+
+    &:hover:not(.disabled),
+    &:active:not(.disabled),
+    &:focus:not(.disabled) {
+        background-color: $color__buttons;
+        color: $color__white;
+    }
+
+    &:disabled,
+	&[disabled]
+	&.disabled {
+        border-color: $color__disabled;
+        color: $color__disabled;
+		cursor: default;
+	}
+}

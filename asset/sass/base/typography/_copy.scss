@@ -11,7 +11,27 @@ i {
 }
 
 blockquote {
-	margin: 0 1.5em;
+	background-color: $color__white;
+	border-left: 3px solid $color__primary-light;
+	box-shadow: 0px 1px 15px rgba($color__black, 0.25);
+	font-style: italic;
+    padding: 20px 25px 20px 60px;
+	position: relative;
+    margin-bottom: 1.5rem;
+
+	&::before {
+		@include font-awesome;
+		color: $color__primary-light;
+		content: "\f10d";
+		font-size: 2rem;
+		left: 10px;
+		position: absolute;
+    	top: 0px;
+	}
+
+	a[rel="footnote"] {
+		font-style: initial;
+	}
 }
 
 address {
