@@ -20,8 +20,13 @@ body {
 }
 
 #main-content {
-    padding-top: 3rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+
+    @media (min-width: $lg) {
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+    }
 
     body.items.search & {
         max-width: 900px;

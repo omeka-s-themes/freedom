@@ -8,6 +8,15 @@ input[type="submit"] {
 		@include secondary-button;
 	}
 
+	&.link-style {
+		background-color: transparent !important;
+		color: $color__link;
+		padding-left: 0;
+		padding-right: 0;
+		text-transform: none;
+		text-decoration: underline;
+	}
+
 	&.icon-btn {
 		padding: 0;
 		background-color: transparent !important;

@@ -1,0 +1,28 @@
+<?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'FacetedBrowse'));
+$this->headScript()->appendFile($this->assetUrl('js/site/page.js', 'FacetedBrowse'));
+$this->inlineScript()->appendFile($this->assetUrl('js/faceted-browse.js'));
+$this->facetedBrowse()->prepareFacets();
+
+$this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page resource browse');
+$this->pageTitle($page->title(), 2);
+
+$categories = $page->categories();
+$categoryId = null;
+$categoryQuery = null;
+if (1 === count($categories)) {
+    $category = current($categories);
+    $categoryId = $category->id();
+    $categoryQuery = $category->query();
+}
+?>
+<div id="container" 
+    data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
+    data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
+    data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
+    data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
+    data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
+    <div id="section-sidebar"></div>
+    <div id="section-content"></div>
+</div>

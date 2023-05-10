@@ -9,13 +9,15 @@ const browseScripts = () => {
             if (resourcesSet.classList.contains('resource-grid') && !resourcesSet.dataset.masonryReady) {
                 // Masonry
                 resourcesSet.dataset.masonryReady = true;
-                resourcesSet.classList.add('resource-grid-' + index);
                 var masonry = new MiniMasonry({
-                    container: '.resource-grid-' + index,
+                    container: resourcesSet,
                     gutter: 27,
                     ultimateGutter: 27,
                     surroundingGutter: false
                 });
+
+                //Reset layout on img load
+                resourcesSet.querySelectorAll('img').forEach((img) => img.addEventListener('load', () => masonry.layout()))
             }
         }
 

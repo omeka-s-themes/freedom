@@ -71,7 +71,10 @@ $resourceClasses = array();
 		<?php echo $this->partial('common/footer'); ?>
 		<?php echo $this->partial('common/menu-drawer'); ?>
 
-		<script src="<?php echo $this->assetUrl('js/script.js'); ?>"></script>
-		<script src="<?php echo $this->assetUrl('js/navigation.js'); ?>"></script>
+		<?php
+		echo $this->inlineScript()
+			->prependFile($this->assetUrl('js/navigation.js'))
+			->prependFile($this->assetUrl('js/script.js'));
+		?>
 	</body>
 </html>

@@ -1,4 +1,9 @@
 #advanced-search {
+    input,
+    select {
+        margin-bottom: 8px !important;
+    }
+
     .multi-value {
         .field-meta {
             margin-bottom: 1rem;
