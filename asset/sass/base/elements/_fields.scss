@@ -21,6 +21,7 @@ select {
 	padding: 10px 15px;
 	border-radius: 3px;
 	line-height: 1.4;
+	text-overflow: ellipsis;
 	width: 100%;
 
 	&:focus {
@@ -123,6 +124,8 @@ label,
 }
 
 label.sub-label {
+	display: flex;
+    flex-direction: column;
 	font-size: $font__xs-size;
 
 	input,

@@ -54,11 +54,13 @@
 	border: none;
 	color: $color__white;
 
-	&:hover:not(.disabled),
-	&:active:not(.disabled),
-	&:focus:not(.disabled) {
+	&:hover:not(.disabled) {
 		background-color: $color__accent;
 	}
+
+    &:focus {
+        outline: 5px auto Highlight;
+    }
 
     &:disabled,
 	&[disabled]
@@ -66,6 +68,10 @@
 		background-color: $color__disabled;
 		cursor: default;
 	}
+
+    &:visited {
+        color: $color__white;
+    }
 }
 
 @mixin secondary-button {
@@ -74,11 +80,13 @@
     border: 1px solid $color__buttons;
     color: $color__buttons;
 
-    &:hover:not(.disabled),
-    &:active:not(.disabled),
-    &:focus:not(.disabled) {
+    &:hover:not(.disabled) {
         background-color: $color__buttons;
         color: $color__white;
+    }
+
+    &:focus {
+        outline: 5px auto Highlight;
     }
 
     &:disabled,
@@ -88,4 +96,8 @@
         color: $color__disabled;
 		cursor: default;
 	}
+
+    &:visited {
+        color: $color__buttons;
+    }
 }

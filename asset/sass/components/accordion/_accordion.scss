@@ -53,7 +53,7 @@
         transition: transform 0.3s;
         width: 34px;
 
-        .accordion__trigger.active & {
+        .accordion__trigger.expanded & {
             transform: translateY(-50%) rotate(-180deg);
         }
     }

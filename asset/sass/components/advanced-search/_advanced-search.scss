@@ -4,75 +4,192 @@
         margin-bottom: 8px !important;
     }
 
-    .multi-value {
-        .field-meta {
-            margin-bottom: 1rem;
+    .advanced-search-content {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-bottom: 25px;
+
+        @media (min-width: $lg) {
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        .value {
-            align-items: center;
-            flex-wrap: wrap;
-
-            &:first-child .logical-operator:first-child {
-                display: none;
-            }
-
-            &:only-child {
-                .sub-label:last-of-type {
-                    margin: 0;
-                    width: 100%;
-                }
-            }
-        }
-
-        .sub-label {
-            width: 100%;
-
-            &:last-of-type {
-                margin-right: 15px;
-            }
-
-            @media (min-width: $md) {
-                margin-right: 15px;
-            }
-
-            &.logical-operator {
-                width: 100% !important;
-            }
-        }
-
-        button.remove-value {
-            margin: 6px 0 0;
+        > div {
+            flex-basis: 100%;
         }
     }
 
-    #property-queries {
-        .value {
-            &:only-child {
-                .sub-label:last-of-type {
+    .field {
+        margin-bottom: 0;
+
+        &.multi-value {
+            .field-meta {
+                margin-bottom: 1rem;
+            }
+    
+            .value {
+                align-items: center;
+                flex-wrap: wrap;
+    
+                &:first-child .logical-operator:first-child {
+                    display: none;
+                }
+    
+                &:only-child {
+                    .sub-label:last-of-type {
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+    
+            .sub-label {
+                flex: 1 0 100%;
+    
+                @media (min-width: $md) {
+                    flex: 1 1 100px;
+                    margin-right: 15px;
+                    max-width: 100%;
+                    min-width: 100px;
+                }
+    
+                &:last-of-type {
+                    flex: 1 1 100px;
+                    margin-right: 15px;
+                    max-width: 100%;
+                    min-width: 100px;
+                }
+    
+                &.logical-operator {
+                    flex-basis: 100%;
+                }
+            }
+    
+            button.remove-value {
+                margin: 6px 0 0;
+            }
+    
+            &#item-sets {
+                .value .sub-label:first-child {
                     @media (min-width: $md) {
-                        width: 29.2%;
+                        max-width: 110px;
                     }
                 }
             }
         }
 
-        .sub-label {
-            &:last-of-type {
-                width: 82%;
+        &:not(.multi-value) {
+            .inputs {
+                display: flex;
+                align-items: flex-start;
+                flex-wrap: wrap;
 
-                @media (min-width: $sm) {
-                    width: 90%;
+                > * {
+                    flex: 1 0 100%;
+        
+                    @media (min-width: $md) {
+                        flex: 1 1 100px;
+                        margin-right: 15px;
+                        max-width: 100%;
+                        min-width: 100px;
+                    }
+
+                    &:last-child {
+                        @media (min-width: $md) {
+                            margin-right: 0;
+                        }
+                    }
                 }
 
-                @media (min-width: $md) {
-                    width: 29.2%;
+                select[name*=sort] {
+                    width: 100%;
+                }
+
+                .numeric-timestamp {
+                    @media (min-width: $md) {
+                        flex: 1 1 350px !important;
+                    }
+
+                    > .numeric-datetime-inputs {
+                        flex-wrap: wrap;
+
+                        > div {
+                            @media (min-width: $md) {
+                                flex-wrap: nowrap;
+                            }
+                        }
+                    }
+                }
+
+                .numeric-duration {
+                    @media (min-width: $md) {
+                        flex: 1 1 330px !important;
+                    }
                 }
             }
+        }
 
-            @media (min-width: $md) {
-                width: 29.2%;
+        .numeric-datetime-inputs div {
+            margin-top: 0 !important;
+        }
+
+        .numeric-toggle-time {
+            align-self: center;
+            background-color: $color__white;
+            border-radius: 50%;
+            border: 1px solid $color__hr;
+            color: $color__buttons;
+            cursor: pointer;
+            height: 35px;
+            margin: 0.5rem 0 0 0.3rem;
+            padding: 5px 9px;
+            width: 35px;
+
+            input[type="checkbox"] {
+                display: none;
             }
+        }
+    }
+
+    .half {
+        @media (min-width: $md) {
+            flex-basis: calc(50% - 12.5px) !important;
+        }
+    }
+
+    #page-actions {
+        display: flex;
+        background-color: $color__secondary;
+        bottom: 0;
+        gap: 20px;
+        justify-content: center;
+        margin-left: calc((100vw - 100%) / -2);
+        padding: 25px;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100vw;
+
+        @media (min-width: $lg) {
+            align-items: flex-end;
+            background-color: transparent;
+            bottom: 15px;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: initial;
+            margin-left: 0;
+            margin-right: -140px;
+            margin-top: -100px;
+            padding: 0;
+            width: auto;
+        }
+
+        > * {
+            margin-bottom: 0 !important;
+            padding: 10px;
+            text-align: center;
+            width: 120px;
         }
     }
 }

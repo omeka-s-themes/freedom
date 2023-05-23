@@ -89,7 +89,8 @@
 		> li { //main menu items
 			cursor: pointer;
 
-			&:hover {
+			&:hover,
+			&:focus-within {
 			
 				> ul { //mega menu hover
 					opacity: 1;

@@ -48,6 +48,11 @@
 			background: none;
 			color: $color__gray-60;
 			padding: 10px 15px;
+
+			&:hover,
+			&:focus {
+				background: none;
+			}
 		}
 	}
 

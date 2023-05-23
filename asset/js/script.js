@@ -74,66 +74,6 @@ const freedomScripts = () => {
             }
         }
     });
-
-    // Accordion
-
-    const accordionTrigger = document.getElementsByClassName('accordion__trigger');
-
-    for (let i = 0; i < accordionTrigger.length; i++) {
-        accordionTrigger[i].addEventListener('click', function() {
-            this.classList.toggle('active');
-            this.setAttribute('aria-expanded', this.classList.contains('active'));
-            this.parentElement.parentElement.classList.toggle('active');
-            const panel = this.parentElement.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
-            }
-        });
-    }
-
-    function refreshPanelsHeight() {
-        for (let i = 0; i < accordionTrigger.length; i++) {
-            const panel = accordionTrigger[i].parentElement.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
-            }
-        }
-    }
-
-    const expandCollapseBtns = document.querySelectorAll('.resources-linked__expand-collapse-btn');
-
-    expandCollapseBtns.forEach((expandCollapseBtn) => {
-        expandCollapseBtn.addEventListener('click', function() {
-            if (this.innerText.toLowerCase() === 'expand all') {
-                this.innerText = 'Collapse all';
-            } else {
-                this.innerText = 'Expand all'
-            }
-
-            const accordionTriggers = this.parentElement.nextElementSibling.querySelectorAll('.accordion__trigger');
-            accordionTriggers.forEach((accordionTrigger) => {
-                accordionTrigger.click();
-            });
-        });
-    });
-
-    // Resize Events
-
-    timeout = false,
-    delay = 250;
-
-    onResize();
-
-    function onResize() {
-        refreshPanelsHeight();
-    }
-
-    window.addEventListener('resize', function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(onResize, delay);
-    });
 }
 
 if (document.readyState === 'loading') {

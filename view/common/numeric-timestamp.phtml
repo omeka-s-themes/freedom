@@ -1,0 +1,39 @@
+<?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css', 'NumericDataTypes'));
+$this->headScript()->appendFile($this->assetUrl('js/numeric-data-types.js', 'NumericDataTypes'));
+?>
+<div class="numeric-timestamp">
+    <div class="error invalid-value"
+        data-invalid-message="<?php echo $this->escapeHtml($this->translate('Invalid value: %s')); ?>"
+        data-custom-validity="<?php echo $this->escapeHtml($this->translate('Value must be a datetime')); ?>">
+    </div>
+    <?php echo $this->formHidden($element->getValueElement()); ?>
+    <div class="numeric-datetime-inputs">
+        <div class="numeric-date-inputs">
+            <label class="sub-label">Year
+                <?php echo $this->formNumber($element->getYearElement()); ?>
+            </label>
+            <label class="sub-label">Month
+                <?php echo $this->formSelect($element->getMonthElement()); ?>
+            </label>
+            <label class="sub-label">Day
+                <?php echo $this->formSelect($element->getDayElement()); ?>
+            </label>
+            <label class="numeric-toggle-time button" aria-title="<?php echo $this->translate('Time'); ?>" title="<?php echo $this->translate('Time'); ?>"><input type="checkbox" name="numeric-toggle-time-checkbox"/></label>
+        </div>
+        <div class="numeric-time-inputs">
+            <label class="sub-label">Hour
+                <?php echo $this->formSelect($element->getHourElement()); ?>
+            </label>
+            <label class="sub-label">Minute
+                <?php echo $this->formSelect($element->getMinuteElement()); ?>
+            </label>
+            <label class="sub-label">Second
+                <?php echo $this->formSelect($element->getSecondElement()); ?>
+            </label>
+            <label class="sub-label">Offset
+                <?php echo $this->formSelect($element->getOffsetElement()); ?>
+            </label>
+        </div>
+    </div>
+</div>

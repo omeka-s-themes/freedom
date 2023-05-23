@@ -1,6 +1,5 @@
 html, body {
 	width: 100%;
-    overflow-x: hidden;
 }
 
 body {
@@ -29,7 +28,15 @@ body {
     }
 
     body.items.search & {
-        max-width: 900px;
+        @media (min-width: $lg) {
+            max-width: 1160px;
+            padding: 3rem 10rem 4rem 4rem;
+        }
+
+        @media (min-width: $xl) {
+            max-width: 1160px;
+            padding: 3rem 10rem 4rem;
+        }
     }
 }
 

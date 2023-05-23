@@ -1,0 +1,44 @@
+<?php
+use Laminas\Form\Element;
+
+$translate = $this->plugin('translate');
+$sortConfigContext = $this->status()->isAdminRequest() ? 'admin' : 'public';
+switch ($resourceType) {
+    case 'itemSet':
+        $sortConfigResourceType = 'item_sets';
+        break;
+    case 'media':
+        $sortConfigResourceType = 'media';
+        break;
+    case 'item':
+    default:
+        $sortConfigResourceType = 'items';
+}
+$sortConfig = $this->browse()->getBrowseService()->getSortConfig($sortConfigContext, $sortConfigResourceType);
+
+$sortBy = new Element\Select('sort_by');
+$sortBy->setEmptyOption($translate('Select sort by…'));
+$sortBy->setValueOptions($sortConfig);
+$sortBy->setValue($query['sort_by'] ?? '');
+
+$sortOrder = new Element\Select('sort_order');
+$sortOrder->setEmptyOption($translate('Select sort order…'));
+$sortOrder->setValueOptions([
+    'asc' => $translate('Ascending'),
+    'desc' => $translate('Descending'),
+]);
+$sortOrder->setValue($query['sort_order'] ?? '');
+?>
+<div class="field">
+    <div class="field-meta">
+        <span id="sort-by-label" class="label"><?php echo $translate('Sort'); ?></span>
+    </div>
+    <div class="inputs">
+        <label class="sub-label">Sort by
+            <?php echo $this->formSelect($sortBy); ?>
+        </label>
+        <label class="sub-label">Sort order
+            <?php echo $this->formSelect($sortOrder); ?>
+        </label>
+    </div>
+</div>
