@@ -70,8 +70,7 @@
         }
 
         &:hover:not(.disabled),
-        &:active:not(.disabled),
-        &:focus:not(.disabled) {
+        &:active:not(.disabled) {
             &::before {
                 filter: brightness(0) invert(1);
             }
