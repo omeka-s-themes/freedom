@@ -21,19 +21,8 @@ $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->jsTranslate();
 $this->trigger('view.layout');
-$resourceClasses = array();
-?>
 
-<?php
-/* foreach ($attachments as $attachment) {
-	$item = $attachment->item();
-	if ($item) {
-		$resourceClass = $item->displayResourceClassLabel();
-		if ($resourceClass && !in_array($resourceClass, $resourceClasses)) {
-			$resourceClasses[] = $resourceClass;
-		}
-	}
-} */
+$primaryColor = $this->themeSetting('primary_color') ?? '#e77f11';
 ?>
 
 <?php echo $this->doctype(); ?>
@@ -46,6 +35,11 @@ $resourceClasses = array();
 		<?php echo $this->headScript(); ?>
 
 		<style type="text/css" media="screen">
+			:root {
+				--primary: <?php echo $primaryColor; ?>;
+				--primary-dark: <?php echo $this->ShadeColor($primaryColor, -10); ?>
+			}
+			
 			<?php if($bannerHeightMobile): ?>
 				@media screen and (max-width:768px) {
 					.banner {

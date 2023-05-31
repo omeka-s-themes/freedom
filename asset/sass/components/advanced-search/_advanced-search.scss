@@ -147,6 +147,11 @@
             padding: 5px 9px;
             width: 35px;
 
+            &:hover {
+                background-color: $color__buttons;
+                color: $color__white;
+            }
+
             input[type="checkbox"] {
                 display: none;
             }

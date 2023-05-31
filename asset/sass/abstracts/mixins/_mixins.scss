@@ -1,103 +1,103 @@
 // Center block
 @mixin center-block {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Column width with margin
 @mixin column-width($numberColumns: 3) {
-	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+  width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
 }
 
 // Container mixin
 @mixin container {
-	width: 100%;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 15px;
-    
-    @media (min-width: $md) {
-        padding: 0 30px;
-    }
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+  
+  @media (min-width: $md) {
+    padding: 0 30px;
+  }
 }
 
 @mixin clearfix {
-    &::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 }
 
 @mixin font-awesome {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 
 @mixin button {
-    appearance: none;
-    -moz-appearance: none;
-	-webkit-appearance: none;
-	border-radius: 3px;
-	cursor: pointer;
-	padding: 10px 40px;
-    text-decoration: none;
-	text-transform: uppercase;
-	transition: all 0.3s ease;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 10px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 @mixin primary-button {
-    @include button;
-    background-color: $color__buttons;
-	border: none;
-	color: $color__white;
-
-	&:hover:not(.disabled) {
-		background-color: $color__accent;
-	}
-
-    &:focus {
-        outline: 5px auto Highlight;
-    }
-
-    &:disabled,
-	&[disabled]
-	&.disabled {
-		background-color: $color__disabled;
-		cursor: default;
-	}
-
-    &:visited {
-        color: $color__white;
-    }
+  @include button;
+  background-color: $color__buttons;
+  border: none;
+  color: $color__white;
+  
+  &:hover:not(.disabled) {
+    background-color: $color__primary-dark;
+  }
+  
+  &:focus {
+    outline: 5px auto Highlight;
+  }
+  
+  &:disabled,
+  &[disabled]
+  &.disabled {
+    background-color: $color__disabled;
+    cursor: default;
+  }
+  
+  &:visited {
+    color: $color__white;
+  }
 }
 
 @mixin secondary-button {
-    @include button;
-    background-color: $color__white;
-    border: 1px solid $color__buttons;
+  @include button;
+  background-color: $color__white;
+  border: 1px solid $color__buttons;
+  color: $color__buttons;
+  
+  &:hover:not(.disabled) {
+    background-color: $color__buttons;
+    color: $color__white;
+  }
+  
+  &:focus {
+    outline: 5px auto Highlight;
+  }
+  
+  &:disabled,
+  &[disabled]
+  &.disabled {
+    border-color: $color__disabled;
+    color: $color__disabled;
+    cursor: default;
+  }
+  
+  &:visited {
     color: $color__buttons;
-
-    &:hover:not(.disabled) {
-        background-color: $color__buttons;
-        color: $color__white;
-    }
-
-    &:focus {
-        outline: 5px auto Highlight;
-    }
-
-    &:disabled,
-	&[disabled]
-	&.disabled {
-        border-color: $color__disabled;
-        color: $color__disabled;
-		cursor: default;
-	}
-
-    &:visited {
-        color: $color__buttons;
-    }
+  }
 }

@@ -26,7 +26,7 @@
 			position: absolute;
 			height: 4px;
 			width: 100%;
-			background: $color__primary-light;
+			background: $color__primary;
 			border-radius: 9px;
 			opacity: 1;
 			left: 0;
@@ -162,7 +162,7 @@
 				justify-content: center;
 				flex-wrap: wrap;
 				background-color: $color__secondary;
-				box-shadow: inset 0px 3px 0px 0px $color__primary-light;
+				box-shadow: inset 0px 3px 0px 0px $color__primary;
 				position: absolute;
 				list-style: none;
 				margin: 0;

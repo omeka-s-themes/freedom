@@ -28,7 +28,7 @@ input[type="submit"] {
 		&:hover,
 		&:active,
 		&:focus {
-			color: $color__accent;
+			color: $color__primary-dark;
 		}
 
 		&:disabled,
@@ -55,7 +55,7 @@ button.remove-value {
 	flex-shrink: 0;
 
 	&:hover {
-		background-color: $color__primary;
+		background-color: $color__primary !important;
 		color: $color__white;
 	}
 }

@@ -50,8 +50,8 @@ input[type="checkbox"] {
 	flex-shrink: 0;
 
 	&:checked {
-		border: 2px solid $color__primary-light;
-		background-color: $color__primary-light;
+		border: 2px solid $color__primary;
+		background-color: $color__primary;
 
 		&::before {
 			@include font-awesome;
@@ -75,7 +75,7 @@ input[type="radio"] {
 	background-color: $color__white;
 	margin: 0;
 	font: inherit;
-	color: $color__primary-light;
+	color: $color__primary;
 	width: 1.15rem;
 	height: 1.15rem;
 	border-radius: 50%;
@@ -90,12 +90,12 @@ input[type="radio"] {
 		height: 0.65em;
 		border-radius: 50%;
 		transform: scale(0);
-		box-shadow: inset 1em 1em $color__primary-light;
-		border: 2px solid $color__primary-light;
+		box-shadow: inset 1em 1em $color__primary;
+		border: 2px solid $color__primary;
 	}
 
 	&:checked {
-		border: 2px solid $color__primary-light;
+		border: 2px solid $color__primary;
 
 		&::before {
 			transform: scale(1);

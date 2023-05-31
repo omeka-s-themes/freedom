@@ -35,7 +35,7 @@
             }
     
             dd {
-                margin: 0;
+                margin: 0 0 1rem;
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {
@@ -47,6 +47,21 @@
             .language {
                 margin-right: 5px;
             }
+        }
+    }
+
+    .value.resource.items {
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        img {
+            flex-shrink: 0;
+            height: 60px;
+            margin-right: 1rem;
+            object-fit: cover;
+            width: 60px;
         }
     }
 
