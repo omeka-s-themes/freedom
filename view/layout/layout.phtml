@@ -7,6 +7,7 @@ $bannerHeightMobile = $this->themeSetting('banner_height_mobile');
 $bannerHeading = $this->themeSetting('banner_heading');
 $bannerDescription = $this->themeSetting('banner_description');
 $bannerHeightProperty = $bannerHeading || $bannerDescription ? 'min-height' : 'height';
+$primaryColor = $this->themeSetting('primary_color') ?? '#e77f11';
 
 $this->htmlElement('html')->setAttribute('lang', $this->lang());
 $this->headMeta()->setCharset('utf-8');
@@ -22,7 +23,9 @@ $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 
 $this->jsTranslate();
 $this->trigger('view.layout');
 
-$primaryColor = $this->themeSetting('primary_color') ?? '#e77f11';
+if ($userBar) {
+	$this->htmlElement('body')->appendAttribute('class', 'user-bar');
+}
 ?>
 
 <?php echo $this->doctype(); ?>
@@ -52,9 +55,8 @@ $primaryColor = $this->themeSetting('primary_color') ?? '#e77f11';
 
 	<?php echo $this->htmlElement('body')->appendAttribute('class', $body_class); ?>
 		<a id="skipnav" href="#content"><?php echo $this->translate('Skip to main content'); ?></a>
-		<?php echo $userBar; ?>
 
-		<?php echo $this->partial('common/header'); ?>
+		<?php echo $this->partial('common/header', ['userBar' => $userBar, 'site' => $site]); ?>
 
 		<?php echo $this->partial('common/banner'); ?>
 

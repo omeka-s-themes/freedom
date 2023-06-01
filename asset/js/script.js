@@ -1,11 +1,41 @@
 const freedomScripts = () => {
 
-    // Scrolling Events
-
+    const body = document.body;
     const mainHeader = document.querySelector('.main-header');
     const mainHeaderTopBar = document.querySelector('.main-header__top-bar');
     const mainHeaderMainBar = document.querySelector('.main-header__main-bar');
     const menuDrawer = document.getElementById('menu-drawer');
+    const userBar = document.getElementById('user-bar');
+
+    // Resize Events
+
+    let userBarHeight = 0;
+    let timeout = false;
+    const delay = 250;
+
+    onResize();
+
+    function onResize() {
+        getUserBarHeight();
+        refreshBodyPaddingTop();
+    }
+
+    window.addEventListener('resize', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(onResize, delay);
+    });
+
+    function refreshBodyPaddingTop() {
+        body.style.paddingTop = mainHeader.offsetHeight + 'px';
+    }
+
+    function getUserBarHeight() {
+        if (userBar) {
+            userBarHeight = userBar.offsetHeight;
+        }
+    }
+
+    // Scrolling Events
 
     let lastKnownScrollPosition = 0;
     let ticking = false;
@@ -15,7 +45,7 @@ const freedomScripts = () => {
 
     function onScroll(scrollPos) {
         if(scrollPos > 60 && scrollDirection == 'down') {
-            mainHeader.style.top = - (mainHeaderTopBar.offsetHeight) + 'px';
+            mainHeader.style.top = - (userBarHeight + mainHeaderTopBar.offsetHeight) + 'px';
             menuDrawer.style.top = mainHeaderMainBar.offsetHeight + 'px';
         } else {
             mainHeader.style.top = 0;

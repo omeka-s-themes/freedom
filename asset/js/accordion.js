@@ -50,8 +50,8 @@ const accordionScript = () => {
 
     // Resize Events
 
-    timeout = false,
-    delay = 250;
+    let timeout = false;
+    const delay = 250;
 
     onResize();
 
