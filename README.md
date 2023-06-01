@@ -53,7 +53,7 @@ A custom logo (SVG, JPG, PNG)
 ### Image Settings
 - Decorative border for Media and/or Assets
 
-### Resource Tags
+### Resource Tags
 - Show tags based on Resource Type or Class
 
 ### Browse Settings
