@@ -89,7 +89,7 @@
 
         &::before {
             @include font-awesome;
-			content: "\f053";
+            content: "\f053";
             display: inline-block;
             font-size: .8rem;
             padding-right: 5px;
@@ -180,4 +180,3 @@
     }
 
 }
-

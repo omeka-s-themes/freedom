@@ -2,82 +2,82 @@ h1,
 h2,
 h3,
 h4 {
-	color: $color__headings;
-	font-family: $font__headings;
-	margin-top: 0;
+    color: $color__headings;
+    font-family: $font__headings;
+    margin-top: 0;
 }
 
 h5,
 h6 {
-	color: $color__headings;
-	font-family: $font__body;
-	margin-top: 0;
+    color: $color__headings;
+    font-family: $font__body;
+    margin-top: 0;
 }
 
 h1 {
-	clear: both;
-	font-size: $font__h1-sm-size; //40px
-	font-weight: 500;
-	line-height: $font__headings-line-height;
-	margin-bottom: 1.875rem;;
+    clear: both;
+    font-size: $font__h1-sm-size; //40px
+    font-weight: 500;
+    line-height: $font__headings-line-height;
+    margin-bottom: 1.875rem;;
 
-	@media (min-width: $md) {
-		font-size: $font__h1-base-size; //50px
-		margin-bottom: 3.125rem;
-	}
+    @media (min-width: $md) {
+        font-size: $font__h1-base-size; //50px
+        margin-bottom: 3.125rem;
+    }
 }
 
 h2 {
-	font-size: $font__h2-sm-size; //35px
-	font-weight: 500;
+    font-size: $font__h2-sm-size; //35px
+    font-weight: 500;
     line-height: $font__headings-line-height;
-	margin-bottom: 1.875rem;
+    margin-bottom: 1.875rem;
 
-	@media (min-width: $md) {
-		font-size: $font__h2-base-size; //40px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h2-base-size; //40px
+    }
 }
 
 h3 {
-	font-size: $font__h3-sm-size; //30px
-	font-weight: 400;
+    font-size: $font__h3-sm-size; //30px
+    font-weight: 400;
     line-height: $font__headings-line-height;
-	margin-bottom: 1.875rem;
+    margin-bottom: 1.875rem;
 
-	@media (min-width: $md) {
-		font-size: $font__h3-base-size; //35px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h3-base-size; //35px
+    }
 }
 
 h4 {
-	font-size: $font__h4-sm-size; //25px
-	font-weight: 400;
-	line-height: $font__headings-line-height;
-	margin-bottom: 1.75rem;
+    font-size: $font__h4-sm-size; //25px
+    font-weight: 400;
+    line-height: $font__headings-line-height;
+    margin-bottom: 1.75rem;
 
-	@media (min-width: $md) {
-		font-size: $font__h4-base-size; //30px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h4-base-size; //30px
+    }
 }
 
 h5 {
-	font-size: $font__h5-sm-size; //22px
+    font-size: $font__h5-sm-size; //22px
     font-weight: 600;
-	line-height: $font__headings-line-height;
-	margin-bottom: 1.4rem;
+    line-height: $font__headings-line-height;
+    margin-bottom: 1.4rem;
 
-	@media (min-width: $md) {
-		font-size: $font__h5-base-size; //30px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h5-base-size; //30px
+    }
 }
 
 h6 {
-	font-size: $font__h6-sm-size; //18px
-	font-weight: 600;
-	line-height: $font__headings-line-height;
-	margin-bottom: 1rem;
+    font-size: $font__h6-sm-size; //18px
+    font-weight: 600;
+    line-height: $font__headings-line-height;
+    margin-bottom: 1rem;
 
-	@media (min-width: $md) {
-		font-size: $font__h6-base-size; //30px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h6-base-size; //30px
+    }
 }

@@ -2,31 +2,31 @@
 embed,
 iframe,
 object {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 img {
-	height: auto; // Make sure images are scaled correctly.
-	max-width: 100%; // Adhere to container width.
+    height: auto; // Make sure images are scaled correctly.
+    max-width: 100%; // Adhere to container width.
 }
 
 figure {
-	margin: 1em 0; // Extra wide images within figure tags don't overflow the content area.
+    margin: 1em 0; // Extra wide images within figure tags don't overflow the content area.
 }
 
 .decoration {
-	img {
-		outline: 1px solid $color__white;
-		outline-offset: -10px;
+    img {
+        outline: 1px solid $color__white;
+        outline-offset: -10px;
 
-		@media(min-width: $md) {
-			outline-offset: -20px;
-		}
-	}
+        @media(min-width: $md) {
+            outline-offset: -20px;
+        }
+    }
 
-	&--thumbnail {
-		img {
-			outline-offset: -10px;
-		}
-	}
+    &--thumbnail {
+        img {
+            outline-offset: -10px;
+        }
+    }
 }

@@ -1,61 +1,61 @@
 ul,
 ol {
-	margin: 0;
-	padding-left: 2rem;
+    margin: 0;
+    padding-left: 2rem;
 }
 
 ul {
-	list-style: none;
-	margin-bottom: 1.5rem;
+    list-style: none;
+    margin-bottom: 1.5rem;
 
-	li {
-		margin-bottom: 0.5rem;
-	
-		&::before {
-			@include font-awesome;
-			content: "\f111" !important;
-			font-weight: 600;
-			font-size: .4rem;
-			color: $color__primary !important;
-			margin-right: 0.6rem;
-			margin-left: -1rem;
-			vertical-align: middle;
-		}
-	}
+    li {
+        margin-bottom: 0.5rem;
+
+        &::before {
+            @include font-awesome;
+            content: "\f111" !important;
+            font-weight: 600;
+            font-size: .4rem;
+            color: $color__primary !important;
+            margin-right: 0.6rem;
+            margin-left: -1rem;
+            vertical-align: middle;
+        }
+    }
 }
 
 ol {
-	list-style: decimal;
-	margin-bottom: 1.5rem;
+    list-style: decimal;
+    margin-bottom: 1.5rem;
 
-	li {
-		margin-bottom: 0.5rem;
+    li {
+        margin-bottom: 0.5rem;
 
-		&::marker {
-			color: $color__primary;
-    		font-weight: 600;
-			margin-right: 15px;
-		}
-	}
+        &::marker {
+            color: $color__primary;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+    }
 }
 
 li > ul,
 li > ol {
-	margin-bottom: 0;
-	margin-left: 1.5em;
+    margin-bottom: 0;
+    margin-left: 1.5em;
 }
 
 dt {
-	color: $color__black;
-	font-size: $font__h6-sm-size; //18px
-	font-weight: 600;
+    color: $color__black;
+    font-size: $font__h6-sm-size; //18px
+    font-weight: 600;
 
-	@media (min-width: $md) {
-		font-size: $font__h6-base-size; //30px
-	}
+    @media (min-width: $md) {
+        font-size: $font__h6-base-size; //30px
+    }
 }
 
 dd {
-	margin: 0 1rem 1rem 0;
-	@include clearfix();
+    margin: 0 1rem 1rem 0;
+    @include clearfix();
 }

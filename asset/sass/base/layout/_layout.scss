@@ -1,5 +1,5 @@
 html, body {
-	width: 100%;
+    width: 100%;
 }
 
 body {
@@ -40,7 +40,4 @@ body {
     }
 }
 
-@import "left-right-sidebar"; 
-@import "left-sidebar";
-@import "no-sidebar";
-@import "right-sidebar";
+@import "regions";

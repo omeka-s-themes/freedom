@@ -1,77 +1,77 @@
 p {
-	margin-bottom: 1.5rem;
-	margin-top: 0;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
 }
 
 dfn,
 cite,
 em,
 i {
-	font-style: italic;
+    font-style: italic;
 }
 
 blockquote {
-	background-color: $color__white;
-	border-left: 3px solid $color__primary;
-	box-shadow: 0px 1px 8px rgba($color__black, 0.25);
-	font-style: italic;
+    background-color: $color__white;
+    border-left: 3px solid $color__primary;
+    box-shadow: 0px 1px 8px rgba($color__black, 0.25);
+    font-style: italic;
     padding: 20px 25px 20px 60px;
-	position: relative;
+    position: relative;
     margin: 1rem 0 1.5rem;
 
-	@media (min-width: $md) {
-		margin: 1rem 2.5rem 1.5rem;
-	}
+    @media (min-width: $md) {
+        margin: 1rem 2.5rem 1.5rem;
+    }
 
-	&::before {
-		@include font-awesome;
-		color: $color__primary;
-		content: "\f10d";
-		font-size: 2rem;
-		left: 10px;
-		position: absolute;
-    	top: 0px;
-	}
+    &::before {
+        @include font-awesome;
+        color: $color__primary;
+        content: "\f10d";
+        font-size: 2rem;
+        left: 10px;
+        position: absolute;
+        top: 0px;
+    }
 
-	a[rel="footnote"] {
-		font-style: initial;
-	}
+    a[rel="footnote"] {
+        font-style: initial;
+    }
 }
 
 address {
-	margin: 0 0 1.5em;
+    margin: 0 0 1.5em;
 }
 
 pre {
-	background: $color__gray-87;
-	font-family: $font__pre;
-	line-height: $font__pre-base-line-height;
-	color: $color__gray-33;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
+    background: $color__gray-87;
+    font-family: $font__pre;
+    line-height: $font__pre-base-line-height;
+    color: $color__gray-33;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1.6em;
 }
 
 code,
 kbd,
 tt,
 var {
-	font-family: $font__code;
+    font-family: $font__code;
 }
 
 abbr,
 acronym {
-	border-bottom: 1px dotted $color__secondary-light;
-	cursor: help;
+    border-bottom: 1px dotted $color__secondary-light;
+    cursor: help;
 }
 
 mark,
 ins {
-	background: $color__gray-87;
-	text-decoration: none;
+    background: $color__gray-87;
+    text-decoration: none;
 }
 
 big {
-	font-size: 125%;
+    font-size: 125%;
 }

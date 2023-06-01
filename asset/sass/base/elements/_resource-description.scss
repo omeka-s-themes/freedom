@@ -5,7 +5,7 @@
         position: relative;
         max-height: 6.2rem;
         overflow: hidden;
-
+        
         &::after {
             content: "";
             background: linear-gradient(to right, rgba($color__white, 0), rgba($color__white, 1) 60%);

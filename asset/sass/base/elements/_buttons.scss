@@ -3,45 +3,45 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	@include primary-button;
-	
-	&.btn--secondary {
-		@include secondary-button;
-	}
+    @include primary-button;
 
-	&.link-style {
-		background-color: transparent !important;
-		color: $color__link;
-		padding-left: 0;
-		padding-right: 0;
-		text-transform: none;
-		text-decoration: underline;
-	}
+    &.btn--secondary {
+        @include secondary-button;
+    }
 
-	&.icon-btn {
-		padding: 0;
-		background-color: transparent !important;
-		color: $color__buttons;
-		font-size: 1.7rem;
-		line-height: 1;
+    &.link-style {
+        background-color: transparent !important;
+        color: $color__link;
+        padding-left: 0;
+        padding-right: 0;
+        text-transform: none;
+        text-decoration: underline;
+    }
 
-		&:hover,
-		&:active,
-		&:focus {
-			color: $color__primary-dark;
-		}
+    &.icon-btn {
+        padding: 0;
+        background-color: transparent !important;
+        color: $color__buttons;
+        font-size: 1.7rem;
+        line-height: 1;
 
-		&:disabled,
-		&[disabled]
-		&.disabled {
-			color: $color__disabled;
-		}
-	}
+        &:hover,
+        &:active,
+        &:focus {
+            color: $color__primary-dark;
+        }
+
+        &:disabled,
+        &[disabled]
+        &.disabled {
+            color: $color__disabled;
+        }
+    }
 }
 
 button.add-value,
 button.remove-value {
-	background-color: $color__white;
+    background-color: $color__white;
     border: 1px solid $color__hr;
     border-radius: 50%;
     cursor: pointer;
@@ -52,14 +52,14 @@ button.remove-value {
     text-transform: uppercase;
     -webkit-appearance: none;
     -moz-appearance: none;
-	flex-shrink: 0;
+    flex-shrink: 0;
 
-	&:hover {
-		background-color: $color__primary !important;
-		color: $color__white;
-	}
+    &:hover {
+        background-color: $color__primary !important;
+        color: $color__white;
+    }
 }
 
 .button {
-	cursor: pointer;
+    cursor: pointer;
 }

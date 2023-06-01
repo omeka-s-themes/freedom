@@ -15,127 +15,127 @@ input[type="datetime-local"],
 input[type="color"],
 textarea,
 select {
-	display: block;
-	border: 1px solid $color__gray-80;
-	margin-bottom: 8px;
-	padding: 10px 15px;
-	border-radius: 3px;
-	line-height: 1.4;
-	text-overflow: ellipsis;
-	width: 100%;
+    display: block;
+    border: 1px solid $color__gray-80;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    width: 100%;
 
-	&:focus {
+    &:focus {
+        
+    }
 
-	}
-
-	&::placeholder {
-		color: $color__gray-80;
-	}
+    &::placeholder {
+        color: $color__gray-80;
+    }
 }
 
 input[type="checkbox"] {
-	border: 2px solid $color__gray-80;
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: $color__white;
-	margin: 0;
-	font: inherit;
-	color: $color__white;
-	width: 1.2rem;
-	height: 1.2rem;
-	border-radius: 0.15em;
-	transform: translateY(0.2em);
-	display: grid;
-	place-content: center;
-	flex-shrink: 0;
+    border: 2px solid $color__gray-80;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: $color__white;
+    margin: 0;
+    font: inherit;
+    color: $color__white;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.15em;
+    transform: translateY(0.2em);
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
 
-	&:checked {
-		border: 2px solid $color__primary;
-		background-color: $color__primary;
-
-		&::before {
-			@include font-awesome;
-			content: "\f00c";
-			font-size: .6rem;
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-	}
+    &:checked {
+        border: 2px solid $color__primary;
+        background-color: $color__primary;
+        
+        &::before {
+            @include font-awesome;
+            content: "\f00c";
+            font-size: .6rem;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 
 }
 
 input[type="radio"] {
-	border: 2px solid $color__gray-80;
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: $color__white;
-	margin: 0;
-	font: inherit;
-	color: $color__primary;
-	width: 1.15rem;
-	height: 1.15rem;
-	border-radius: 50%;
-	transform: translateY(0.2em);
-	display: grid;
-	place-content: center;
-	flex-shrink: 0;
+    border: 2px solid $color__gray-80;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: $color__white;
+    margin: 0;
+    font: inherit;
+    color: $color__primary;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    transform: translateY(0.2em);
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
 
-	&::before {
-		content: "";
-		width: 0.65em;
-		height: 0.65em;
-		border-radius: 50%;
-		transform: scale(0);
-		box-shadow: inset 1em 1em $color__primary;
-		border: 2px solid $color__primary;
-	}
+    &::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        border-radius: 50%;
+        transform: scale(0);
+        box-shadow: inset 1em 1em $color__primary;
+        border: 2px solid $color__primary;
+    }
 
-	&:checked {
-		border: 2px solid $color__primary;
-
-		&::before {
-			transform: scale(1);
-		}
-	}
+    &:checked {
+        border: 2px solid $color__primary;
+        
+        &::before {
+            transform: scale(1);
+        }
+    }
 
 }
 
 select {
-	position: relative;
-	-moz-appearance: none; /* Firefox */
+    position: relative;
+    -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
-	background-image: url("../img/arrow-down.svg");
+    background-image: url("../img/arrow-down.svg");
     background-position: calc(100% - 15px) center;
     background-size: 18px;
     background-repeat: no-repeat;
-	height: 44px;
-	padding-right: 45px;
+    height: 44px;
+    padding-right: 45px;
 }
 
 label,
 .label {
-	color: $color__black;
-	display: inline-block;
+    color: $color__black;
+    display: inline-block;
 }
 
 label.sub-label {
-	display: flex;
+    display: flex;
     flex-direction: column;
-	font-size: $font__xs-size;
+    font-size: $font__xs-size;
 
-	input,
-	select {
-		margin-top: 0 !important;
-	}
+    input,
+    select {
+        margin-top: 0 !important;
+    }
 }
 
 .field {
-	box-shadow: 0px 1px 6px rgba($color__black, 0.25);
-	padding: 20px 25px;
-	margin-bottom: 25px;
+    box-shadow: 0px 1px 6px rgba($color__black, 0.25);
+    padding: 20px 25px;
+    margin-bottom: 25px;
 }
