@@ -2,6 +2,8 @@
 
 This is an Omeka S theme that offers some custom options and a clean design.
 
+![Freedom Theme](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
 ## Installation
 
 For basic out-of-the-box use of the theme, follow the [Omeka S User Manual instructions for installing themes](https://omeka.org/s/docs/user-manual/sites/site_theme/#installing-themes).
