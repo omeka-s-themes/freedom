@@ -1,4 +1,9 @@
 #advanced-search {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+
     input,
     select {
         margin-bottom: 8px !important;
@@ -12,13 +17,21 @@
         margin-bottom: 25px;
 
         @media (min-width: $lg) {
-            margin-bottom: 0;
+            margin-bottom: -105px;
             position: relative;
             z-index: 1;
         }
 
         > div {
             flex-basis: 100%;
+        }
+    }
+
+    fieldset {
+        margin-bottom: 0;
+
+        .field-meta {
+            margin: 0;
         }
     }
 
@@ -164,6 +177,12 @@
         }
     }
 
+    #property-queries {
+        .joiner {
+            width: 100px !important;
+        }
+    }
+
     #page-actions {
         display: flex;
         background-color: $color__secondary;
@@ -185,7 +204,6 @@
             justify-content: initial;
             margin-left: 0;
             margin-right: -140px;
-            margin-top: -100px;
             padding: 0;
             width: auto;
         }
