@@ -12,7 +12,7 @@ For more advanced use, such as customizing the theme with Sass, you'll need to i
 ## Theme settings
 
 ### Theme's Primary Color
-The color to be used as the theme's primary color. The default value is #e77f11.
+The color to be used as the theme's primary color. The default value is #e77f11 (RGB 231, 127, 17).
 
 ### Header Layout
 - Inline logo and menu
@@ -118,6 +118,8 @@ sass
     │   ├── blocks
     │   │   ├── assets
     │   │   ├── browse-preview
+    │   │   ├── carousel
+    │   │   ├── collecting
     │   │   ├── item-showcase
     │   │   ├── item-with-metadata
     │   │   ├── list-of-sites
@@ -135,15 +137,15 @@ sass
     │   │   ├── browse-controls
     │   │   ├── resource-grid
     │   │   ├── resource-list
-    │   └── uri-dereferencer
+    │   ├── uri-dereferencer
+    │   └── user-bar
     ├── generic
     │   ├── box-sizing
     │   └── normalize
     └── utilities
         ├── accessibility
         ├── alignments
-        ├── clearfix
-        └── utilities
+        └── clearfix
 ```
 
 ## Utility classes
