@@ -60,25 +60,10 @@
         position: relative;
         width: 37px;
 
-        &::before {
-            content: "";
-            position: absolute;
-            background: url(../img/arrow-down.svg) center no-repeat;
-            height: 9px;
-            transform: rotate(90deg);
-            width: 15px;
-        }
-
         &:hover:not(.disabled),
         &:active:not(.disabled) {
             &::before {
-                filter: brightness(0) invert(1);
-            }
-        }
-
-        &.next {
-            &::before {
-                transform: rotate(-90deg);
+                color: $color__white;
             }
         }
 
@@ -86,10 +71,6 @@
             border-color: $color__disabled;
             color: $color__disabled;
             cursor: default;
-
-            &::before {
-                filter: saturate(0) brightness(1.2);
-            }
         }
     }
 }
