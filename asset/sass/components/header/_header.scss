@@ -66,10 +66,12 @@
         justify-content: space-between;
         align-items: center;
 
-        .main-header--center & {
-            justify-content: center;
-            flex-direction: column;
-            padding-top: 30px;
+        @media (min-width: $lg) {
+            .main-header--center & {
+                justify-content: center;
+                flex-direction: column;
+                padding-top: 30px;
+            }
         }
     }
 
@@ -79,6 +81,10 @@
 
         @media (min-width: $lg) {
             max-width: 30%;
+
+            .main-header--center & {
+                max-width: none;
+            }
         }
 
         a {
