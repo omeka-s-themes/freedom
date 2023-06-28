@@ -5,21 +5,13 @@ ol {
 }
 
 ul {
-    list-style: none;
     margin-bottom: 1.5rem;
 
     li {
         margin-bottom: 0.5rem;
 
-        &::before {
-            @include font-awesome;
-            content: "\f111" !important;
-            font-weight: 600;
-            font-size: .4rem;
-            color: $color__primary !important;
-            margin-right: 0.6rem;
-            margin-left: -1rem;
-            vertical-align: middle;
+        &::marker {
+            color: $color__primary;
         }
     }
 }
