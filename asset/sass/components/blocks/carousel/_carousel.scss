@@ -1,0 +1,63 @@
+.carousel-block {
+    padding-left: 45px;
+    padding-right: 45px;
+
+    .slick-arrow {
+        border: 1px solid $color__hr;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+
+        &:hover {
+            //background-color: transparent;
+
+            .slick-prev-icon,
+            .slick-next-icon {
+                &::before {
+                    color: $color__white;
+                }
+            }
+        }
+
+        &.slick-next {
+            padding-left: 3px;
+            right: -45px;
+        }
+
+        &.slick-prev {
+            padding-right: 3px;
+            left: -45px;
+        }
+
+        .slick-prev-icon,
+        .slick-next-icon {
+            &::before {
+                @include font-awesome;
+                color: $color__buttons;
+                font-size: 25px;
+                line-height: 1;
+                transition: color 0.3s ease;
+            }
+        }
+
+        .slick-prev-icon {
+            &::before {
+                content: "\f053";
+            }
+        }
+
+        .slick-next-icon {
+            &::before {
+                content: "\f054";
+            }
+        }
+    }
+
+    .slick-dots {
+        button {
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}
