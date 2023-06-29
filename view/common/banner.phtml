@@ -20,14 +20,20 @@ $imageInlineStyles = '';
 if ($bannerHeight) {
     $bannerInlineStyles .= "{$bannerHeightProperty}: {$bannerHeight};";
 } else {
-    $bannerInlineStyles .= "{$bannerHeightProperty}: 30vh;";
+    $bannerInlineStyles .= "{$bannerHeightProperty}: 20vh;";
 }
 
 $imageInlineStyles .= "object-position: {$bannerHorizontalPosition} {$bannerVerticalPosition};";
+
+$class = ['banner'];
+$class[] = $bannerWidth;
+if ($bannerHeading || $bannerDescription) {
+    $class[] = 'has-text';
+}
 ?>
 
 <?php if ($banner) : ?>
-    <div class="banner <?php echo $bannerWidth; ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
+    <div class="<?php echo implode(' ', $class); ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
 
         <?php echo $this->thumbnail($banner, 'large', ['style' => $imageInlineStyles, 'role' => 'presentation', 'aria-hidden' => 'true']); ?>
 

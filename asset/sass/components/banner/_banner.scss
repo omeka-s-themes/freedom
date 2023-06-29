@@ -7,7 +7,7 @@
         padding: 0;
     }
 
-    &::before {
+    &.has-text::before {
         content: "";
         position: absolute;
         background-color: #000;
