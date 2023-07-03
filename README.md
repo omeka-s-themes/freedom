@@ -124,7 +124,8 @@ sass
     │   │   ├── item-with-metadata
     │   │   ├── list-of-sites
     │   │   ├── media-embed
-    │   │   └── table-of-contents
+    │   │   ├── table-of-contents
+    │   │   └── timeline
     │   ├── breadcrumbs
     │   ├── facets
     │   ├── footer
