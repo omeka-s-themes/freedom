@@ -138,6 +138,7 @@ sass
     │   │   ├── browse-controls
     │   │   ├── resource-grid
     │   │   ├── resource-list
+    │   ├── search-results
     │   ├── uri-dereferencer
     │   └── user-bar
     ├── generic

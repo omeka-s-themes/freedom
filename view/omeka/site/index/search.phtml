@@ -1,0 +1,80 @@
+<?php
+$translate = $this->plugin('translate');
+$hyperlink = $this->plugin('hyperlink');
+$url = $this->plugin('url');
+$this->htmlElement('body')->appendAttribute('class', 'index search');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+$decoration = $this->themeSetting('image_decoration');
+$decorationClass = '';
+
+if (is_array($decoration) && in_array('media', $decoration)) {
+    $decorationClass = 'decoration decoration--thumbnail';
+}
+?>
+
+<?php echo $this->pageTitle(sprintf($translate('Search results for “%s”'), $query)); ?>
+
+<?php if (empty($results)): ?>
+    <p><?php echo $translate('No result found'); ?></p>
+<?php else: ?>
+    <?php
+    $resourceLabels = [
+        'site_pages' => 'Site pages', // @translate
+        'items' => 'Items', // @translate
+        'item_sets' => 'Item sets', // @translate
+        'media' => 'Media', // @translate
+    ];
+    $resourceControllers = [
+        'site_pages' => 'page',
+        'items' => 'item',
+        'item_sets' => 'item-set',
+        'media' => 'media',
+    ];
+    ?>
+    <?php foreach ($results as $resourceName => $result): ?>
+        <div class="<?php echo $resourceName; ?> results">
+            <h2><?php echo $translate($resourceLabels[$resourceName]); ?></h2>
+            <ul class="resources resource-list">
+                <?php foreach ($result['resources'] as $resource):
+                    $primaryMedia = $resource->primaryMedia();
+                    ?>
+                    <li class="item resource">
+                        <!-- Thumbnail -->
+                        <?php if ($primaryMedia): ?>
+                            <div class="resource__thumbnail <?php echo $decorationClass; ?>">
+                                <?php echo $resource->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- Content -->
+                        <div class="resource__content">
+                            <!-- Metadata -->
+                            <div class="resource__meta">
+                                <?php
+                                if ($resourceName === 'site_pages') {
+                                    echo $resource->link($resource->title());
+                                } else {
+                                    echo $resource->link($resource->displayTitle(null, $valueLang)); 
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+                <?php echo $hyperlink(
+                    sprintf($translate('View all results (%s total)'), $result['total']),
+                    $url(
+                        'site/resource',
+                        ['controller' => $resourceControllers[$resourceName], 'action' => 'browse'],
+                        ['query' => ['fulltext_search' => $query]],
+                        true
+                    )
+                ); ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

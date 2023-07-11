@@ -1,0 +1,13 @@
+body.search {
+    .results {
+        max-width: 1160px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+
+        .resource__content {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
