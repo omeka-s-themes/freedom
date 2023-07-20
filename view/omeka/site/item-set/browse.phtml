@@ -9,10 +9,10 @@ $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
 
-$layoutSetting = $this->themeSetting('browse_layout');
+$layoutSetting = $this->themeSetting('browse_layout', 'grid');
 $gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
 $listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
-$isGrid = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? true : false;
+$isGrid = (strpos($layoutSetting, 'grid') !== false) ? true : false;
 $bodyTerm = $this->siteSetting('browse_body_property_term');
 $bodyTruncate = $this->themeSetting('truncate_body_property');
 $decoration = $this->themeSetting('image_decoration');
