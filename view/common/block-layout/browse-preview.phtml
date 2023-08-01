@@ -25,17 +25,23 @@ $showHeading = in_array('resource-heading', $this->components);
 $showBody = in_array('resource-body', $this->components);
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
+$decoration = $this->themeSetting('image_decoration');
+$decorationClass = '';
+
+if (is_array($decoration) && in_array('media', $decoration)) {
+    $decorationClass = $isGrid ? 'decoration' : 'decoration decoration--thumbnail';
+}
 ?>
 
 <div class="preview-block clearfix">
 
-    <?php if ($this->heading): ?>
+    <?php if ($this->heading) : ?>
         <div class="preview-header">
             <h3><?php echo $this->hyperlink($this->heading, $queryUrl); ?></h3>
         </div>
     <?php endif; ?>
 
-    <?php if (strpos($layoutSetting, 'toggle') !== false): ?>
+    <?php if (strpos($layoutSetting, 'toggle') !== false) : ?>
         <div class="browse-controls">
             <div class="layout-toggle">
                 <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid icon-btn o-icon-grid" <?php echo $gridState; ?>></button>
@@ -67,7 +73,7 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
                         <?php echo $resource->link($escape($heading)); ?>
                     <?php endif; ?>
 
-                    <?php if ($showBody && $body): ?>
+                    <?php if ($showBody && $body) : ?>
                         <div class="description <?php echo ($bodyTruncate) ? $bodyTruncate : ''; ?>"><?php echo $escape($body); ?></div>
                     <?php endif; ?>
                 </div>
@@ -77,7 +83,7 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
     </ul>
 
     <?php
-    if ($this->linkText):
+    if ($this->linkText) :
         echo $this->hyperlink($this->linkText, $queryUrl, ['class' => 'browse-all']);
     endif;
     ?>
