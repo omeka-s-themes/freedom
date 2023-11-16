@@ -13,6 +13,8 @@ $this->headScript()->appendFile($this->assetUrl('js/control.fit-bounds.js', 'Map
 $this->headScript()->appendFile($this->assetUrl('js/mapping-browse.js', 'Mapping'));
 $this->headScript()->appendFile($this->assetUrl('js/advanced-search.js', 'Omeka'));
 
+$this->inlineScript()->appendFile($this->assetUrl('js/advanced-search.js'));
+
 $query['mapping_basemap_provider'] = $query['mapping_basemap_provider'] ?? '';
 ?>
 <?php echo $this->pageTitle($this->translate('Map'), 2); ?>

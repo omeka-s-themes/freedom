@@ -2,35 +2,41 @@
 $translate = $this->plugin('translate');
 // Prepare the property queries.
 $properties = isset($query['property']) ? $query['property'] : [];
-$properties = array_filter($properties, function ($value) {
-    return isset($value['text']) ? '' !== trim($value['text']) : true;
-});
+$properties = array_filter(
+    $properties, function ($value) {
+        return isset($value['text']) ? '' !== trim($value['text']) : true;
+    }
+);
 if (!$properties) {
     $properties[] = [];
 }
 
 if (isset($query['search'])) {
     unset($properties[0]['joiner']);
-    array_unshift($properties, [
+    array_unshift(
+        $properties, [
         'property' => '',
         'type' => 'in',
         'text' => $query['search']
-    ]);
+        ]
+    );
 }
 
-$queryOption = function($value, array $search, $key, $text) {
+$queryOption = function ($value, array $search, $key, $text) {
     $selected = null;
     if (isset($search[$key]) && $value === $search[$key]) {
         $selected = ' selected';
     }
     return sprintf('<option value="%s"%s>%s</option>', $value, $selected, $text);
 };
-$queryText = function(array $search, $index) use ($translate) {
+$queryText = function (array $search, $index) {
     $text = isset($search['text']) ? $search['text'] : null;
-    return sprintf('<input type="text" class="query-text" name="%s" value="%s" aria-label="%s">',
+    return sprintf(
+        '<input type="text" class="query-text sub-field" name="%s" value="%s" aria-label="%s">',
         $this->escapeHtml("property[$index][text]"),
         $this->escapeHtml($text),
-        $this->escapeHtml($translate('Query text')));
+        $this->escapeHtml($this->translate('Query text'))
+    );
 };
 
 $optionsQuery = [];
@@ -51,53 +57,52 @@ if ($this->status()->isSiteRequest()) {
         <?php
         $index = 0;
         foreach ($properties as $property):
-        $stem = "property[$index]";
-        ?>
-        <div class="value">
-            <label class="sub-label logical-operator">Logical operator
-                <select class="joiner" name="<?php echo $this->escapeHtml($stem . '[joiner]'); ?>">
-                    <?php echo $queryOption('and', $property, 'joiner', $translate('AND')); ?>
-                    <?php echo $queryOption('or', $property, 'joiner', $translate('OR')); ?>
-                </select>
-            </label><br>
-            <label class="sub-label">Property
-                <?php echo $this->propertySelect([
-                    'name' => $stem . '[property]',
-                    'attributes' => [
-                        'class' => 'query-property',
-                        'value' => isset($property['property']) ? $property['property'] : null,
-                        'aria-label' => $translate('Property'),
-                    ],
-                    'options' => [
-                        'empty_option' => '[Any Property]', // @translate
-                        'apply_templates' => $this->status()->isSiteRequest() ? $this->siteSetting('search_apply_templates') : false,
-                        'query' => $optionsQuery,
-                    ]
-                ]); ?>
-            </label>
-            <label class="sub-label">Query type
-                <select class="query-type" name="<?php echo $this->escapeHtml($stem . '[type]'); ?>" aria-label="<?php echo $translate('Query type'); ?>">
-                    <?php echo $queryOption('eq', $property, 'type', $translate('is exactly')); ?>
-                    <?php echo $queryOption('neq', $property, 'type', $translate('is not exactly')); ?>
-                    <?php echo $queryOption('in', $property, 'type', $translate('contains')); ?>
-                    <?php echo $queryOption('nin', $property, 'type', $translate('does not contain')); ?>
-                    <?php echo $queryOption('sw', $property, 'type', $translate('starts with')); ?>
-                    <?php echo $queryOption('nsw', $property, 'type', $translate('does not start with')); ?>
-                    <?php echo $queryOption('ew', $property, 'type', $translate('ends with')); ?>
-                    <?php echo $queryOption('new', $property, 'type', $translate('does not end with')); ?>
-                    <?php echo $queryOption('res', $property, 'type', $translate('is resource with ID')); ?>
-                    <?php echo $queryOption('nres', $property, 'type', $translate('is not resource with ID')); ?>
-                    <?php echo $queryOption('ex', $property, 'type', $translate('has any value')); ?>
-                    <?php echo $queryOption('nex', $property, 'type', $translate('has no values')); ?>
-                </select>
-            </label>
-            <label class="sub-label">Query text
-                <?php echo $queryText($property, $index); ?>
-            </label>
+            $stem = "property[$index]";
+            ?>
+        <div class="value input-group">
+            <label class="sub-label logical-operator" for="<?php echo $this->escapeHtml($stem . '[joiner]'); ?>">Logical operator</label>
+            <select class="joiner sub-field logical-operator" name="<?php echo $this->escapeHtml($stem . '[joiner]'); ?>">
+                <?php echo $queryOption('and', $property, 'joiner', $translate('AND')); ?>
+                <?php echo $queryOption('or', $property, 'joiner', $translate('OR')); ?>
+            </select>
+            <div class="flex-break"></div>
+            <label class="sub-label" for="<?php echo $stem . '[property]'; ?>">Property</label>
+            <?php echo $this->propertySelect(
+                [
+                'name' => $stem . '[property]',
+                'attributes' => [
+                    'class' => 'query-property sub-field',
+                    'value' => isset($property['property']) ? $property['property'] : null,
+                    'aria-label' => $translate('Property'),
+                ],
+                'options' => [
+                    'empty_option' => '[Any Property]', // @translate
+                    'apply_templates' => $this->status()->isSiteRequest() ? $this->siteSetting('search_apply_templates') : false,
+                    'query' => $optionsQuery,
+                ]
+                ]
+            ); ?>
+            <label class="sub-label" for="<?php echo $this->escapeHtml($stem . '[type]'); ?>">Query type</label>
+            <select class="query-type sub-field" name="<?php echo $this->escapeHtml($stem . '[type]'); ?>" aria-label="<?php echo $translate('Query type'); ?>">
+                <?php echo $queryOption('eq', $property, 'type', $translate('is exactly')); ?>
+                <?php echo $queryOption('neq', $property, 'type', $translate('is not exactly')); ?>
+                <?php echo $queryOption('in', $property, 'type', $translate('contains')); ?>
+                <?php echo $queryOption('nin', $property, 'type', $translate('does not contain')); ?>
+                <?php echo $queryOption('sw', $property, 'type', $translate('starts with')); ?>
+                <?php echo $queryOption('nsw', $property, 'type', $translate('does not start with')); ?>
+                <?php echo $queryOption('ew', $property, 'type', $translate('ends with')); ?>
+                <?php echo $queryOption('new', $property, 'type', $translate('does not end with')); ?>
+                <?php echo $queryOption('res', $property, 'type', $translate('is resource with ID')); ?>
+                <?php echo $queryOption('nres', $property, 'type', $translate('is not resource with ID')); ?>
+                <?php echo $queryOption('ex', $property, 'type', $translate('has any value')); ?>
+                <?php echo $queryOption('nex', $property, 'type', $translate('has no values')); ?>
+            </select>
+            <label class="sub-label" for="<?php echo $this->escapeHtml("property[$index][text]"); ?>">Query text</label>
+            <?php echo $queryText($property, $index); ?>
             <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
         </div>
-        <?php
-        $index++;
+            <?php
+            $index++;
         endforeach;
         ?>
 
