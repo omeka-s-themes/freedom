@@ -10,13 +10,17 @@
     }
 
     #section-sidebar {
-        background-color: $color__secondary-light;
+        border-right: 1px solid #ececec;
+        padding-right: 1rem;
         width: 100%;
-        padding: 1rem;
 
         @media (min-width: $lg) {
-            padding: 1.6rem;
+            padding-right: 1.6rem;
             width: 25%;
+        }
+
+        .field, fieldset {
+            box-shadow: none;
         }
     }
 
@@ -25,6 +29,11 @@
 
         @media (min-width: $lg) {
             width: 75%;
+        }
+
+        .browse-controls {
+            border-bottom: none;
+            margin-bottom: 0;
         }
     }
 
@@ -76,7 +85,7 @@
 
     #categories {
         li {
-            border-bottom: 1px solid $color__hr !important;
+            border-bottom: none;
 
             &::before {
                 content: none !important;
@@ -85,7 +94,7 @@
     }
 
     #categories-return {
-        display: block;
+        display: inline-block;
 
         &::before {
             @include font-awesome;
@@ -124,6 +133,7 @@
     }
 
     .resource-list {
+        padding-top: 5px;
 
         .resource {
             flex-wrap: wrap;
