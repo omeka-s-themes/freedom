@@ -47,9 +47,11 @@ const freedomScripts = () => {
         if(scrollPos > 60 && scrollDirection == 'down') {
             mainHeader.style.top = - (userBarHeight + mainHeaderTopBar.offsetHeight) + 'px';
             menuDrawer.style.top = mainHeaderMainBar.offsetHeight + 'px';
+            menuDrawer.style.height = 'calc(100% - ' + mainHeaderMainBar.offsetHeight + 'px)';
         } else {
             mainHeader.style.top = 0;
             menuDrawer.style.top = mainHeader.offsetHeight + 'px';
+            menuDrawer.style.height = 'calc(100% - ' + mainHeader.offsetHeight + 'px)';
         }
     }
 
