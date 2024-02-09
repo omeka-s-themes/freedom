@@ -4,9 +4,9 @@ use Laminas\Form\Element\Select;
 $this->inlineScript()->appendFile($this->assetUrl('js/accordion.js'));
 
 // Set up pagination.
-//$pagination = $this->pagination(null, $totalCount, $page, $perPage);
+$pagination = $this->pagination(null, $totalCount, $page, $perPage);
 $fragment = 'resources-linked';
-//$pagination->setFragment($fragment);
+$pagination->setFragment($fragment);
 
 // Set up locale.
 $valueLang = null;
@@ -50,15 +50,14 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
 ?>
 <div id="linked-resources">
 
-<!-- <div class="linked-header">
+<div class="linked-header">
     <div id="linked-filter">
         <label>
-            <?php //echo $this->translate('Filter by resource type and property:'); ?>
-            <?php //echo $this->formElement($resourcePropertiesSelect); ?>
+            <?php echo $this->translate('Filter by resource type and property:'); ?>
+            <?php echo $this->formElement($resourcePropertiesSelect); ?>
         </label>
     </div>
-    <?php //echo ($totalCount > $perPage) ? $pagination : ''; ?>
-</div> -->
+</div>
 
 <?php foreach ($subjectValues as $values): ?>
     <?php
@@ -99,7 +98,7 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
 
 <?php endforeach; ?>
 
-<?php //echo ($totalCount > $perPage) ? '<div class="linked-footer">' . $pagination . '</div>' : ''; ?>
+<?php echo ($totalCount > $perPage) ? '<div class="linked-footer">' . $pagination . '</div>' : ''; ?>
 
 </div>
 
