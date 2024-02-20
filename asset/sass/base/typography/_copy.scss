@@ -11,6 +11,7 @@ i {
 }
 
 blockquote {
+    display: flex;
     background-color: $color__white;
     border-left: 3px solid $color__primary;
     box-shadow: 0px 1px 8px rgba($color__black, 0.25);
