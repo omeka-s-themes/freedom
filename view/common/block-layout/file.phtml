@@ -1,7 +1,7 @@
 <?php
 $decoration = $this->themeSetting('image_decoration');
 $classes    = $classes ?? [];
-if ($alignmentClass) {
+if (isset($alignmentClass)) {
     $classes[] = $alignmentClass;
     $classes[] = 'file';
 } 
