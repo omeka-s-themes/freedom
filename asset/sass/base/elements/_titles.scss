@@ -15,4 +15,12 @@
         position: absolute;
         width: 64px;
     }
+
+    .slide-text & {
+        border-bottom: none;
+
+        &::after {
+            content: none;
+        }
+    }
 }
