@@ -2,47 +2,74 @@
 
     #container {
         flex-wrap: wrap;
-        gap: 3rem;
 
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
             flex-wrap: nowrap;
+            gap: 3rem;
         }
     }
 
     #section-sidebar {
-        border-right: 1px solid #ececec;
-        padding-right: 1rem;
         width: 100%;
 
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
+            border-right: 1px solid #ececec;
             padding-right: 1.6rem;
             width: 25%;
+            z-index: auto !important;
+        }
+
+        &.open {
+            z-index: 1050 !important;
+        }
+
+        &-modal-toggle {
+            margin-bottom: 25px;
         }
 
         .field, fieldset {
             box-shadow: none;
+        }
+
+        button.close-button {
+            background-color: $color__primary;
         }
     }
 
     #section-content {
         width: 100%;
 
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
             width: 75%;
         }
 
         .browse-controls {
             border-bottom: none;
             margin-bottom: 0;
+
+            .pagination {
+                margin-top: 0;
+            }
+        }
+
+        .faceted-results,
+        .resource-list {
+            img {
+                max-height: 3rem;
+                max-width: 3rem;
+            }
+        }
+
+        .faceted-results img {
+            margin-right: 1rem;
         }
     }
 
     #facets {
-        height: 110px;
         margin-bottom: 1rem;
         overflow: hidden;
 
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
             height: auto;
             margin-bottom: 0;
             overflow: initial;
@@ -55,17 +82,18 @@
     }
 
     #show-more-facets {
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
             display: none;
         }
     }
 
-    .value-select-list {
+    .select-list {
         display: flex;
         flex-wrap: wrap;
         margin-left: 0 !important;
+        width: 100%;
 
-        @media (min-width: $lg) {
+        @media (min-width: $xl) {
             display: block;
             margin-left: 1rem !important;
         }
@@ -73,13 +101,18 @@
         &-item {
             margin-left: 1rem;
 
-            @media (min-width: $lg) {
+            @media (min-width: $xl) {
                 margin-left: 0;
             }
 
             &::before {
                 content: none !important;
             }
+        }
+
+        &-expand,
+        &-collapse {
+            margin-left: 1rem;
         }
     }
 
@@ -143,7 +176,6 @@
         .resource-link {
             width: 100%;
         }
-
     }
 
     .faceted-browse-table-wrapper {
@@ -179,11 +211,6 @@
                         display: flex;
                         align-items: center;
                     }
-
-                    img {
-                        max-width: 70px;
-                        margin-right: 1rem; 
-                    } 
                 }
             }
         }
