@@ -70,7 +70,7 @@ if (is_array($decoration) && in_array('media', $decoration)) {
                 <div class="resource__content">
                     <?php if ($showHeading) : ?>
                         <?php echo $this->ResourceTags($resource); ?>
-                        <?php echo $resource->link($escape($heading)); ?>
+                        <?php echo $resource->link($heading); ?>
                     <?php endif; ?>
 
                     <?php if ($showBody && $body) : ?>
