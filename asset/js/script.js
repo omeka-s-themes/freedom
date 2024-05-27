@@ -27,6 +27,7 @@ const freedomScripts = () => {
 
     function refreshBodyPaddingTop() {
         body.style.paddingTop = mainHeader.offsetHeight + 'px';
+        document.documentElement.style.scrollPaddingTop = (mainHeaderMainBar.offsetHeight + 20) + 'px';
     }
 
     function getUserBarHeight() {
