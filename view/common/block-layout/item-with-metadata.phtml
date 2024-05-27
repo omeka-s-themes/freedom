@@ -8,32 +8,32 @@ $decoration = $this->themeSetting('image_decoration');
     <?php foreach($attachments as $attachment): ?>
         <?php
             $item = $attachment->item();
+            if (empty($item)) continue;
+
             $primaryMedia = $item->primaryMedia();
-        ?>
-        <?php if (empty($item)) continue; ?>
-        <?php
-        $options = [];
-        if ($this->siteSetting('exclude_resources_not_in_site')) {
-            $options['siteId'] = $this->currentSite()->id();
-        }
 
-        // Get title and title lang.
-        $title = $item->displayTitle();
-
-        if ($showLocale) {
-            $template = $item->resourceTemplate();
-            if ($template && $template->titleProperty()) {
-                $titleTerm = $template->titleProperty()->term();
-            } else {
-                $titleTerm = 'dcterms:title';
+            $options = [];
+            if ($this->siteSetting('exclude_resources_not_in_site')) {
+                $options['siteId'] = $this->currentSite()->id();
             }
-            $titleObj = $item->value($titleTerm);
-            $titleLang = (string) $titleObj->lang();
 
-            if ($titleLang) {
-                $title .= '<span class="language">' . $titleLang . '</span>';
+            // Get title and title lang.
+            $title = $item->displayTitle();
+
+            if ($showLocale) {
+                $template = $item->resourceTemplate();
+                if ($template && $template->titleProperty()) {
+                    $titleTerm = $template->titleProperty()->term();
+                } else {
+                    $titleTerm = 'dcterms:title';
+                }
+                $titleObj = $item->value($titleTerm);
+                $titleLang = (string) $titleObj->lang();
+
+                if ($titleLang) {
+                    $title .= '<span class="language">' . $titleLang . '</span>';
+                }
             }
-        }
         ?>
 
         <div class="item-with-metadata__container">

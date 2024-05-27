@@ -11,6 +11,7 @@ if (isset($alignmentClass)) {
 <div class="<?php echo $this->escapeHtml(implode(' ', $classes)); ?>">
     <?php foreach($attachments as $attachment): ?>
         <?php $item = $attachment->item(); ?>
+        <?php if (empty($item)) continue; ?>
         <div class="item resource <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
             <?php
             $media = $attachment->media() ?: $item->primaryMedia();
