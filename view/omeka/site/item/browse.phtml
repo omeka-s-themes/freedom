@@ -109,13 +109,13 @@ if (is_array($decoration) && in_array('media', $decoration)) {
     <?php
     foreach ($items as $item):
         $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => ($valueLang)]) : $item->displayDescription(null, ($valueLang));
-        $primaryMedia = $item->primaryMedia();
+        $thumbnail = $this->thumbnail($item, 'large');
         ?>
         <li class="item resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
             <!-- Thumbnail -->
-            <?php if ($primaryMedia): ?>
+            <?php if ($thumbnail): ?>
                 <div class="resource__thumbnail <?php echo $decorationClass; ?>">
-                    <?php echo $item->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                    <?php echo $item->linkRaw($thumbnail); ?>
                 </div>
             <?php endif; ?>
 
