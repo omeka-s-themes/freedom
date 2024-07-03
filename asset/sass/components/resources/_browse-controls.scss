@@ -15,7 +15,9 @@
     }
 
     select {
+        min-width: 100px;
         padding-right: 45px;
+        width: auto;
     }
 
     .layout-toggle {
@@ -25,8 +27,10 @@
 
     .sorting {
         display: flex;
+        flex-wrap: nowrap;
         gap: 15px;
         margin-left: auto;
+        max-width: 100%;
 
         button {
             padding: 10px 15px;
