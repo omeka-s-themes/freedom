@@ -1,9 +1,11 @@
+<?php $translate = $this->plugin('translate'); ?>
+
 <header class="main-header">
 
 	<?php echo $userBar; ?>
 
 	<div class="main-header__top-bar container">
-		<a class="main-header__advanced-search" href="<?php echo $site->url() . '/item/search'; ?>">Advanced Search</a>
+		<a class="main-header__advanced-search" href="<?php echo $site->url() . '/item/search'; ?>"><?php echo $translate('Advanced search'); ?></a>
 		<div class="main-header__search-form">
 			<?php echo $this->partial('common/search-form'); ?>
 		</div>
