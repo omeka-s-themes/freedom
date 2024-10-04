@@ -1,5 +1,7 @@
 a {
     color: $color__link;
+    transition: all 0.2s;
+    word-wrap: break-word;
 
     &:visited {
         color: $color__link;
@@ -8,7 +10,7 @@ a {
     &:hover,
     &:focus,
     &:active {
-        color: $color__link;
+        color: $color__secondary-dark;
     }
 
     &:focus {

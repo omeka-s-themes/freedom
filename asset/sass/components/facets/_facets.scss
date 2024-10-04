@@ -1,4 +1,5 @@
-.faceted-browse-page {
+.faceted-browse-page,
+.block-facetedBrowsePreview {
 
     #container {
         flex-wrap: wrap;
@@ -51,17 +52,24 @@
                 margin-top: 0;
             }
         }
+    }
 
-        .faceted-results,
-        .resource-list {
-            img {
-                max-height: 3rem;
-                max-width: 3rem;
-            }
+    .faceted-results,
+    .resource-list {
+        img {
+            max-height: 3rem;
+            max-width: 3rem;
+        }
+    }
+
+    .faceted-results {
+        img {
+            margin-right: 1rem;
         }
 
-        .faceted-results img {
-            margin-right: 1rem;
+        a {
+            display: list-item;
+            width: auto;
         }
     }
 

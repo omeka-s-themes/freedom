@@ -1,0 +1,25 @@
+.expand:after,
+.collapse:after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+}
+
+.expand:after {
+	content: "\f0da";
+}
+
+.collapse:after {
+	content: "\f0d7"
+}
+
+.collapsible {
+	display: none;
+}
+
+.collapse + .collapsible {
+	display: block;
+	border-left: 3px solid $color__hr;
+	padding: 0 0 0 1rem;
+	margin: 0 0 1rem;
+	width: 100%;
+}

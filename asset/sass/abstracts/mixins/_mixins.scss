@@ -56,9 +56,11 @@
     
     &:hover:not(.disabled) {
         background-color: $color__primary-dark;
+        color: $color__white;
     }
     
     &:focus {
+        color: $color__white;
         outline: 5px auto Highlight;
     }
     
