@@ -1,0 +1,23 @@
+.hierarchy-module {
+	.resource-list {
+		.resource {
+			clear: both;
+			flex-wrap: wrap;
+			margin: 0 0 1em;
+			overflow: hidden;
+			padding: .75rem;
+		}
+
+		.resource-link {
+			display: inline;
+			width: 100%;
+
+			img {
+				float: right;
+				margin-left: 1em;
+				max-height: 3rem;
+				max-width: 3rem;
+			}
+		}
+	}
+}
