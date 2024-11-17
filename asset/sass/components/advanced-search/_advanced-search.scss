@@ -17,13 +17,20 @@
         margin-bottom: 25px;
 
         @media (min-width: $lg) {
-            margin-bottom: -105px;
             position: relative;
             z-index: 1;
         }
 
         > div {
             flex-basis: 100%;
+        }
+    }
+
+    .items.search & {
+        .advanced-search-content {
+            @media (min-width: $lg) {
+                margin-bottom: -105px;
+            }
         }
     }
 
