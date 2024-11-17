@@ -54,7 +54,8 @@ button.remove-value {
     -moz-appearance: none;
     flex-shrink: 0;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $color__primary !important;
         color: $color__white;
     }
