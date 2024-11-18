@@ -32,6 +32,19 @@ $listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
 $isGrid = (strpos($layoutSetting, 'grid') !== false) ? true : false;
 $bodyTerm = $this->siteSetting('browse_body_property_term');
 $bodyTruncate = $this->themeSetting('truncate_body_property');
+
+if (isset($_GET['view'])) {
+	if ('list' === $_GET['view']) {
+		$gridState = '';
+		$listState = 'disabled';
+		$isGrid = false;
+	} else {
+		$gridState = 'disabled';
+		$listState = '';
+		$isGrid = true;
+	}
+}
+
 $decoration = $this->themeSetting('image_decoration');
 $decorationClass = '';
 
