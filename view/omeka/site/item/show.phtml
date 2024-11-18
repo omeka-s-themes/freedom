@@ -62,8 +62,4 @@ $rightSidebarHasBlocks = $rightSidebarBlockContent->hasBlocks();
 
 <?php endif; ?>
 
-<p class="media-parent-item textcenter">
-    <?php echo sprintf($translate('Part of %s'), $item->link($item->displayTitle(null, $valueLang))); ?>
-</p>
-
 <?php $this->trigger('view.show.after'); ?>
