@@ -3,10 +3,21 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
+    overflow: auto;
+
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
 
     input,
     select {
         margin-bottom: 8px !important;
+    }
+
+    button[type="submit"] {
+        float: right;
     }
 
     .advanced-search-content {
@@ -27,6 +38,12 @@
     }
 
     .items.search & {
+        overflow: initial;
+
+        &::after {
+            content: none;
+        }
+
         .advanced-search-content {
             @media (min-width: $lg) {
                 margin-bottom: -105px;
