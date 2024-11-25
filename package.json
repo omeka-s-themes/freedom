@@ -1,6 +1,6 @@
 {
   "name": "freedom-theme",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An Omeka S Theme.",
   "main": "gulpfile.js",
   "scripts": {
