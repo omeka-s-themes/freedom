@@ -4,8 +4,6 @@ $decoration = $this->themeSetting('image_decoration');
 ?>
 <?php if ($resourceMedia): ?>
 <div class="media-embeds <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
-    <?php foreach ($resourceMedia as $media): ?>
-    <?php echo $media->render(); ?>
-    <?php endforeach; ?>
+    <?php echo reset($resourceMedia)->render(); ?>
 </div>
 <?php endif; ?>
