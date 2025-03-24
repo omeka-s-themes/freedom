@@ -1,16 +1,19 @@
-<?php $translate = $this->plugin('translate'); ?>
+<?php
+$translate = $this->plugin('translate'); 
+$classHeaderTopBar = !$this->themeSetting('header_search_bar') ? 'hidden' : '';
+?>
 
 <header class="main-header">
 
 	<?php echo $userBar; ?>
 
-	<div class="main-header__top-bar container">
+	<div class="main-header__top-bar container <?= $classHeaderTopBar; ?>">
 		<a class="main-header__advanced-search" href="<?php echo $site->url() . '/item/search'; ?>"><?php echo $translate('Advanced search'); ?></a>
 		<div class="main-header__search-form">
 			<?php echo $this->partial('common/search-form'); ?>
 		</div>
 	</div>
-	<hr class="alignfull">
+	<hr class="alignfull <?= $classHeaderTopBar; ?>">
 
 	<div class="main-header__main-bar container">
 		<div class="main-header__site-title">
