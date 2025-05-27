@@ -3,7 +3,7 @@ $escape = $this->plugin('escapeHtml');
 $decoration = $this->themeSetting('image_decoration');
 ?>
 
-<div class="assets <?php echo $escape($className); ?> <?php echo $escape($alignment); ?>">
+<div class="assets">
   <?php foreach ($attachments as $attachment): ?>
     <?php $asset = $attachment['asset']; ?>
     <div class="asset <?php echo is_array($decoration) && in_array('asset', $decoration) ? 'decoration' : ''; ?>">

@@ -40,6 +40,9 @@
     
             dd {
                 margin: 0 0 1rem;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                white-space: normal;
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {

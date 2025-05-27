@@ -47,6 +47,7 @@
         @media (min-width: $md) {
             align-items: flex-start;
             flex-direction: row;
+            flex-wrap: nowrap;
             padding: 30px;
         }
     }

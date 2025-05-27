@@ -1,21 +1,16 @@
-.assets {
+.assets,
+.block-asset {
     margin-bottom: 3rem;
 
     &.inline {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
+        .assets {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
 
-        @media(min-width: $md) {
-            flex-direction: row;
+            @media(min-width: $md) {
+                flex-direction: row;
+            }
         }
-    }
-
-    &.left {
-        margin: 0 1.5rem 0 0 !important;
-    }
-
-    &.right {
-        margin: 0 0 0 1.5rem !important;
     }
 }
