@@ -8,6 +8,8 @@ $bannerHeading = $this->themeSetting('banner_heading');
 $bannerDescription = $this->themeSetting('banner_description');
 $bannerHeightProperty = $bannerHeading || $bannerDescription ? 'min-height' : 'height';
 $primaryColor = $this->themeSetting('primary_color') ?? '#e77f11';
+$secondaryColor = $this->themeSetting('secondary_color') ?? '#394f68';
+$accentColor = $this->themeSetting('accent_color') ?? '#394f68';
 
 $this->htmlElement('html')->setAttribute('lang', $this->lang());
 $this->headMeta()->setCharset('utf-8');
@@ -40,7 +42,13 @@ if ($userBar) {
 		<style type="text/css" media="screen">
 			:root {
 				--primary: <?php echo $primaryColor; ?>;
-				--primary-dark: <?php echo $this->ShadeColor($primaryColor, -10); ?>
+				--primary-dark: <?php echo $this->ShadeColor($primaryColor, -10); ?>;
+				--primary-contrast: <?php echo $this->ContrastColor($primaryColor, ['#fff', '#333']); ?>;
+				--secondary: <?php echo $secondaryColor; ?>;
+				--secondary-dark: <?php echo $this->ShadeColor($secondaryColor, -10); ?>;
+				--secondary-contrast: <?php echo $this->ContrastColor($secondaryColor, ['#fff', '#333']); ?>;
+				--accent: <?php echo $accentColor; ?>;
+				--accent-dark: <?php echo $this->ShadeColor($accentColor, -10); ?>;
 			}
 			
 			<?php if($bannerHeightMobile): ?>

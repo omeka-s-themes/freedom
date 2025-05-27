@@ -35,7 +35,8 @@
         &:hover,
         &:active,
         &:focus {
-            background-color: $color__secondary-light !important;
+            background-color: $color__light-bg !important;
+            color: $color__black !important;
         }
     }
 

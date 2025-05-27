@@ -1,6 +1,6 @@
 .main-footer {
     clear: both;
-    color: $color__secondary-light;
+    color: $color__secondary-contrast;
     font-size: 0.875rem;
 
     &__top {
@@ -158,17 +158,17 @@
             }
 
             a {
-                color: $color__secondary-light;
+                color: $color__secondary-contrast;
                 text-transform: none;
             
                 &:visited {
-                    color: $color__secondary-light;
+                    color: $color__secondary-contrast;
                 }
             
                 &:hover,
                 &:focus,
                 &:active {
-                    color: $color__secondary-light;
+                    color: $color__secondary-contrast;
                 }
 
                 &:hover {
@@ -180,7 +180,7 @@
     }
 
     a {
-        color: $color__white;
+        color: $color__secondary-contrast;
         text-decoration: underline;
     }
 
