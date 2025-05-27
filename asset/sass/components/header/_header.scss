@@ -48,10 +48,19 @@
             background: none;
             color: $color__gray-60;
             padding: 10px 15px;
+            font-size: 0; /* hide text */
+            position: relative;
+
+            &::before {
+                @include font-awesome;
+                content: "\f002";
+                font-size: 16px;
+            }
 
             &:hover,
             &:focus {
                 background: none;
+                color: $color__gray-60;
             }
         }
     }
