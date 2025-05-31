@@ -10,25 +10,25 @@ $this->headScript()->appendFile($this->assetUrl('js/numeric-data-types.js', 'Num
     <?php echo $this->formHidden($element->getValueElement()); ?>
     <div class="numeric-datetime-inputs">
         <div class="numeric-date-inputs">
-            <label class="sub-label">Years
+            <label class="sub-label"><?php echo $this->translate('Years'); ?>
                 <?php echo $this->formNumber($element->getYearsElement()); ?>
             </label>
-            <label class="sub-label">Months
+            <label class="sub-label"><?php echo $this->translate('Months'); ?>
                 <?php echo $this->formNumber($element->getMonthsElement()); ?>
             </label>
-            <label class="sub-label">Days
+            <label class="sub-label"><?php echo $this->translate('Days'); ?>
                 <?php echo $this->formNumber($element->getDaysElement()); ?>
             </label>
             <label class="numeric-toggle-time button" aria-title="<?php echo $this->translate('Time'); ?>" title="<?php echo $this->translate('Time'); ?>"><input type="checkbox" name="numeric-toggle-time-checkbox"/></label>
         </div>
         <div class="numeric-time-inputs">
-            <label class="sub-label">Hours
+            <label class="sub-label"><?php echo $this->translate('Hours'); ?>
                 <?php echo $this->formNumber($element->getHoursElement()); ?>
             </label>
-            <label class="sub-label">Minutes
+            <label class="sub-label"><?php echo $this->translate('Minutes'); ?>
                 <?php echo $this->formNumber($element->getMinutesElement()); ?>
             </label>
-            <label class="sub-label">Seconds
+            <label class="sub-label"><?php echo $this->translate('Seconds'); ?>
                 <?php echo $this->formNumber($element->getSecondsElement()); ?>
             </label>
         </div>

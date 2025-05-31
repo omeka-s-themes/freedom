@@ -8,13 +8,21 @@ if ($this->siteSetting('exclude_resources_not_in_site')) {
     $options['siteId'] = $this->currentSite()->id();
 }
 $subjectValues = $resource->displaySubjectValues($options);
+
+$expandAllText = $this->translate('Expand all');
+$collapseAllText = $this->translate('Collapse all');
 ?>
 <?php if ($subjectValues): ?>
 <div id="resources-linked" class="resources-linked">
     <div class="resources-linked__header">
         <h3 class="resources-linked__heading"><?php echo $this->translate('Linked resources'); ?></h3>
-        <button class="resources-linked__expand-collapse-btn">Expand all</button>
+        <button class="resources-linked__expand-collapse-btn"><?php echo $expandAllText; ?></button>
     </div>
     <?php echo $subjectValues; ?>
 </div>
 <?php endif; ?>
+
+<script>
+    const expandAllText = <?php echo json_encode($expandAllText); ?>;
+    const collapseAllText = <?php echo json_encode($collapseAllText); ?>;
+</script>

@@ -66,7 +66,7 @@ if ($this->status()->isSiteRequest()) {
                 <?php echo $queryOption('or', $property, 'joiner', $translate('OR')); ?>
             </select>
             <div class="flex-break"></div>
-            <label class="sub-label" for="<?php echo $stem . '[property]'; ?>">Property</label>
+            <label class="sub-label" for="<?php echo $stem . '[property]'; ?>"><?php echo $translate('Property'); ?></label>
             <?php echo $this->propertySelect(
                 [
                 'name' => $stem . '[property]',
@@ -82,7 +82,7 @@ if ($this->status()->isSiteRequest()) {
                 ]
                 ]
             ); ?>
-            <label class="sub-label" for="<?php echo $this->escapeHtml($stem . '[type]'); ?>">Query type</label>
+            <label class="sub-label" for="<?php echo $this->escapeHtml($stem . '[type]'); ?>"><?php echo $translate('Query type'); ?></label>
             <select class="query-type sub-field" name="<?php echo $this->escapeHtml($stem . '[type]'); ?>" aria-label="<?php echo $translate('Query type'); ?>">
                 <?php echo $queryOption('eq', $property, 'type', $translate('is exactly')); ?>
                 <?php echo $queryOption('neq', $property, 'type', $translate('is not exactly')); ?>
@@ -97,7 +97,7 @@ if ($this->status()->isSiteRequest()) {
                 <?php echo $queryOption('ex', $property, 'type', $translate('has any value')); ?>
                 <?php echo $queryOption('nex', $property, 'type', $translate('has no values')); ?>
             </select>
-            <label class="sub-label" for="<?php echo $this->escapeHtml("property[$index][text]"); ?>">Query text</label>
+            <label class="sub-label" for="<?php echo $this->escapeHtml("property[$index][text]"); ?>"><?php echo $translate('Query text'); ?></label>
             <?php echo $queryText($property, $index); ?>
             <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
         </div>

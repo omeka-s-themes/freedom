@@ -34,10 +34,10 @@ $sortOrder->setValue($query['sort_order'] ?? '');
         <span id="sort-by-label" class="label"><?php echo $translate('Sort'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Sort by
+        <label class="sub-label"><?php echo $translate('Sort by'); ?>
             <?php echo $this->formSelect($sortBy); ?>
         </label>
-        <label class="sub-label">Sort order
+        <label class="sub-label"><?php echo $translate('Sort order'); ?>
             <?php echo $this->formSelect($sortOrder); ?>
         </label>
     </div>

@@ -152,10 +152,10 @@ function slideMenus( target ) {
 
 function backerContext() {
 	if( mmTargets.length > 0 ) {
-		mmBacker.innerHTML = 'Previous Menu';
+		mmBacker.innerHTML = previousText;
 	}
 	else {
-		mmBacker.innerHTML = 'Close Menu';
+		mmBacker.innerHTML = closeText;
 	}
 }
 

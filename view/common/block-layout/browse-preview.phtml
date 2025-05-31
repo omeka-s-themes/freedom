@@ -44,8 +44,8 @@ if (is_array($decoration) && in_array('media', $decoration)) {
     <?php if (strpos($layoutSetting, 'toggle') !== false) : ?>
         <div class="browse-controls">
             <div class="layout-toggle">
-                <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid icon-btn o-icon-grid" <?php echo $gridState; ?>></button>
-                <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list icon-btn o-icon-list" <?php echo $listState; ?>></button>        
+                <button type="button" aria-label="<?php echo $translate('Grid'); ?>" title="<?php echo $translate('Grid'); ?>" class="grid icon-btn o-icon-grid" <?php echo $gridState; ?>></button>
+                <button type="button" aria-label="<?php echo $translate('List'); ?>" title="<?php echo $translate('List'); ?>" class="list icon-btn o-icon-list" <?php echo $listState; ?>></button>
             </div>
         </div>
     <?php endif; ?>

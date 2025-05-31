@@ -1,3 +1,7 @@
+<?php
+$closeText = $this->translate('Close');
+$previousText = $this->translate('Previous');
+?>
 <nav id="menu-drawer" class="menu-drawer" style="display: none;">
 	<div class="wrap">
 
@@ -5,9 +9,10 @@
 			<a href="."
 				id="menu-backer"
 				class="menu-backer is-empty"
-				title="<?php $this->translate( 'Close Menu' ); ?>"
+				aria-label="<?php echo $closeText; ?>"
+				title="<?php echo $closeText; ?>"
 			>
-				<?php $this->translate( 'Close Menu' ); ?>
+                <?php echo $closeText; ?>
 			</a>
 		</div><!-- .navigation-controls -->
 
@@ -21,3 +26,8 @@
 
 	</div><!-- .wrap -->
 </nav><!-- menu-drawer -->
+
+<script>
+    const closeText = <?php echo json_encode($closeText); ?>;
+    const previousText = <?php echo json_encode($previousText); ?>;
+</script>

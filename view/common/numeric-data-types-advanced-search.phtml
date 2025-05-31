@@ -14,7 +14,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Date comes on or after'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[ts][gte][pid]',
@@ -43,7 +43,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Date comes on or before'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[ts][lte][pid]',
@@ -71,7 +71,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Duration is greater than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[dur][gt][pid]',
@@ -98,7 +98,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Duration is less than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[dur][lt][pid]',
@@ -125,7 +125,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Date in interval'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[ivl][pid]',
@@ -153,7 +153,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Value is greater than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[int][gt][pid]',
@@ -180,7 +180,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         <span class="label"><?php echo $translate('Value is less than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label">Property
+        <label class="sub-label"><?php echo $translate('Property'); ?>
             <?php
             echo $this->numericPropertySelect([
                 'name' => 'numeric[int][lt][pid]',

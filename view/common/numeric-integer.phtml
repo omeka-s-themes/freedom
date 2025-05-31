@@ -8,7 +8,7 @@ $this->headScript()->appendFile($this->assetUrl('js/numeric-data-types.js', 'Num
         data-custom-validity="<?php echo $this->escapeHtml($this->translate('Value must be an integer')); ?>">
     </div>
     <?php echo $this->formHidden($element->getValueElement()); ?>
-    <label class="sub-label">Value
+    <label class="sub-label"><?php echo $this->translate('Value'); ?>
         <?php echo $this->formNumber($element->getIntegerElement()); ?>
     </label>
 </div>

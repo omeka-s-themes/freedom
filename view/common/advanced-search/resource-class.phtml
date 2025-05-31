@@ -29,7 +29,7 @@ if ($this->status()->isSiteRequest()) {
     <div class="inputs">
         <?php foreach ($ids as $id): ?>
         <div class="value">
-            <label class="sub-label">Class
+            <label class="sub-label"><?php echo $translate('Class'); ?>
                 <?php echo $this->resourceClassSelect([
                     'name' => 'resource_class_id[]',
                     'attributes' => [

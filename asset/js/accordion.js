@@ -29,21 +29,22 @@ const accordionScript = () => {
 
     expandCollapseBtns.forEach((expandCollapseBtn) => {
         expandCollapseBtn.addEventListener('click', function() {
-            if (this.innerText.toLowerCase() === 'expand all') {
-
-                const collapsedTriggers = this.parentElement.nextElementSibling.querySelectorAll('.accordion__trigger:not(.expanded)');
-                collapsedTriggers.forEach((collapsedTrigger) => {
-                    collapsedTrigger.click();
-                });
-
-                this.innerText = 'Collapse all';
-            } else {
+            if (this.classList.contains('expanded')) {
                 const expandedTriggers = this.parentElement.nextElementSibling.querySelectorAll('.accordion__trigger.expanded');
                 expandedTriggers.forEach((expandedTrigger) => {
                     expandedTrigger.click();
                 });
 
-                this.innerText = 'Expand all'
+                this.innerText = expandAllText;
+                this.classList.remove('expanded');
+            } else {
+                const collapsedTriggers = this.parentElement.nextElementSibling.querySelectorAll('.accordion__trigger:not(.expanded)');
+                collapsedTriggers.forEach((collapsedTrigger) => {
+                    collapsedTrigger.click();
+                });
+
+                this.innerText = collapseAllText;
+                this.classList.add('expanded');
             }
         });
     });

@@ -48,13 +48,13 @@ if ($this->status()->isSiteRequest()) {
     <div class="inputs">
         <?php foreach ($itemSets as $itemSet): ?>
         <div class="value">
-            <label class="sub-label">Condition
+            <label class="sub-label"><?php echo $translate('Condition'); ?>
                 <select class="item-set-select-type">
                     <option value="in"<?php echo 'in' === $itemSet['type'] ? ' selected' : ''; ?>><?php echo $translate('In'); ?></option>
                     <option value="not_in"<?php echo 'not_in' === $itemSet['type'] ? ' selected' : ''; ?>><?php echo $translate('Not in'); ?></option>
                 </select>
             </label>
-            <label class="sub-label">Item Set
+            <label class="sub-label"><?php echo $translate('Item Set'); ?>
                 <?php echo $this->itemSetSelect([
                     'name' => ('not_in' === $itemSet['type']) ? 'not_item_set_id[]' : 'item_set_id[]',
                     'attributes' => [
