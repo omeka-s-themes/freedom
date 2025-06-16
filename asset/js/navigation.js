@@ -36,13 +36,23 @@ document.addEventListener("DOMContentLoaded", function() {
 	collection.reverse();
 
 	// Toggle click event.
-	mmToggli.onclick = function(e) {
-		if ( ! mmDrawer.classList.contains( 'toggled' ) ) {
-			openMenuDrawer();
-		} else {
-			closeMenuDrawer();
+	mmToggli.onclick = toggleMenu;
+	mmToggli.onkeydown = (e) => {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault(); // Prevent page scroll on Space
+			toggleMenu();
 		}
 	};
+
+	function toggleMenu() {
+		if ( ! mmDrawer.classList.contains( 'toggled' ) ) {
+			mmToggli.setAttribute('aria-expanded', 'true');
+			openMenuDrawer();
+		} else {
+			mmToggli.setAttribute('aria-expanded', 'false');
+			closeMenuDrawer();
+		}
+	}
 
 	collection.forEach( container => {
 		menu = container.querySelector( 'ul' );
@@ -118,7 +128,6 @@ function openMenuDrawer() {
 	mmBody.classList.add( 'menu-drawer-toggled');
 	mmDrawer.classList.add( 'toggled' );
 	mmToggli.classList.add( 'open' );
-	mmToggli.focus();
 }
 
 function closeMenuDrawer() {

@@ -7,42 +7,11 @@ const freedomScripts = () => {
     const menuDrawer = document.getElementById('menu-drawer');
     const userBar = document.getElementById('user-bar');
 
-    // Resize Events
-
-    let userBarHeight = 0;
-    let timeout = false;
-    const delay = 250;
-
-    onResize();
-
-    function onResize() {
-        getUserBarHeight();
-        refreshBodyPaddingTop();
-    }
-
-    window.addEventListener('resize', function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(onResize, delay);
-    });
-
-    function refreshBodyPaddingTop() {
-        body.style.paddingTop = mainHeader.offsetHeight + 'px';
-        document.documentElement.style.scrollPaddingTop = (mainHeaderMainBar.offsetHeight + 20) + 'px';
-    }
-
-    function getUserBarHeight() {
-        if (userBar) {
-            userBarHeight = userBar.offsetHeight;
-        }
-    }
-
     // Scrolling Events
 
     let lastKnownScrollPosition = 0;
     let ticking = false;
     let scrollDirection = 'up';
-
-    onScroll();
 
     function onScroll(scrollPos) {
         if(scrollPos > 60 && scrollDirection == 'down') {
@@ -69,6 +38,36 @@ const freedomScripts = () => {
             ticking = true;
         }
     });
+
+    // Resize Events
+
+    let userBarHeight = 0;
+    let timeout = false;
+    const delay = 250;
+
+    onResize();
+
+    function onResize() {
+        getUserBarHeight();
+        refreshBodyPaddingTop();
+        onScroll(lastKnownScrollPosition);
+    }
+
+    window.addEventListener('resize', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(onResize, delay);
+    });
+
+    function refreshBodyPaddingTop() {
+        body.style.paddingTop = mainHeader.offsetHeight + 'px';
+        document.documentElement.style.scrollPaddingTop = (mainHeaderMainBar.offsetHeight + 20) + 'px';
+    }
+
+    function getUserBarHeight() {
+        if (userBar) {
+            userBarHeight = userBar.offsetHeight;
+        }
+    }
 
     // Annotations tooltip position
 
