@@ -98,9 +98,11 @@
 
         a {
             display: block;
-            font-weight: 600;
-            font-size: 1.2rem;
-            line-height: 1.2;
+            font-family: $font__headings;
+            font-size: $font__h2-sm-size; //40px
+            font-weight: 500;
+            line-height: $font__headings-line-height;
+            text-decoration: none;
         }
 
         img {
