@@ -16,7 +16,7 @@ input[type="color"],
 textarea,
 select {
     display: block;
-    border: 1px solid $color__gray-80;
+    border: 1px solid $color__field-border;
     margin-bottom: 8px;
     padding: 10px 15px;
     border-radius: 3px;
@@ -29,12 +29,12 @@ select {
     }
 
     &::placeholder {
-        color: $color__gray-80;
+        color: $color__placeholder;
     }
 }
 
 input[type="checkbox"] {
-    border: 2px solid $color__gray-80;
+    border: 2px solid $color__field-border;
     -webkit-appearance: none;
     appearance: none;
     background-color: $color__white;
@@ -69,7 +69,7 @@ input[type="checkbox"] {
 }
 
 input[type="radio"] {
-    border: 2px solid $color__gray-80;
+    border: 2px solid $color__field-border;
     -webkit-appearance: none;
     appearance: none;
     background-color: $color__white;
