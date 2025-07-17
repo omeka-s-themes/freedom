@@ -50,6 +50,7 @@
                 word-break: break-word;
                 overflow-wrap: anywhere;
                 white-space: normal;
+                align-items: flex-start;
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {

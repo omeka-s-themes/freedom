@@ -1,0 +1,13 @@
+#local-contexts-content {
+    @include container;
+    padding-bottom: 2rem !important;
+    padding-top: 2rem !important;
+
+    .local-contexts-notice {
+        padding: 1rem;
+    }
+
+    .language {
+        margin-left: 10px;
+    }
+}
