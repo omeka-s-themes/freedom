@@ -87,18 +87,9 @@
         }
     
         > li { //main menu items
+            display: flex;
             cursor: pointer;
             margin-bottom: 0;
-
-            &:hover,
-            &:focus-within {
-            
-                > ul { //mega menu hover
-                    opacity: 1;
-                    height: auto;
-                    padding: 40px;
-                }
-            }
     
             &:hover a::after,
             &.focus a::after {
@@ -120,6 +111,39 @@
                         right: 0;
                         margin: auto;
                         transform: scale(1);
+                    }
+                }
+            }
+
+            &.menu-item-has-children {
+                margin-right: 10px;
+
+                a {
+                    margin-right: 5px;
+                }
+
+                button {
+                    align-self: center;
+                    background-color: transparent;
+                    border: none;
+                    line-height: 1;
+                    padding: 3px;
+
+                    &::after {
+                        @include font-awesome;
+                        content: "\f107" !important;
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: .75rem;
+                        color: $color__primary;
+                    }
+                }
+
+                &.open {
+                    > ul {
+                        display: flex;
+                        height: auto;
+                        padding: 40px;
                     }
                 }
             }
@@ -154,7 +178,7 @@
             }
 
             > ul { //mega menu hidden
-                display: flex;
+                display: none;
                 gap: 40px;
                 transition: opacity 0.5s ease-out;
                 opacity: 0;
@@ -170,6 +194,7 @@
                 padding: 0;
                 width: 100vw;
                 left: 0;
+                top: 100%;
 
                 > li { //mega menu columns
                     max-width: 260px;
