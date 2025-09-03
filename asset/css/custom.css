@@ -1,0 +1,566 @@
+/* Custom CSS for HBCU Theme Overrides */
+/* These styles override theme defaults for specific layout fixes */
+
+/* Fix search form - make submit button inline with input - AGGRESSIVE APPROACH */
+.header-search {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.header-search .search-form {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.header-search .search-form form,
+.header-search form {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    height: 36px !important;
+    overflow: hidden !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.header-search .search-form form:focus-within,
+.header-search form:focus-within {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Target all possible input variations */
+.header-search input,
+.header-search .search-form input,
+.header-search form input,
+.header-search input[type="text"],
+.header-search input[type="search"] {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 10px !important;
+    width: 160px !important;
+    font-size: 14px !important;
+    height: 34px !important;
+    margin: 0 !important;
+    flex: 1 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    float: none !important;
+    display: inline-block !important;
+}
+
+.header-search input::placeholder,
+.header-search input[type="text"]::placeholder,
+.header-search input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Target all possible button variations */
+.header-search button,
+.header-search .search-form button,
+.header-search form button,
+.header-search button[type="submit"],
+.header-search input[type="submit"] {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 8px !important;
+    cursor: pointer !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 36px !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: color 0.2s ease !important;
+    border-radius: 0 !important;
+    float: none !important;
+    vertical-align: top !important;
+}
+
+.header-search button:hover,
+.header-search button[type="submit"]:hover,
+.header-search input[type="submit"]:hover {
+    color: #EDAA16 !important; /* Golden hover color */
+}
+
+/* Nuclear option - force everything inline */
+.header-search * {
+    float: none !important;
+    clear: none !important;
+    display: inline !important;
+}
+
+.header-search form * {
+    display: inline-flex !important;
+    vertical-align: middle !important;
+}
+
+/* Make sure the container uses flexbox */
+.header-search,
+.header-search .search-form,
+.header-search form {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Header Spacing and Typography Fixes to Match Staging Site */
+
+/* Header container spacing */
+.site-header {
+    padding: 1.5rem 2rem !important; /* Increase padding to match staging */
+    min-height: 90px !important; /* Taller header for larger logos */
+    background-image: url('../img/background-header.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Logo spacing and sizing */
+.site-branding .partner-logos {
+    gap: 4rem !important; /* Increase gap between logos */
+    margin-bottom: 0 !important; /* Remove bottom margin */
+}
+
+.site-branding .partner-logos img {
+    height: 60px !important; /* Larger logo height to match staging */
+}
+
+.site-branding .nmaahc-logo img {
+    max-width: 320px !important; /* Larger NMAAHC logo */
+}
+
+.site-branding .hcac-logo img {
+    max-width: 180px !important; /* Larger HCAC logo */
+}
+
+/* Navigation typography to match staging */
+.site-navigation ul.menu li a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; /* Helvetica font stack */
+    font-size: 16px !important; /* Standard navigation size */
+    font-weight: 600 !important; /* Semi-bold for visibility */
+    letter-spacing: 0.5px !important; /* Slight letter spacing */
+    padding: 12px 18px !important; /* More generous padding */
+    text-transform: none !important; /* No text transformation */
+    color: white !important; /* White by default */
+    transition: color 0.2s ease !important;
+}
+
+/* Navigation hover state - golden color */
+.site-navigation ul.menu li a:hover,
+.site-navigation ul.menu li a:focus {
+    color: #EDAA16 !important; /* Golden hover color */
+}
+
+/* Header inner spacing */
+.header-inner {
+    gap: 3rem !important; /* Increase gap between sections */
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Search form sizing to match */
+.header-search .search-form form,
+.header-search form {
+    height: 40px !important; /* Slightly taller search bar */
+    min-width: 200px !important; /* Minimum width */
+}
+
+.header-search input,
+.header-search input[type="text"],
+.header-search input[type="search"] {
+    height: 38px !important;
+    width: 180px !important; /* Slightly wider input */
+    font-size: 15px !important;
+    padding: 8px 12px !important;
+}
+
+.header-search button,
+.header-search button[type="submit"] {
+    height: 38px !important;
+    min-width: 40px !important;
+    padding: 8px 10px !important;
+}
+
+/* Font Typography to Match Staging Site */
+
+/* Headers use Orpheus Pro serif font */
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.page-title,
+.resource-name {
+    font-family: 'Orpheus Pro', Georgia, 'Times New Roman', serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+}
+
+h1, .site-title {
+    font-size: 48px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+}
+
+h2 {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+}
+
+h3 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+}
+
+/* Body text and most UI elements use Helvetica */
+body,
+p,
+.search-form input,
+.search-form button,
+.breadcrumb,
+.pagination,
+.metadata,
+.resource-list {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* Search form fonts */
+.header-search input,
+.header-search input[type="text"],
+.header-search input[type="search"] {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* Footer Styling to Match Staging Site */
+
+/* Sponsor Logos Section */
+.sponsor-section {
+    padding: 2rem 0 !important;
+    border-top: 1px solid #e0e0e0 !important;
+    display: block !important;
+    visibility: visible !important;
+    text-align: center !important;
+}
+
+.sponsor-section .elementor-heading-title {
+    color: rgb(173, 44, 76) !important;
+    font-size: 18px !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 600 !important;
+    margin: 0 0 1.5rem 0 !important;
+    text-align: center !important;
+    display: block !important;
+}
+
+.sponsor-logos {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 3rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+}
+
+.sponsor-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.sponsor-logo img {
+    height: 60px !important;
+    width: auto !important;
+    max-width: 150px !important;
+    object-fit: contain !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.3s ease !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.sponsor-logo img:hover {
+    opacity: 1 !important;
+}
+
+/* Main Footer Section (Purple with background image) */
+.main-footer-section {
+    background-color: #612A60 !important; /* Purple background fallback */
+    background-image: url('../img/background-footer.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    color: white !important;
+    padding: 2rem 0 !important;
+    position: relative !important;
+}
+
+.footer-inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+    gap: 3rem !important;
+}
+
+/* Push navigation to the right */
+.footer-navigation {
+    margin-left: auto !important;
+}
+
+/* Stacked Footer Logos */
+.footer-logos {
+    flex-shrink: 0 !important;
+}
+
+.footer-logo-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.footer-logo-stack a {
+    display: block !important;
+    opacity: 0.9 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.footer-logo-stack a:hover {
+    opacity: 1 !important;
+}
+
+.footer-logo-stack img {
+    height: 40px !important;
+    width: auto !important;
+    display: block !important;
+}
+
+.nmaahc-footer-logo img {
+    max-width: 200px !important;
+}
+
+.hcac-footer-logo img {
+    max-width: 120px !important;
+}
+
+/* White divider line between footer logos */
+.footer-logo-divider {
+    width: 120px !important; /* Make wider */
+    height: 1px !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    margin: 0.5rem 0 !important;
+}
+
+/* Footer Navigation */
+.footer-navigation {
+    display: flex !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+    flex-grow: 1 !important;
+    justify-content: flex-end !important; /* Push content to the right */
+    margin-left: auto !important;
+}
+
+.footer-nav-section {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 120px !important;
+}
+
+.footer-nav-section h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #EDAA16 !important; /* Golden header color */
+    margin: 0 0 0.75rem 0 !important;
+    padding: 0 !important;
+    text-transform: uppercase !important;
+}
+
+.footer-nav-section ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-nav-section li {
+    margin: 0 0 0.3rem 0 !important;
+}
+
+.footer-nav-section a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+    font-weight: 400 !important;
+}
+
+.footer-nav-section a:hover {
+    color: #EDAA16 !important; /* Golden hover color */
+}
+
+/* Red Bar Section (e-con-inner) */
+.footer-red-bar {
+    background-color: #AD2C4C !important; /* Berry/red color */
+    padding: 1rem 0 !important;
+    margin-top: 0 !important;
+}
+
+.red-bar-content {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+}
+
+.footer-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.footer-links a {
+    color: white !important;
+    text-decoration: none !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.footer-links a:hover {
+    opacity: 0.8 !important;
+}
+
+.footer-links .separator {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 14px !important;
+    margin: 0 0.5rem !important;
+}
+
+.footer-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+}
+
+.social-links {
+    display: flex !important;
+    gap: 1rem !important;
+}
+
+.social-links a {
+    display: block !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.social-links a:hover {
+    opacity: 1 !important;
+}
+
+.social-links img {
+    width: 20px !important;
+    height: 20px !important;
+    filter: brightness(0) invert(1) !important; /* Make icons white */
+}
+
+.copyright p {
+    margin: 0 !important;
+    font-size: 13px !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 400 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 1rem !important;
+    }
+    
+    .site-branding .partner-logos {
+        gap: 2rem !important;
+    }
+    
+    .header-inner {
+        gap: 1.5rem !important;
+    }
+    
+    h1, .site-title {
+        font-size: 36px !important;
+    }
+    
+    h2 {
+        font-size: 28px !important;
+    }
+    
+    /* Footer responsive */
+    .sponsor-logos {
+        gap: 1.5rem !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .sponsor-logo img {
+        height: 40px !important;
+        max-width: 120px !important;
+    }
+    
+    .footer-inner {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center !important;
+    }
+    
+    .footer-content {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    /* Footer navigation responsive */
+    .footer-inner {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+    
+    .footer-navigation {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .footer-nav-section {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    /* Red bar responsive */
+    .red-bar-content {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        text-align: center !important;
+    }
+    
+    .footer-right {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+}
