@@ -1,4 +1,4 @@
-$font__headings: "Noto Serif", serif;
+$font__headings: "Orpheus Pro", serif;
 $font__body: "Open Sans", sans-serif;
 $font__code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", courier, monospace;
@@ -8,25 +8,26 @@ $font__xs-size: 0.75rem; // 12px
 $font__sm-size: 0.8125rem; // 13px
 $font__base-size: 1rem;
 
-$font__base-line-height: 1.5;
+$font__base-line-height: 1.6;
+$font__base-size: 1.125rem; // 18px
 
-$font__h1-sm-size: 2.5rem; // 40px
-$font__h1-base-size: 3.125rem; // 50px
+$font__h1-sm-size: 3.75rem; // 60px
+$font__h1-base-size: 3.75rem; // 60px
 
-$font__h2-sm-size: 2.1875rem; // 35px
-$font__h2-base-size: 2.5rem; // 40px
+$font__h2-sm-size: 2.875rem; // 46px
+$font__h2-base-size: 2.875rem; // 46px
 
-$font__h3-sm-size: 1.875rem; // 30px
-$font__h3-base-size: 2.1875rem; // 35px
+$font__h3-sm-size: 1.75rem; // 28px
+$font__h3-base-size: 1.75rem; // 28px
 
-$font__h4-sm-size: 1.56rem; // 25px
-$font__h4-base-size: 1.875rem; // 30px
+$font__h4-sm-size: 1.5rem; // 24px
+$font__h4-base-size: 1.5rem; // 24px
 
 $font__h5-sm-size: 1.125rem; // 18px
 $font__h5-base-size: 1.375rem; // 22px
 
-$font__h6-sm-size: 1rem; // 16px
-$font__h6-base-size: 1.125rem; //18px
+$font__h6-sm-size: 1.375rem; // 22px
+$font__h6-base-size: 1.375rem; // 22px
 
 $font__headings-line-height: 1.2;
 

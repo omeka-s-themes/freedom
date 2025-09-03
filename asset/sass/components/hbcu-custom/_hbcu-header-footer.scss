@@ -1,0 +1,382 @@
+// HBCU Header and Footer Styles
+// Direct styles from header-footer.css to match WordPress theme
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-block-end: 1rem;
+  padding-block-start: 1rem;
+  position: relative;
+  background-color: $color__purple;
+  background-image: url("https://conceptualg22.sg-host.com/wp-content/uploads/2025/06/Screenshot-2025-07-10-at-7.27.04%E2%80%AFAM.png");
+  
+  // Fallback if main image doesn't load, try simpler gradient
+  @supports not (background-image: url("https://conceptualg22.sg-host.com/wp-content/uploads/2025/06/Screenshot-2025-07-10-at-7.27.04%E2%80%AFAM.png")) {
+    background-image: linear-gradient(135deg, 
+      rgba(97, 42, 96, 1) 0%, 
+      rgba(123, 33, 159, 1) 50%, 
+      rgba(97, 42, 96, 1) 100%
+    );
+  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $color__white;
+  
+  // No overlay needed - background image has the colors we need
+  
+  .site-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: $color__white;
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        color: $color__off-white;
+      }
+    }
+  }
+  
+  .site-branding {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    
+    .partner-logos {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      position: relative;
+      
+      // Light divider line between logos
+      &::after {
+        content: '';
+        position: absolute;
+        left: calc(50% + 30px); // Move further away from NMAAHC logo
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 70px; // Make even taller
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 1;
+      }
+      
+      a {
+        display: block;
+        opacity: 0.9;
+        transition: opacity 0.2s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+      
+      img {
+        height: 40px;
+        width: auto;
+        display: block;
+        
+        @media (min-width: 768px) {
+          height: 50px;
+        }
+      }
+      
+      .nmaahc-logo img {
+        max-width: 200px;
+        
+        @media (min-width: 768px) {
+          max-width: 250px;
+        }
+      }
+      
+      .hcac-logo img {
+        max-width: 120px;
+        
+        @media (min-width: 768px) {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    
+    // Layout: logos (flex-shrink-0), navigation (flex-grow-1), search (margin-left-auto)
+    .site-branding {
+      flex-shrink: 0;
+    }
+    
+    .site-navigation {
+      flex-grow: 1;
+    }
+    
+    .header-search {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    
+    .custom-logo-link {
+      display: block;
+    }
+    
+    .site-branding {
+      .site-description,
+      .site-title {
+        margin: 0;
+      }
+      
+      .site-logo img {
+        display: block;
+      }
+      
+      &.show-logo .site-title,
+      &.show-title .site-logo {
+        display: none !important;
+      }
+    }
+  }
+  
+  &.header-inverted .header-inner {
+    flex-direction: row-reverse;
+    
+    .site-branding {
+      text-align: end;
+    }
+  }
+  
+  &.header-stacked .header-inner {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.site-footer {
+  padding-block-end: 1rem;
+  padding-block-start: 1rem;
+  position: relative;
+  
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  
+  .site-branding {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    .custom-logo-link {
+      display: block;
+    }
+    
+    .site-branding {
+      .site-description,
+      .site-title {
+        margin: 0;
+      }
+      
+      .site-logo img {
+        display: block;
+      }
+      
+      &.show-logo .site-title,
+      &.show-title .site-logo {
+        display: none !important;
+      }
+    }
+    
+    .copyright {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      
+      p {
+        margin: 0;
+      }
+    }
+  }
+  
+  &.footer-inverted .footer-inner {
+    flex-direction: row-reverse;
+    
+    .site-branding {
+      text-align: end;
+    }
+  }
+  
+  &.footer-stacked .footer-inner {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    
+    .site-branding .site-title {
+      text-align: center;
+    }
+    
+    .site-navigation .menu {
+      padding: 0;
+    }
+  }
+}
+
+// Mobile navigation toggle styles removed
+// Hide any mobile menu dropdowns
+.site-navigation-dropdown {
+  display: none !important;
+}
+
+.site-navigation {
+  align-items: center;
+  display: flex;
+  
+  ul.menu,
+  ul.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul.menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // Reduced from 2rem to give more space
+    flex-wrap: nowrap; // Keep items on one line
+    
+    li {
+      display: inline-block;
+      position: relative;
+      flex-shrink: 0; // Prevent shrinking
+      
+      a {
+        display: inline-block;
+        padding: 8px 12px; // Reduced from 15px to 12px
+        color: $color__gold;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        font-weight: 500;
+        white-space: nowrap; // Keep text on one line
+        font-size: 0.9rem; // Slightly smaller font
+        line-height: 1.2;
+        
+        &:hover,
+        &:focus {
+          color: $color__white;
+        }
+      }
+      
+      &.menu-item-has-children {
+        padding-inline-end: 15px;
+        
+        &:after {
+          align-items: center;
+          color: #666;
+          content: "▾";
+          display: flex;
+          font-size: 1.5em;
+          justify-content: center;
+          text-decoration: none;
+        }
+        
+        &:focus-within > ul {
+          display: block;
+        }
+      }
+      
+      // Dropdown functionality removed
+    }
+  }
+  
+  // Header search styles  
+  .header-search {
+    display: flex;
+    align-items: center;
+    
+    a.search-icon-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 40px !important;
+      height: 40px !important;
+      color: $color__gold !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease, transform 0.2s ease !important;
+      font-size: 18px !important;
+      border-radius: 50% !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: $color__white !important;
+        background-color: rgba(237, 170, 22, 0.2) !important; // Semi-transparent gold
+        border-color: rgba(237, 170, 22, 0.4) !important;
+        transform: scale(1.05) !important;
+        text-decoration: none !important;
+      }
+      
+      &:focus {
+        outline: 2px solid $color__gold !important;
+        outline-offset: 2px !important;
+      }
+      
+      i,
+      .fa,
+      .fa-search {
+        pointer-events: none !important;
+        color: inherit !important;
+      }
+    }
+  }
+}
+
+// Fix admin bar gap
+body.user-bar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#main-content {
+  margin-top: 0;
+  padding-top: 2rem;
+}
+
+// Mobile responsiveness
+@media (max-width: 576px) {
+  .site-footer:not(.footer-stacked) .footer-inner {
+    .copyright,
+    .site-branding,
+    .site-navigation {
+      display: block;
+      max-width: none;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .site-navigation ul.menu {
+      justify-content: center;
+      
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}

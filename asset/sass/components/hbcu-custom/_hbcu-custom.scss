@@ -1,0 +1,111 @@
+// HBCU Freedom Custom Styles
+// Styles to match the WordPress theme design
+
+// CSS Variables (matching custom.css)
+:root {
+  --purple: #{$color__purple};
+  --berry: #{$color__berry};
+  --gold: #{$color__gold};
+  --orange: #{$color__orange};
+  --gray: #{$color__gray};
+  --light-gray: #{$color__light-gray};
+  --off-white: #{$color__off-white};
+  --font-heading: #{$font__headings};
+  --font-body: #{$font__body};
+}
+
+// Body styling to match custom.css
+body {
+  font-family: $font__body;
+  font-size: 1.125rem; // 18px
+  font-weight: 500;
+  background-color: $color__off-white;
+  line-height: 1.6;
+}
+
+// Heading styles to match custom.css specifications
+h1 {
+  font-family: $font__headings;
+  font-size: 3.75rem; // 60px
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-family: $font__headings;
+  font-size: 2.875rem; // 46px
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-family: $font__headings;
+  font-size: 1.75rem; // 28px
+  color: $color__purple;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h4 {
+  font-family: $font__headings;
+  font-size: 1.5rem; // 24px
+  color: $color__gold;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+h5 {
+  font-family: $font__body;
+  font-size: 1.125rem; // 18px
+  color: $color__gold;
+  font-weight: normal;
+  letter-spacing: 1px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Intro paragraph styling
+h6 {
+  font-family: $font__body;
+  font-size: 1.375rem; // 22px
+  line-height: 1.875rem; // 30px
+  font-weight: 600;
+}
+
+// Paragraph and text styling
+p {
+  margin: 0 0 1rem;
+  color: #111;
+  line-height: 1.4 !important;
+}
+
+strong {
+  font-weight: bold;
+  color: $color__purple;
+}
+
+// Link styling
+a {
+  color: $color__berry;
+  text-decoration: none;
+}
+
+// Banner heading variations
+.banner-h3 {
+  font-family: $font__body;
+  font-size: 1.5rem; // 24px
+  color: $color__purple;
+  font-weight: 600;
+  margin-top: 1.5rem; // 24px
+  letter-spacing: 1px;
+}
+
+.banner-h1 {
+  margin-top: 0;
+  font-size: 3.75rem; // 60px
+  color: $color__berry;
+  font-weight: 900;
+  letter-spacing: 1px;
+}

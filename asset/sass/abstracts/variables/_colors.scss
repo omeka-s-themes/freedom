@@ -1,13 +1,22 @@
-// Colors
-$color__primary: var(--primary);
-$color__primary-dark: var(--primary-dark);
-$color__secondary: #394f68;
+// Brand Colors (from custom.css)
+$color__purple: #612A60;
+$color__berry: #AD2C4C;
+$color__gold: #EDAA16;
+$color__orange: #DB4927;
+$color__gray: #8C8279;
+$color__light-gray: #D8D3D1;
+$color__off-white: #F6F4F3;
+
+// Original theme colors
+$color__primary: $color__berry;
+$color__primary-dark: darken($color__berry, 10%);
+$color__secondary: $color__purple;
 $color__secondary-light: #eef7fa;
-$color__secondary-dark: #36475a;
+$color__secondary-dark: darken($color__purple, 10%);
 $color__success: #4cbb87;
-$color__warning: #ff5c00;
+$color__warning: $color__orange;
 $color__error: #ee001d;
-$color__bg-body: #fff;
+$color__bg-body: $color__off-white;
 
 // Grayscale
 $color__black: #333;
@@ -24,12 +33,12 @@ $color__white: #fff;
 
 //Applications
 $color__headings: $color__black;
-$color__main-text: $color__gray-40;
-$color__secondary-text: $color__gray-60;
-$color__buttons: $color__primary;
-$color__icons: $color__primary;
-$color__link: $color__secondary;
+$color__main-text: #111;
+$color__secondary-text: $color__gray;
+$color__buttons: $color__berry;
+$color__icons: $color__berry;
+$color__link: $color__berry;
 $color__menu-drawer: $color__secondary-dark;
 $color__hr: $color__gray-93;
-$color__light-bg: $color__gray-95;
+$color__light-bg: $color__off-white;
 $color__disabled: $color__gray-80;

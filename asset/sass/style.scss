@@ -47,3 +47,59 @@ Text Domain: freedom
 # Utilities
 --------------------------------------------------------------*/
 @import "utilities/utilities";
+
+// Nuclear option - force search icon golden color with extreme specificity
+// Target every possible combination and state
+* header.site-header * .header-search a[class*="search-icon-link"],
+html body header.site-header .header-inner .header-search a.search-icon-link,
+body header.site-header div.header-inner div.header-search a.search-icon-link {
+  color: #EDAA16 !important;
+  
+  &,
+  &:any-link,
+  &:link,
+  &:visited,
+  &:target {
+    color: #EDAA16 !important;
+  }
+  
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff !important;
+  }
+  
+  // Force the icon color
+  i,
+  .fa,
+  .fa-search,
+  * {
+    color: #EDAA16 !important;
+    
+    &:before,
+    &:after {
+      color: #EDAA16 !important;
+    }
+  }
+  
+  &:hover i,
+  &:hover .fa,
+  &:hover .fa-search,
+  &:hover *,
+  &:focus i,
+  &:focus .fa,
+  &:focus .fa-search,
+  &:focus *,
+  &:active i,
+  &:active .fa,
+  &:active .fa-search,
+  &:active * {
+    color: #fff !important;
+    
+    &:before,
+    &:after {
+      color: #fff !important;
+    }
+  }
+}
+

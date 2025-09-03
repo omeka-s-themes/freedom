@@ -74,3 +74,38 @@
         }
     }
 }
+
+// Item page specific layout: media on left, metadata on right
+body.item.resource.show .regions-container .main-region .metadata {
+    @media (min-width: $md) {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+        
+        // Media column (contains both embeds and list)
+        .media-column {
+            flex: 0 0 55%; // Fixed width for media on left
+            display: flex;
+            flex-direction: column;
+            
+            .media-list {
+                margin-top: 1rem; // Space between embeds and list
+            }
+        }
+        
+        // All other metadata content goes on the right
+        dl {
+            flex: 1; // Take remaining space on right
+        }
+    }
+    
+    // On mobile, keep stacked layout with media above metadata
+    @media (max-width: #{$md - 1px}) {
+        display: block; // Keep normal block layout
+        
+        .media-embeds {
+            margin-bottom: 2rem;
+        }
+    }
+}

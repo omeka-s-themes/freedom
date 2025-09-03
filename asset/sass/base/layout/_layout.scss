@@ -2,22 +2,6 @@ html, body {
     width: 100%;
 }
 
-html {
-    scroll-padding-top: 133px;
-}
-
-body {
-    padding-top: 133px;
-
-    @media (min-width: $lg) {
-        padding-top: 160px;
-    }
-
-    &.main-header--center {
-        padding-top: 230px;
-    }
-}
-
 .container {
     @include container;
 }

@@ -1,8 +1,16 @@
 #user-bar {
     gap: 15px;
+    background-color: $color__secondary-dark;
+    color: $color__white;
 
     a {
         display: block;
+        color: $color__white;
+        text-decoration: none;
+        
+        &:hover {
+            color: $color__off-white;
+        }
 
         @media(min-width: $lg) {
             display: initial;
