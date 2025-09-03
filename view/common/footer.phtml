@@ -1,32 +1,9 @@
 <?php
 $escHtml = $this->plugin('escapeHtml');
 $escAttr = $this->plugin('escapeHtmlAttr');
-
-$footerLogo      = $this->themeSetting( 'footer_logo' );
-$footerSiteInfo  = $this->themeSetting( 'footer_site_info' );
-$footerMenu      = $this->themeSetting( 'footer_menu' );
-$footerMenuDepth = $this->themeSetting('footer_menu_depth');
-$footerContent   = $this->themeSetting( 'footer_content' );
-$socialNetworks  = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
-
-$additional_classes = '';
-
-if ( ! $footerMenu ) {
-	$additional_classes .= ' no-menu';
-} elseif ( ! $footerLogo && ! $footerSiteInfo && ! $footerContent ) {
-	$additional_classes .= ' menu-only';
-}
-
-if ( $footerMenu && ( $footerLogo || $footerSiteInfo ) && $footerContent ) {
-	$additional_classes .= ' all-columns';
-
-	if ( $footerMenuDepth > 1 ) {
-		$additional_classes .= ' menu-depth-2';
-	}
-}
+$socialNetworks = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
 
 $hasSocialNetworks = false;
-
 foreach ( $socialNetworks as $social_network ) {
 	if ( $this->themeSetting( "{$social_network}_url" ) ) {
 		$hasSocialNetworks = true;
@@ -35,90 +12,132 @@ foreach ( $socialNetworks as $social_network ) {
 }
 ?>
 
-<footer class="main-footer">
-
-	<!-- Footer Top -->
-	<?php if ( $footerLogo || $footerSiteInfo || $footerMenu || $footerContent ): ?>
-		<div class="main-footer__top">
-			<div class="container main-footer__top-container <?php echo $additional_classes; ?>">
-
-				<!-- Column 1 -->
-				<?php if ( $footerLogo || $footerSiteInfo ) : ?>
-
-					<div class="main-footer__col1">
-						<?php if ( $footerLogo ): ?>
-							<img
-								src="<?php echo $this->themeSettingAssetUrl( 'footer_logo' ); ?>"
-								alt="<?php echo $escHtml( $site->title() ); ?>"
-								style="<?php echo $footerSiteInfo ? 'margin-bottom: 30px;' : ''; ?>" />
-						<?php endif; ?>
-
-						<div class="footer_site_info">
-							<?php if ( $footerSiteInfo ) : ?>
-								<?php echo $footerSiteInfo; ?>
-							<?php endif; ?>
-						</div>
-					</div>
-					
-				<?php endif; ?>
-
-				<!-- Column 2 -->
-				<?php if ( $footerMenu ) : ?>
-				
-					<div class="main-footer__col2">
-						<?php
-							echo $site->publicNav()->menu()->renderMenu(null, [
-								'maxDepth' => $footerMenuDepth - 1
-							]);
-						?>
-					</div>
-
-				<?php endif; ?>
-
-				<!-- Column 3 -->
-				<?php if ( $footerContent ) : ?>
-
-					<div class="main-footer__col3">
-						<?php if ( $footerContent ) : ?>
-							<?php echo $footerContent; ?>
-						<?php endif; ?>
-					</div>
-
-				<?php endif; ?>
-
+<!-- Footer with three sections -->
+<footer data-elementor-type="footer">
+	
+	<!-- Section 1: Sponsor Logos (Light Gray) -->
+	<div class="sponsor-section">
+<span class="elementor-heading-title elementor-size-default">HCAC PARTNERS</span>
+		<div class="sponsor-logos">
+			<div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/Bank_of_America_logo_PNG3-scaled.png'); ?>" alt="Bank of America">
 			</div>
-		</div>
-	<?php endif; ?>	
-
-	<hr class="alignfull">
-
-	<!-- Footer Bottom -->
-	<div class="main-footer__bottom">
-		<div class="container main-footer__bottom-container <?php echo $hasSocialNetworks ? 'has-social-networks' : ''; ?>">
-
-			<!-- Social Networks -->
-			<?php if ($hasSocialNetworks) : ?>
-				<div class="main-footer__social-network">
-					<?php foreach ( $socialNetworks as $social_network ) : ?>
-						<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ) : ?>
-							<a href="<?php echo $social_network_url; ?>">
-								<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
-									alt="<?php echo $escAttr( $social_network ); ?>">
-							</a>
-						<?php endif; ?>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-
-			<!-- Copyright -->
-			<div class="main-footer__copyright">
-				<?php if ( $footer_copyright = $this->themeSetting( 'footer_copyright' ) ) : ?>
-					<?php echo $footer_copyright; ?>
-				<?php else: ?>
-					<?php echo $this->translate( 'Powered by Omeka S' ); ?>
-				<?php endif; ?>
+			<div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/CLIR_red_w_wordmark.png'); ?>" alt="CLIR">
 			</div>
+			<div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/neh.png'); ?>" alt="National Endowment for the Humanities">
+			</div>
+      <div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/neh_perfect_union.png'); ?>" alt="National Endowment for the Humanities">
+			</div>
+			<div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/imls.png'); ?>" alt="Institute of Museum and Library Services">
+			</div>
+      <div class="sponsor-logo">
+				<img src="<?php echo $this->assetUrl('img/RRCHNM_logo.svg.png'); ?>" alt="Institute of Museum and Library Services">
+			</div>
+
 		</div>
 	</div>
 
+	<!-- Section 2: Main Footer (Purple with Background Image) -->
+	<div class="main-footer-section">
+		<div class="footer-inner">
+			<div class="footer-logos">
+				<div class="footer-logo-stack">
+					<a href="<?php echo $site->url(); ?>" class="nmaahc-footer-logo">
+						<img src="<?php echo $this->assetUrl('img/NMAAHC_horiz_Smithsonian_white-e1752147527950.png'); ?>" alt="National Museum of African American History and Culture">
+					</a>
+					<div class="footer-logo-divider"></div>
+					<a href="<?php echo $site->url(); ?>" class="hcac-footer-logo">
+						<img src="<?php echo $this->assetUrl('img/HCAC_RBG_Reverse-Logo.png'); ?>" alt="HBCU History and Culture Access Consortium">
+					</a>
+				</div>
+			</div>
+			
+			<div class="footer-navigation">
+				<div class="footer-nav-section">
+					<h4>About</h4>
+					<ul>
+						<li><a href="#">History of HBCUs</a></li>
+						<li><a href="#">News & Media</a></li>
+						<li><a href="#">FAQs</a></li>
+					</ul>
+				</div>
+				
+				<div class="footer-nav-section">
+					<h4>Collections</h4>
+					<ul>
+						<li><a href="#">Explore by Type</a></li>
+						<li><a href="#">Explore by Theme</a></li>
+						<li><a href="#">Explore by Member</a></li>
+					</ul>
+				</div>
+				
+				<div class="footer-nav-section">
+					<h4>Learn</h4>
+					<ul>
+						<li><a href="#">Theory</a></li>
+						<li><a href="#">Practice</a></li>
+						<li><a href="#">Impact</a></li>
+						<li><a href="#">Glossary of Terms</a></li>
+					</ul>
+				</div>
+				
+				<div class="footer-nav-section">
+					<h4>Members</h4>
+					<ul>
+						<li><a href="#">Clark Atlanta University</a></li>
+						<li><a href="#">Florida A&M University</a></li>
+						<li><a href="#">Jackson State University</a></li>
+						<li><a href="#">Texas Southern University</a></li>
+						<li><a href="#">Tuskegee University</a></li>
+					</ul>
+				</div>
+				
+				<div class="footer-nav-section">
+					<h4>Support</h4>
+					<ul>
+						<li><a href="#">Lift Every Voice</a></li>
+						<li><a href="#">Shop</a></li>
+						<li><a href="#">Visit</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Section 3: Red Bar (Copyright & Links) -->
+	<div class="footer-red-bar e-con-inner">
+		<div class="red-bar-content">
+			<div class="footer-links">
+				<a href="https://artsandculture.google.com/" target="_blank" rel="noopener">Google Arts & Culture</a>
+				<span class="separator">|</span>
+				<a href="#" target="_blank">Terms of Use</a>
+				<span class="separator">|</span>
+				<a href="#" target="_blank">Privacy</a>
+			</div>
+			
+			<div class="footer-right">
+				<?php if ($hasSocialNetworks): ?>
+					<div class="social-links">
+						<?php foreach ( $socialNetworks as $social_network ): ?>
+							<?php if ( $social_network_url = $this->themeSetting( "{$social_network}_url" ) ): ?>
+								<a href="<?php echo $social_network_url; ?>" aria-label="<?php echo $escAttr( ucfirst($social_network) ); ?>" target="_blank">
+									<img src="<?php echo $this->assetUrl( "img/{$social_network}.svg" ); ?>"
+										alt="<?php echo $escAttr( ucfirst($social_network) ); ?>">
+								</a>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+
+				<div class="copyright">
+					<p>&copy; <?php echo date('Y'); ?> HBCU History and Culture Access Consortium. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>

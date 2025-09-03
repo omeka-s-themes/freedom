@@ -1,43 +1,44 @@
 <?php $translate = $this->plugin('translate'); ?>
 
-<header class="main-header">
-
+<?php if ($userBar): ?>
 	<?php echo $userBar; ?>
+<?php endif; ?>
 
-	<div class="main-header__top-bar container">
-		<a class="main-header__advanced-search" href="<?php echo $site->url() . '/item/search'; ?>"><?php echo $translate('Advanced search'); ?></a>
-		<div class="main-header__search-form">
-			<?php echo $this->partial('common/search-form'); ?>
-		</div>
-	</div>
-	<hr class="alignfull">
-
-	<div class="main-header__main-bar container">
-		<div class="main-header__site-title">
-			<a href="<?php echo $site->url(); ?>">
-			<?php if ($this->themeSetting('logo')): ?>
-				<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $this->escapeHtml( $site->title() ); ?>" />
-			<?php else: ?>
-				<?php echo $this->escapeHtml( $site->title() ); ?>
-			<?php endif; ?>
-			</a>
+<header class="site-header">
+	
+	<div class="header-inner">
+		<div class="site-branding">
+			<div class="partner-logos">
+				<a href="<?php echo $site->url(); ?>" class="nmaahc-logo">
+					<img src="<?php echo $this->assetUrl('img/NMAAHC_horiz_Smithsonian_white-e1752147527950.png'); ?>" alt="National Museum of African American History and Culture" />
+				</a>
+				<a href="<?php echo $site->url(); ?>" class="hcac-logo">
+					<img src="<?php echo $this->assetUrl('img/HCAC_RBG_Reverse-Logo.png'); ?>" alt="HBCU History and Culture Access Consortium" />
+				</a>
+			</div>
+			
+			<?php // Site title/logo hidden - using partner logos only ?>
 		</div>
 
-		<nav class="main-navigation">
-			<div class="main-navigation__container">
+		<?php // Mobile menu toggle removed ?>
+
+		<nav class="site-navigation">
+			<ul class="menu">
 				<?php
 				echo $site->publicNav()->menu()->renderMenu(null, [
 					'addClassToListItem' => true,
 					'maxDepth' => $this->themeSetting('nav_depth') - 1
 				]);
 				?>
-			</div>
-			<div class="main-navigation__toggle">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
+			</ul>
 		</nav>
+
+		<div class="header-search">
+			<a href="<?php echo $site->url(); ?>/faceted-browse/1" class="search-icon-link" aria-label="<?php echo $translate('Search the Collection'); ?>" style="color: #EDAA16 !important;">
+				<i class="fa fa-search" style="color: #EDAA16 !important;"></i>
+			</a>
+		</div>
 	</div>
 
+	<?php // Mobile menu dropdown removed ?>
 </header>

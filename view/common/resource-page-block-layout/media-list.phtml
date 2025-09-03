@@ -1,16 +1,4 @@
 <?php
-$resourceMedia = $resource->media();
-$decoration = $this->themeSetting('image_decoration');
+// Media list is now included in media-embeds template to group them together
+// This prevents duplication and maintains proper DOM structure
 ?>
-<?php if ($resourceMedia): ?>
-<dl class="media-list">
-    <div class="property">
-        <dt><?php echo $this->translate('Media'); ?></dt>
-        <?php foreach ($resourceMedia as $media): ?>
-        <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>">
-            <?php echo $media->linkPretty(); ?>
-        </dd>
-        <?php endforeach; ?>
-    </div>
-</dl>
-<?php endif; ?>

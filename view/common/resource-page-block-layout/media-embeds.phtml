@@ -3,7 +3,20 @@ $resourceMedia = $resource->media();
 $decoration = $this->themeSetting('image_decoration');
 ?>
 <?php if ($resourceMedia): ?>
-<div class="media-embeds <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
-    <?php echo reset($resourceMedia)->render(); ?>
+<div class="media-column">
+    <div class="media-embeds <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
+        <?php echo reset($resourceMedia)->render(); ?>
+    </div>
+    
+    <dl class="media-list">
+        <div class="property">
+            <dt><?php echo $this->translate('Media'); ?></dt>
+            <?php foreach ($resourceMedia as $media): ?>
+            <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>">
+                <?php echo $media->linkPretty(); ?>
+            </dd>
+            <?php endforeach; ?>
+        </div>
+    </dl>
 </div>
 <?php endif; ?>
