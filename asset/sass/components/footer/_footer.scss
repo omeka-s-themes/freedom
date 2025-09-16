@@ -181,7 +181,11 @@
 
     a {
         color: $color__secondary-contrast;
-        text-decoration: underline;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        width: 100% !important;
     }
 
     hr {
@@ -190,11 +194,11 @@
 
     &__bottom {
         background-color: $color__secondary-dark;
-        padding: 35px 0;
+        padding: 0 !Important;
     }
 
     &__bottom-container {
-        display: flex;
+        //display: flex;
         align-items: center;
         flex-direction: column;
         gap: 30px;
@@ -221,6 +225,50 @@
 
         @media (min-width: $lg) {
             order: 1;
+        }
+    }
+    /*&__copyright {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        flex-wrap: wrap; 
+        padding: 10px 0;
+
+        span {
+            margin-left: 1rem;
+        }
+    }*/
+    &__copyright {
+        /* Use Flexbox to manage children layout */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /* Keep the original spacing and width */
+        padding: 0 15px;
+        margin: 0 auto;
+        width: 100% !important;
+        
+        /* Remove the float properties from the children, as they are now handled by the parent's Flexbox properties */
+        > div:first-of-type {
+        /* This child will automatically align to the start */
+        height: 50px;
+        display: flex; /* Use Flexbox here for the span if needed */
+        align-items: center;
+        }
+
+        span {
+        /* You don't need display: table-cell with Flexbox */
+        vertical-align: middle; /* This property may not be needed with Flexbox */
+        padding-right: 3em;
+        }
+
+        > div:nth-of-type(2) {
+        /* This child will automatically align to the end */
+        height: 50px !important;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         }
     }
 }

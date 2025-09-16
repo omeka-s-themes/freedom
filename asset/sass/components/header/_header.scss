@@ -7,7 +7,25 @@
     z-index: 1040;
     box-shadow: 0px 4px 6px 2px rgba(0,0,0,0.11);
     transition: top 0.3s ease-out;
+    &--inline {
+        .main-header__main-bar {
+        background: url(https://www.gobiernodecanarias.org/gcc/img/logos/logo.svg) no-repeat;
+        background-size: auto 60px;
+        background-position: 20px center;
+        }
+    }
 
+    &--center {
+        .main-header__main-bar {
+        background: url(https://www.gobiernodecanarias.org/gcc/img/logos/logo.svg) no-repeat;
+        background-size: auto 60px;
+        background-position: calc(50% - 25px) calc(50% - 25px);
+        }
+    }
+    
+    &__site-title {
+        margin-left: 150px;
+    }
     &__top-bar {
         display: flex;
         align-items: center;
@@ -115,5 +133,4 @@
         }
         
     }
-
 }
