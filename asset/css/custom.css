@@ -1,7 +1,6 @@
 /* Custom CSS for HBCU Theme Overrides */
 /* These styles override theme defaults for specific layout fixes */
 
-/* Fix search form - make submit button inline with input - AGGRESSIVE APPROACH */
 .header-search {
     display: flex !important;
     align-items: center !important;
@@ -90,10 +89,9 @@
 .header-search button:hover,
 .header-search button[type="submit"]:hover,
 .header-search input[type="submit"]:hover {
-    color: #EDAA16 !important; /* Golden hover color */
+    color: #EDAA16 !important; 
 }
 
-/* Nuclear option - force everything inline */
 .header-search * {
     float: none !important;
     clear: none !important;

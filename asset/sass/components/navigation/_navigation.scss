@@ -216,3 +216,565 @@
     }
 
 }
+
+// Golden navigation bar (Omeka publicNav) with dropdown support
+nav.golden-navigation {
+    background-color: $color__gold;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 100;
+
+    // Reset any inherited list styles on the actual ul and li elements
+    ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    li {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .golden-nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .golden-nav-menu {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        gap: 0;
+        justify-content: center;
+        align-items: center;
+        min-height: 50px;
+        flex-wrap: nowrap;
+        flex-direction: row !important;
+        width: 100% !important;
+        clear: none !important;
+        float: none !important;
+    }
+
+    // Style the Omeka navigation container
+    .golden-nav-menu ul.navigation {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        gap: 0;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row !important;
+        width: 100% !important;
+    }
+
+    // Target all li elements within the golden nav
+    .golden-nav-menu li,
+    .golden-nav-menu .navigation > li {
+        position: relative;
+        display: inline-block !important;
+        float: none !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex: 0 0 auto !important;
+        vertical-align: top !important;
+    }
+
+    .golden-nav-menu a,
+    .golden-nav-menu .navigation > li > a {
+        display: inline-block !important;
+        padding: 15px 20px;
+        position: relative;
+        text-decoration: none;
+        color: $color__white;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background-color 180ms ease, color 180ms ease, border-bottom 180ms ease;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+    }
+
+    .golden-nav-menu a:hover {
+        color: $color__white;
+    }
+
+    // Plus indicator for items with sub-menus
+    .golden-nav-menu .navigation > li:has(> ul) > a::after {
+        content: "+";
+        color: $color__white;
+        display: inline-block;
+        margin-left: 8px;
+        font-weight: 700;
+        line-height: 1;
+        transform: translateY(-1px);
+    }
+
+    .golden-nav-menu .navigation > li:hover:has(> ul) > a::after,
+    .golden-nav-menu .navigation > li:focus-within:has(> ul) > a::after {
+        content: "\2212";
+        color: $color__white;
+    }
+
+    // Nested submenu styles - ensure they're hidden by default
+    .golden-nav-menu ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    // Hide only NESTED ul elements (not the main nav)
+    .golden-nav-menu li ul {
+        display: none !important;
+    }
+
+    // Show the main golden-nav-menu itself
+    ul.golden-nav-menu {
+        display: flex !important;
+    }
+
+    // Style and show nested submenus on hover/focus
+    .golden-nav-menu .navigation li:hover > ul,
+    .golden-nav-menu .navigation li:focus-within > ul {
+        display: block !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 12px 0 8px 0 !important;
+        position: absolute !important;
+        left: 0;
+        top: 100%;
+        min-width: 220px;
+        background: rgba($color__gold, 0.95);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        /* border-radius: 4px; */
+        z-index: 1000;
+        width: max-content;
+        max-width: 90vw;
+    }
+
+    // Nested submenu items
+    .golden-nav-menu li ul li a {
+        display: block !important;
+        padding: 10px 14px !important;
+        color: $color__white !important;
+        text-decoration: none !important;
+        white-space: nowrap;
+        border-radius: 4px;
+        transition: background-color 180ms ease, color 180ms ease;
+        width: 100%;
+        box-sizing: border-box;
+        text-transform: none !important;
+        font-weight: normal !important;
+    }
+
+    .golden-nav-menu li ul li a:hover,
+    .golden-nav-menu li ul li a:focus {
+        color: $color__white !important;
+        text-decoration: underline !important;
+    }
+
+
+    // nested submenus (flyout)
+    .golden-nav-menu > li > ul > li {
+        position: relative;
+    }
+
+    .golden-nav-menu > li > ul > li:has(> ul) > a::after {
+        content: "+";
+        color: $color__gold;
+        display: inline-block;
+        margin-left: 8px;
+        font-weight: 700;
+    }
+
+    .golden-nav-menu > li > ul > li:hover:has(> ul) > a::after,
+    .golden-nav-menu > li > ul > li:focus-within:has(> ul) > a::after {
+        content: "\2212";
+        color: $color__gold;
+    }
+
+    .golden-nav-menu > li > ul > li > ul {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 8px 0;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 220px;
+        background: rgba($color__purple, 0.96);
+        border-top: 4px solid $color__gold;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(6px);
+        transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    }
+
+    .golden-nav-menu > li > ul > li:hover > ul,
+    .golden-nav-menu > li > ul > li:focus-within > ul {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    // mobile: stack, no hover dropdowns
+    @media (max-width: 768px) {
+        .golden-nav-menu {
+            flex-direction: column;
+            align-items: stretch;
+            min-height: auto;
+        }
+
+        .golden-nav-menu > li > a {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba($color__white, 0.1);
+        }
+
+        .golden-nav-menu > li > ul {
+            position: static;
+            transform: none !important;
+            visibility: visible;
+            opacity: 1;
+            box-shadow: none;
+            background: rgba($color__white, 0.05);
+            padding: 0 0 0 14px;
+            min-width: 0;
+            border-top: none;
+        }
+
+        .golden-nav-menu > li:has(> ul) > a::after {
+            display: none;
+        }
+    }
+}
+
+// Header navigation (staging site structure)
+nav.elementor-nav-menu--main {
+    position: relative;
+    z-index: 200;
+
+    .elementor-nav-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 0;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .elementor-nav-menu > li {
+        position: relative;
+    }
+
+    .elementor-nav-menu > li > a {
+        display: inline-block;
+        padding: 12px 18px;
+        position: relative;
+        text-decoration: none;
+        color: $color__white;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .elementor-nav-menu > li > a:hover,
+    .elementor-nav-menu > li > a:focus {
+        color: $color__gold;
+    }
+
+    // Dropdown indicators
+    .elementor-nav-menu > li.menu-item-has-children > a .toggle-icon,
+    .elementor-nav-menu > li.menu-item-has-children > a .sub-arrow {
+        display: none; // Hide default indicators, we'll use our own
+    }
+
+    .elementor-nav-menu > li.menu-item-has-children > a::after {
+        content: "+";
+        color: $color__white;
+        display: inline-block;
+        margin-left: 8px;
+        font-weight: 700;
+        line-height: 1;
+        transform: translateY(-1px);
+    }
+
+    .elementor-nav-menu > li.menu-item-has-children:hover > a::after,
+    .elementor-nav-menu > li.menu-item-has-children:focus-within > a::after {
+        content: "\2212";
+        color: $color__gold;
+    }
+
+    // Dropdown panels
+    .elementor-nav-menu > li > .sub-menu {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 12px 0 8px 0 !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 100% !important;
+        min-width: 220px !important;
+        background: rgba($color__purple, 0.96) !important;
+        border-top: 4px solid $color__gold !important;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+        border-radius: 4px !important;
+        z-index: 2000 !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        transform: translateY(6px) !important;
+        transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease !important;
+        width: max-content !important;
+        max-width: 90vw !important;
+        display: block !important; // Override inline display: none
+    }
+
+    .elementor-nav-menu > li:hover > .sub-menu,
+    .elementor-nav-menu > li:focus-within > .sub-menu {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    // Dropdown items
+    .elementor-nav-menu > li > .sub-menu > li > a {
+        display: block !important;
+        padding: 10px 14px !important;
+        color: $color__secondary-light !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+        border-radius: 4px !important;
+        transition: background-color 180ms ease, color 180ms ease !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .elementor-nav-menu > li > .sub-menu > li > a:hover,
+    .elementor-nav-menu > li > .sub-menu > li > a:focus {
+        color: $color__white !important;
+        background-color: $color__berry !important;
+    }
+
+    // Mobile responsive
+    @media (max-width: #{$lg - 1px}) {
+        .elementor-nav-menu {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .elementor-nav-menu > li > a {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba($color__white, 0.1);
+        }
+
+        .elementor-nav-menu > li > .sub-menu {
+            position: static;
+            transform: none !important;
+            visibility: visible;
+            opacity: 1;
+            box-shadow: none;
+            background: rgba($color__white, 0.05);
+            padding: 0 0 0 14px;
+            min-width: 0;
+            border-top: none;
+        }
+
+        .elementor-nav-menu > li.menu-item-has-children > a::after {
+            display: none;
+        }
+    }
+}
+
+// Legacy header navigation (now removed but keeping styles for reference)
+nav.site-navigation {
+    position: relative;
+
+    // Support Omeka renderers that output either .menu or .navigation
+    ul.menu,
+    ul.navigation {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    ul.menu > li,
+    ul.navigation > li {
+        position: relative;
+    }
+
+    ul.menu > li > a,
+    ul.navigation > li > a {
+        display: block;
+        padding: 12px 18px;
+        position: relative;
+        text-decoration: none;
+    }
+
+    // indicator for items with children: plus → minus on hover/focus
+    ul.menu > li:has(> ul) > a::after,
+    ul.navigation > li:has(> ul) > a::after {
+        content: "+";
+        color: $color__gold;
+        display: inline-block;
+        margin-left: 8px;
+        font-weight: 700;
+        line-height: 1;
+        transform: translateY(-1px);
+    }
+
+    ul.menu > li:hover:has(> ul) > a::after,
+    ul.menu > li:focus-within:has(> ul) > a::after,
+    ul.navigation > li:hover:has(> ul) > a::after,
+    ul.navigation > li:focus-within:has(> ul) > a::after {
+        content: "\2212"; // minus
+        color: $color__gold;
+    }
+
+    // dropdown panel (first level)
+    ul.menu > li > ul,
+    ul.navigation > li > ul {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 8px 0;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 220px;
+        background: rgba($color__purple, 0.96);
+        border-top: 4px solid $color__gold;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+        width: max-content;
+        max-width: 90vw;
+    }
+
+    // show on hover or keyboard focus
+    ul.menu > li:hover > ul,
+    ul.menu > li:focus-within > ul,
+    ul.navigation > li:hover > ul,
+    ul.navigation > li:focus-within > ul {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // dropdown items
+    ul.menu > li > ul > li > a,
+    ul.navigation > li > ul > li > a {
+        display: block;
+        padding: 10px 14px;
+        color: $color__secondary-light;
+        text-decoration: none;
+        white-space: nowrap;
+        border-radius: 4px;
+        transition: background-color 180ms ease, color 180ms ease;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:hover,
+        &:focus {
+            color: $color__white;
+            background-color: $color__berry;
+        }
+    }
+
+    // nested submenus (flyout)
+    ul.menu > li > ul > li,
+    ul.navigation > li > ul > li {
+        position: relative;
+    }
+
+    ul.menu > li > ul > li:has(> ul) > a::after,
+    ul.navigation > li > ul > li:has(> ul) > a::after {
+        content: "+";
+        color: $color__gold;
+        display: inline-block;
+        margin-left: 8px;
+        font-weight: 700;
+    }
+
+    ul.menu > li > ul > li:hover:has(> ul) > a::after,
+    ul.menu > li > ul > li:focus-within:has(> ul) > a::after,
+    ul.navigation > li > ul > li:hover:has(> ul) > a::after,
+    ul.navigation > li > ul > li:focus-within:has(> ul) > a::after {
+        content: "\2212";
+        color: $color__gold;
+    }
+
+    ul.menu > li > ul > li > ul,
+    ul.navigation > li > ul > li > ul {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 8px 0;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 220px;
+        background: rgba($color__purple, 0.96);
+        border-top: 4px solid $color__gold;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(6px);
+        transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    }
+
+    ul.menu > li > ul > li:hover > ul,
+    ul.menu > li > ul > li:focus-within > ul,
+    ul.navigation > li > ul > li:hover > ul,
+    ul.navigation > li > ul > li:focus-within > ul {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    // mobile: stack, no hover dropdowns
+    @media (max-width: #{$lg - 1px}) {
+        ul.menu,
+        ul.navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        ul.menu > li > ul,
+        ul.menu > li > ul > li > ul,
+        ul.navigation > li > ul,
+        ul.navigation > li > ul > li > ul {
+            position: static;
+            transform: none !important;
+            visibility: visible;
+            opacity: 1;
+            box-shadow: none;
+            background: transparent;
+            padding: 0 0 0 14px;
+            min-width: 0;
+        }
+
+        ul.menu > li:has(> ul) > a::after,
+        ul.menu > li > ul > li:has(> ul) > a::after,
+        ul.navigation > li:has(> ul) > a::after,
+        ul.navigation > li > ul > li:has(> ul) > a::after {
+            display: none;
+        }
+    }
+}
