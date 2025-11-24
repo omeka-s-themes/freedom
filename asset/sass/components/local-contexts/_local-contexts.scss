@@ -8,7 +8,10 @@
         padding: 1rem;
     }
 
-    .language {
-        margin-left: 10px;
+    .notice-name {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
     }
 }
