@@ -62,7 +62,7 @@ if ($userBar) {
 	</head>
 
 	<?php echo $this->htmlElement('body')->appendAttribute('class', $body_class); ?>
-		<a id="skipnav" href="#content"><?php echo $this->translate('Skip to main content'); ?></a>
+		<a id="skipnav" href="#main-content"><?php echo $this->translate('Skip to main content'); ?></a>
 
 		<?php echo $this->partial('common/header', ['userBar' => $userBar, 'site' => $site]); ?>
 
