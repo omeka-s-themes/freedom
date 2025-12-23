@@ -33,7 +33,7 @@ if ($bannerHeading || $bannerDescription) {
 ?>
 
 <?php if ($banner) : ?>
-    <div class="<?php echo implode(' ', $class); ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
+    <div role="banner" class="<?php echo implode(' ', $class); ?>" style="<?php echo $escAttr($bannerInlineStyles); ?>">
 
         <?php echo $this->thumbnail($banner, 'large', ['style' => $imageInlineStyles, 'role' => 'presentation', 'aria-hidden' => 'true']); ?>
 
