@@ -5,7 +5,8 @@ $decoration = $this->themeSetting('image_decoration');
 <?php if ($resourceMedia): ?>
 <div class="media-embeds <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
     <?php foreach ($resourceMedia as $media): ?>
-    <?php echo $media->render(); ?>
+        <?php $altText = $media->altText() ?: $media->displayTitle() ?: ''; ?>
+        <?php echo $media->render(['thumbnailAttribs' => ['alt' => $altText]]); ?>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>

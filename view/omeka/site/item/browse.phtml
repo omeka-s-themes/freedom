@@ -34,15 +34,15 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
 $bodyTruncate = $this->themeSetting('truncate_body_property');
 
 if (isset($_GET['view'])) {
-	if ('list' === $_GET['view']) {
-		$gridState = '';
-		$listState = 'disabled';
-		$isGrid = false;
-	} else {
-		$gridState = 'disabled';
-		$listState = '';
-		$isGrid = true;
-	}
+    if ('list' === $_GET['view']) {
+        $gridState = '';
+        $listState = 'disabled';
+        $isGrid = false;
+    } else {
+        $gridState = 'disabled';
+        $listState = '';
+        $isGrid = true;
+    }
 }
 
 $decoration = $this->themeSetting('image_decoration');
@@ -122,7 +122,9 @@ if (is_array($decoration) && in_array('media', $decoration)) {
     <?php
     foreach ($items as $item):
         $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => ($valueLang)]) : $item->displayDescription(null, ($valueLang));
-        $thumbnail = $this->thumbnail($item, 'large');
+        $media = $item->primaryMedia();
+        $altText = $media ? ($media->altText() ?: $item->displayTitle()) : $item->displayTitle();
+        $thumbnail = $this->thumbnail($item, 'large', ['alt' => $altText]);
         ?>
         <li class="item resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
             <!-- Thumbnail -->

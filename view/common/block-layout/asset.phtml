@@ -1,26 +1,35 @@
 <?php
-$escape = $this->plugin('escapeHtml');
+$escHtml = $this->plugin('escapeHtml');
+$escUrl = $this->plugin('escapeUrl');
 $decoration = $this->themeSetting('image_decoration');
 ?>
 
 <div class="assets">
-  <?php foreach ($attachments as $attachment): ?>
-    <?php $asset = $attachment['asset']; ?>
-    <div class="asset <?php echo is_array($decoration) && in_array('asset', $decoration) ? 'decoration' : ''; ?>">
-        <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'large') : ''; ?>
-        <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
-        <?php if ($page): ?>
-            <a href="<?php echo $escape($page->siteUrl()); ?>">
+    <?php foreach ($attachments as $attachment): ?>
+        <?php
+        $asset = $attachment['asset'];
+        $altText = $asset->altText() ?: $attachment['caption'] ?: '';
+
+        if (!$altText) {
+            $altText = pathinfo($asset->name(), PATHINFO_FILENAME);
+            $altText = ucwords(str_replace(['-', '_'], ' ', $altText));
+        }
+        ?>
+        <div class="asset <?php echo is_array($decoration) && in_array('asset', $decoration) ? 'decoration' : ''; ?>">
+            <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'large', ['alt' => $altText]) : ''; ?>
+            <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
+            <?php if ($page): ?>
+                <a href="<?php echo $escUrl($page->siteUrl()); ?>">
+                    <?php echo $assetImage; ?>
+                    <?php $altLinkTitle = ($attachment['alt_link_title'] !== '') ? $escHtml($attachment['alt_link_title']) : false; ?>
+                    <span class="link-title"><?php echo ($altLinkTitle) ? $altLinkTitle : $escHtml($page->title()); ?></span>
+                </a>
+            <?php else: ?>
                 <?php echo $assetImage; ?>
-                <?php $altLinkTitle = ($attachment['alt_link_title'] !== '') ? $escape($attachment['alt_link_title']) : false; ?>
-                <span class="link-title"><?php echo ($altLinkTitle) ? $altLinkTitle : $escape($page->title()); ?></span>
-            </a>
-        <?php else: ?>
-            <?php echo $assetImage; ?>
-        <?php endif; ?>
-        <?php if ($attachment['caption'] !== ''): ?>
-        <div class="caption"><?php echo $escape($attachment['caption']); ?></div>
-        <?php endif; ?>
-    </div>
-  <?php endforeach; ?>
+            <?php endif; ?>
+            <?php if ($attachment['caption'] !== ''): ?>
+            <div class="caption"><?php echo $escHtml($attachment['caption']); ?></div>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
 </div>

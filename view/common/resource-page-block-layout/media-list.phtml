@@ -1,4 +1,5 @@
 <?php
+$escape = $this->plugin('escapeHtml');
 $resourceMedia = $resource->media();
 $decoration = $this->themeSetting('image_decoration');
 ?>
@@ -7,9 +8,17 @@ $decoration = $this->themeSetting('image_decoration');
     <div class="property">
         <dt><?php echo $this->translate('Media'); ?></dt>
         <?php foreach ($resourceMedia as $media): ?>
-        <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>">
-            <?php echo $media->linkPretty(); ?>
-        </dd>
+            <?php
+            $altText = $media->altText() ?: $media->displayTitle() ?: '';
+            $thumbnail = $this->thumbnail($media, 'square', ['alt' => $altText]);
+            $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+                $thumbnail,
+                $escape($media->displayTitle())
+            );
+            ?>
+            <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>">
+                <?php echo $media->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
+            </dd>
         <?php endforeach; ?>
     </div>
 </dl>

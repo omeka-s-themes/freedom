@@ -16,6 +16,7 @@ if (isset($alignmentClass)) {
             <?php
             $media = $attachment->media() ?: $item->primaryMedia();
             if ($media):
+                $altText = $media->altText() ?: $media->displayTitle() ?: '';
                 if ($mediaDisplay === 'thumbnail') {
                     switch ($link) {
                         case 'original':
@@ -34,6 +35,7 @@ if (isset($alignmentClass)) {
                 } else {
                     echo $media->render([
                         'thumbnailType' => $thumbnailType,
+                        'thumbnailAttribs' => ['alt' => $altText],
                         'link' => $link,
                     ]);
                 }

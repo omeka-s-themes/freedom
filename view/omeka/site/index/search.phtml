@@ -46,7 +46,8 @@ if (is_array($decoration) && in_array('media', $decoration)) {
                         <!-- Thumbnail -->
                         <?php if ($primaryMedia): ?>
                             <div class="resource__thumbnail <?php echo $decorationClass; ?>">
-                                <?php echo $resource->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                                <?php $altText = $primaryMedia->altText() ?: $primaryMedia->displayTitle() ?: ''; ?>
+                                <?php echo $resource->linkRaw($this->thumbnail($primaryMedia, 'large', ['alt' => $altText])); ?>
                             </div>
                         <?php endif; ?>
 

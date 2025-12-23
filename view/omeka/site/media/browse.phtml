@@ -17,15 +17,15 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
 $bodyTruncate = $this->themeSetting('truncate_body_property');
 
 if (isset($_GET['view'])) {
-	if ('list' === $_GET['view']) {
-		$gridState = '';
-		$listState = 'disabled';
-		$isGrid = false;
-	} else {
-		$gridState = 'disabled';
-		$listState = '';
-		$isGrid = true;
-	}
+    if ('list' === $_GET['view']) {
+        $gridState = '';
+        $listState = 'disabled';
+        $isGrid = false;
+    } else {
+        $gridState = 'disabled';
+        $listState = '';
+        $isGrid = true;
+    }
 }
 
 $decoration = $this->themeSetting('image_decoration');
@@ -66,7 +66,8 @@ if (is_array($decoration) && in_array('media', $decoration)) {
             <!-- Thumbnail -->
             <?php if ($primaryMedia): ?>
                 <div class="resource__thumbnail <?php echo $decorationClass; ?>">
-                    <?php echo $media->linkRaw($this->thumbnail($primaryMedia, 'large')); ?>
+                    <?php $altText = $primaryMedia->altText() ?: $primaryMedia->displayTitle() ?: ''; ?>
+                    <?php echo $media->linkRaw($this->thumbnail($primaryMedia, 'large', ['alt' => $altText])); ?>
                 </div>
             <?php endif; ?>
 

@@ -56,13 +56,15 @@ if (is_array($decoration) && in_array('media', $decoration)) {
         foreach ($this->resources as $resource):
             $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, ($valueLang));
             $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(null, ($valueLang));
-            $primaryMedia = $resource->primaryMedia();
+            $media = ($resource instanceof \Omeka\Api\Representation\ItemRepresentation) ? ($resource->media()[0] ?? null) : null;
+            $altText = $media ? ($media->altText() ?: $resource->displayTitle()) : $resource->displayTitle();
+            $thumbnail = $this->thumbnail($resource, 'large', ['alt' => $altText]);
             ?>
             <li class="<?php echo $this->resourceType; ?> resource <?php echo ($isGrid) ? '' : 'media-object'; ?>">
                 <!-- Thumbnail -->
-                <?php if ($showThumbnail) : ?>
+                <?php if ($thumbnail && $showThumbnail) : ?>
                     <div class="resource__thumbnail <?php echo $decorationClass; ?>">
-                        <?php echo $resource->linkRaw($this->thumbnail($resource, 'large')); ?>
+                        <?php echo $resource->linkRaw($thumbnail); ?>
                     </div>
                 <?php endif; ?>
 

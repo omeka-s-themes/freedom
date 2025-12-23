@@ -1,5 +1,5 @@
 <?php
-
+$escape = $this->plugin('escapeHtml');
 $translate = $this->plugin('translate');
 $showLocale = (bool) $this->siteSetting('show_locale_label', true);
 $decoration = $this->themeSetting('image_decoration');
@@ -49,7 +49,8 @@ $decoration = $this->themeSetting('image_decoration');
                 <!-- Thumbnail -->
                 <?php if ($primaryMedia): ?>
                     <div class="item-with-metadata__thumbnail <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration' : ''; ?>">
-                        <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail']); ?>
+                        <?php $altText = $primaryMedia->altText() ?: $primaryMedia->displayTitle() ?: ''; ?>
+                        <?php echo $this->thumbnail($primaryMedia, 'large', ['class' => 'item-thumbnail', 'alt' => $altText]); ?>
                     </div>
                 <?php endif; ?>
 
@@ -71,7 +72,17 @@ $decoration = $this->themeSetting('image_decoration');
                             <div class="property">
                                 <dt><?php echo $translate('Media'); ?></dt>
                                 <?php foreach ($item->media() as $media): ?>
-                                <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>"><?php echo $media->linkPretty('square', $media->displayTitle(), ['class' => 'media resource']); ?></dd>
+                                    <?php
+                                    $altText = $media->altText() ?: $media->displayTitle() ?: '';
+                                    $thumbnail = $this->thumbnail($media, 'square', ['alt' => $altText]);
+                                    $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+                                        $thumbnail,
+                                        $escape($media->displayTitle())
+                                    );
+                                    ?>
+                                    <dd class="value <?php echo is_array($decoration) && in_array('media', $decoration) ? 'decoration decoration--thumbnail' : ''; ?>">
+                                        <?php echo $media->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
+                                    </dd>
                                 <?php endforeach; ?>
                             </div>
                         </dl>
