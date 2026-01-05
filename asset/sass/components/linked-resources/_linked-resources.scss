@@ -29,28 +29,29 @@
 
     .linked-resource {
         display: flex;
-        align-items: flex-start;
-        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        gap: 15px;
         justify-content: space-between;
-        padding: 0.7rem 0;
+        padding: 1rem 0;
         border-bottom: 1px solid $color__hr;
-
-        @media (min-width: $lg) {
-            align-items: center;
-            flex-direction: row;
-        }
 
         &:last-child {
             border-bottom: none;
         }
 
-        .resource-tags {
-            margin-bottom: 1rem;
-            margin-left: -10px;
-
-            @media (min-width: $lg) {
-                margin: 0;
-            }
+        img {
+            height: 50px;
+            object-fit: cover;
+            width: 50px;
         }
+
+        .resource-tags {
+            margin-bottom: 10px;
+        }
+    }
+
+    .resource__thumbnail {
+        flex-shrink: 0;
+        line-height: 1;
     }
 }

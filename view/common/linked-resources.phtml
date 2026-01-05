@@ -1,8 +1,6 @@
 <?php
 use Laminas\Form\Element\Select;
 
-$this->inlineScript()->appendFile($this->assetUrl('js/accordion.js'));
-
 // Set up pagination.
 $pagination = $this->pagination(null, $totalCount, $page, $perPage);
 $fragment = 'resources-linked';
@@ -53,6 +51,7 @@ foreach ($resourcePropertiesAll as $type => $resourceProperties) {
     }
 }
 $resourcePropertiesSelect->setValueOptions($valueOptions);
+$headingTerm = $this->siteSetting('browse_heading_property_term');
 ?>
 <div id="linked-resources">
 
@@ -93,11 +92,31 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
             id="accordion__panel-<?php echo $values[0]['property_id']; ?>"
             role="region"
             aria-labelledby="accordion-<?php echo $values[0]['property_id']; ?>">
-            <?php foreach ($values as $value): ?>
+
+            <?php foreach ($values as $value) :
+
+                $resource = $value['val']->resource();
+                $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $this->translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, ($valueLang));
+                $media = ($resource instanceof \Omeka\Api\Representation\ItemRepresentation) ? ($resource->media()[0] ?? null) : null;
+                $altText = $media ? ($media->altText() ?: $resource->displayTitle()) : $resource->displayTitle();
+                $thumbnail = $this->thumbnail($resource, 'square', ['alt' => $altText]);
+                ?>
+
                 <div class="linked-resource">
-                    <span><?php echo $value['val']->resource()->linkPretty('square', null, null, null, $valueLang); ?></span>
-                    <?php echo $this->ResourceTags($value['val']->resource()); ?>
+                    <!-- Content -->
+                    <div class="resource__content">
+                        <?php echo $this->ResourceTags($resource); ?>
+                        <?php echo $resource->link($this->escapeHtml($heading)); ?>
+                    </div>
+
+                    <!-- Thumbnail -->
+                    <?php if ($thumbnail) : ?>
+                        <div class="resource__thumbnail">
+                            <?php echo $resource->linkRaw($thumbnail); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
             <?php endforeach; ?>
         </div>
     </div>
@@ -107,14 +126,3 @@ $resourcePropertiesSelect->setValueOptions($valueOptions);
 <?php echo ($totalCount > $perPage) ? '<div class="linked-footer">' . $pagination . '</div>' : ''; ?>
 
 </div>
-
-<script>
-const propertySelect = $('#resource-property-select');
-const url = propertySelect.data('url');
-const fragment = propertySelect.data('fragment');
-propertySelect.on('change', function(e) {
-    const selectedOption = propertySelect.find(':selected');
-    const resourceProperty = selectedOption.val();
-    window.location = url + '?' + $.param({resource_property: resourceProperty}) + '#' + fragment;
-});
-</script>

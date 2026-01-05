@@ -1,28 +1,34 @@
 <?php
-$options = [
-    'page' => $this->params()->fromQuery('page', 1),
-    'perPage' => 25,
-    'resourceProperty' => $this->params()->fromQuery('resource_property'),
-];
+$siteId = null;
 if ($this->siteSetting('exclude_resources_not_in_site')) {
-    $options['siteId'] = $this->currentSite()->id();
+    $siteId = $this->currentSite()->id();
 }
-$subjectValues = $resource->displaySubjectValues($options);
 
 $expandAllText = $this->translate('Expand all');
 $collapseAllText = $this->translate('Collapse all');
 ?>
-<?php if ($subjectValues): ?>
-<div id="resources-linked" class="resources-linked">
-    <div class="resources-linked__header">
-        <h3 class="resources-linked__heading"><?php echo $this->translate('Linked resources'); ?></h3>
-        <button class="resources-linked__expand-collapse-btn"><?php echo $expandAllText; ?></button>
+<?php if ($resource->subjectValueTotalCount(null, null, $siteId)): ?>
+    <div class="linked-resources-wrapper resources-linked">
+        <div class="resources-linked__header">
+            <h3 class="resources-linked__heading"><?php echo $this->translate('Linked resources'); ?></h3>
+            <button class="resources-linked__expand-collapse-btn"><?php echo $expandAllText; ?></button>
+        </div>
+        <?php echo $this->linkedResources($resource); ?>
     </div>
-    <?php echo $subjectValues; ?>
-</div>
 <?php endif; ?>
 
 <script>
     const expandAllText = <?php echo json_encode($expandAllText); ?>;
     const collapseAllText = <?php echo json_encode($collapseAllText); ?>;
+
+    const propertySelect = $('#resource-property-select');
+    const url = propertySelect.data('url');
+    const fragment = propertySelect.data('fragment');
+    propertySelect.on('change', function(e) {
+        const selectedOption = propertySelect.find(':selected');
+        const resourceProperty = selectedOption.val();
+        window.location = url + '?' + $.param({resource_property: resourceProperty}) + '#' + fragment;
+    });
 </script>
+
+<?php $this->inlineScript()->appendFile($this->assetUrl('js/accordion.js')); ?>
