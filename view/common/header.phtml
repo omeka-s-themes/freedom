@@ -16,7 +16,7 @@ $navDepth = (int) $this->themeSetting('nav_depth') ? (int) $this->themeSetting('
 	<hr class="alignfull">
 
 	<div class="main-header__main-bar container">
-		<div class="main-header__site-title">
+		<h1 class="main-header__site-title site-title">
 			<a href="<?php echo $site->url(); ?>">
 			<?php if ($this->themeSetting('logo')): ?>
 				<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $this->escapeHtml( $site->title() ); ?>" />
@@ -24,7 +24,7 @@ $navDepth = (int) $this->themeSetting('nav_depth') ? (int) $this->themeSetting('
 				<?php echo $this->escapeHtml( $site->title() ); ?>
 			<?php endif; ?>
 			</a>
-		</div>
+		</h1>
 
 		<nav class="main-navigation">
 			<div class="main-navigation__container">
