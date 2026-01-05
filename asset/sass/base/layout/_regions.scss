@@ -39,13 +39,17 @@
 
         &--left {
             &::after {
-                right: -30px;
+                @media (min-width: $md) {
+                    right: -30px;
+                }
             }
         }
     
         &--right {
             &::after {
-                left: -30px;
+                @media (min-width: $md) {
+                    left: -30px;
+                }
             }
         }
     }
