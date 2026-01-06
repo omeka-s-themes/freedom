@@ -5,7 +5,7 @@
  * navigation support for dropdown menus.
  */
 
-let mmHeader, mmNavigation, mmToggli, mmBody, mmDrawer, mmBacker, mmClones, mmTargets, cleanupTrap, navItems;
+let mmHeader, mmNavigation, mmToggli, mmToggliSrText, mmBody, mmDrawer, mmBacker, mmClones, mmTargets, cleanupTrap, navItems;
 
 document.addEventListener("DOMContentLoaded", function() {
 	let collection, container, menu, links, i, len;
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// get the toggle menu item (li)
 	mmToggli = document.querySelector( '.main-navigation__toggle' );
+	mmToggliSrText = mmToggli.querySelector('.sr-only');
 
 	// Exit early if collection is empty or the toggle button is undefined
 	if ( 0 === collection.length || null === mmToggli || 'undefined' === typeof mmToggli ) {
@@ -31,10 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	mmClones = document.getElementById( 'menu-clones' );
 	navItems = document.querySelectorAll( '.navigation a' );
 
-	navItems.forEach( item => {
-		item.setAttribute('role', 'menuitem');
-	});
-
 	mmTargets = []; // array of expanded menus in the menu drawer
 
 	// reverse the collection so .main-navigation renders first in the .menu-drawer
@@ -50,12 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	};
 
 	function toggleMenu() {
-		if ( ! mmDrawer.classList.contains( 'toggled' ) ) {
-			mmToggli.setAttribute('aria-expanded', 'true');
-			openMenuDrawer();
-		} else {
-			mmToggli.setAttribute('aria-expanded', 'false');
+		const expanded = mmToggli.getAttribute('aria-expanded') === 'true';
+		mmToggli.setAttribute('aria-expanded', String(!expanded));
+
+		mmToggliSrText.textContent = expanded ? 'Open menu' : 'Close menu';
+
+		if (expanded) {
 			closeMenuDrawer();
+		} else {
+			openMenuDrawer();
 		}
 	}
 
@@ -172,10 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			item.classList.add( 'expanded' );
 
-			mmTargets.push( this );
-			slideMenus( this );
-			scrollMenuToTop();
-
 			mmDrawer.querySelectorAll( '.in-viewport' ).forEach( item => {
 				item.classList.remove( 'in-viewport' );
 			});
@@ -195,6 +191,10 @@ document.addEventListener("DOMContentLoaded", function() {
 				cleanupTrap = null;
 			}
 			cleanupTrap = trapFocus(mmHeader);
+
+			mmTargets.push( this );
+			slideMenus( this );
+			scrollMenuToTop();
 
 			event.stopPropagation();
 			event.preventDefault();
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	} );
 
 	mmHeader.addEventListener('keydown', function(e) {
-		if ((e.code === 'Enter' || e.code === 'Space') && e.target.matches('[role="menuitem"], #menu-backer')) {
+		if ((e.code === 'Enter' || e.code === 'Space') && e.target.matches('.navigation a, #menu-backer')) {
 			e.preventDefault();
 			e.target.click();
 		}
@@ -272,7 +272,7 @@ cleanupTrap = null;
 
 function openMenuDrawer() {
 	backerContext();
-	mmDrawer.querySelectorAll( 'a' ).forEach( item => {
+	mmDrawer.querySelectorAll( 'a:not(#menu-backer)' ).forEach( item => {
 		item.tabIndex = 0;
 	} );
 	mmBody.classList.add( 'menu-drawer-toggled');
@@ -295,12 +295,16 @@ function setFocusableToElementsInViewPort() {
 	mmNavigation.querySelectorAll( 'a' ).forEach( item => {
 		item.tabIndex= -1;
 		item.inert = true;
+		item.setAttribute('aria-hidden', 'true');
 	} );
 
 	mmDrawer.querySelectorAll( '.in-viewport > li > a' ).forEach( item => {
 		item.tabIndex= 0;
 		item.inert = false;
+		item.removeAttribute('aria-hidden');
 	} );
+
+	mmDrawer.querySelector( '.in-viewport > li:first-child > a' ).focus();
 }
 
 function closeMenuDrawer() {
@@ -346,9 +350,17 @@ function slideMenus( target ) {
 function backerContext() {
 	if( mmTargets.length > 0 ) {
 		mmBacker.innerHTML = previousText;
+		mmBacker.setAttribute( 'title', previousText );
+		mmBacker.setAttribute( 'aria-label', previousText );
+		mmBacker.removeAttribute( 'aria-hidden' );
+		mmBacker.tabIndex = 0;
 	}
 	else {
 		mmBacker.innerHTML = closeText;
+		mmBacker.setAttribute( 'title', closeText );
+		mmBacker.removeAttribute( 'aria-label' );
+		mmBacker.setAttribute( 'aria-hidden', 'true' );
+		mmBacker.tabIndex = -1;
 	}
 }
 

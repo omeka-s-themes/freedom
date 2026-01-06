@@ -9,16 +9,23 @@
     }
 
     &__toggle {
+        display: block;
         width: 35px;
         height: 28px;
         position: relative;
         margin: 20px auto;
         transform: rotate(0deg);
         transition: .5s ease-in-out;
-        cursor: pointer;
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
 
         @media (min-width: $lg) {
             display: none;
+        }
+
+        &:hover {
+            background-color: transparent !important;
         }
 
         span {
@@ -34,34 +41,34 @@
             transition: .25s ease-in-out;
         }
 
-        span:nth-child(1) {
+        span:nth-child(2) {
             top: 0px;
             transform-origin: left center;
         }
         
-        span:nth-child(2) {
+        span:nth-child(3) {
             top: 11px;
             transform-origin: left center;
         }
         
-        span:nth-child(3) {
+        span:nth-child(4) {
             top: 22px;
             transform-origin: left center;
         }
     
         &.open {
-            span:nth-child(1) {
+            span:nth-child(2) {
                 transform: rotate(45deg);
                 top: -1px;
                 left: 5px;
             }
             
-            span:nth-child(2) {
+            span:nth-child(3) {
                 width: 0%;
                 opacity: 0;
             }
             
-            span:nth-child(3) {
+            span:nth-child(4) {
                 transform: rotate(-45deg);
                 top: 24px;
                 left: 5px;

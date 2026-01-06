@@ -35,16 +35,15 @@ $navDepth = (int) $this->themeSetting('nav_depth') ? (int) $this->themeSetting('
 				]);
 				?>
 			</div>
-			<div class="main-navigation__toggle"
-				 tabindex="0"
-				 role="button"
+			<button
+				 class="main-navigation__toggle"
 				 aria-expanded="false"
-				 aria-controls="menu-drawer"
-				 aria-labelledby="menu-backer">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
+				 aria-controls="menu-drawer">
+				<span class="sr-only">Open menu</span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</button>
 		</nav>
 
 		<?php echo $this->partial('common/menu-drawer'); ?>

@@ -6,6 +6,7 @@ const freedomScripts = () => {
     const mainHeaderMainBar = document.querySelector('.main-header__main-bar');
     const menuDrawer = document.getElementById('menu-drawer');
     const userBar = document.getElementById('user-bar');
+    const menuToggle = document.querySelector( '.main-navigation__toggle' );
 
     // Scrolling Events
 
@@ -43,7 +44,7 @@ const freedomScripts = () => {
 
     let userBarHeight = 0;
     let timeout = false;
-    const delay = 250;
+    const delay = 150;
 
     onResize();
 
@@ -51,6 +52,10 @@ const freedomScripts = () => {
         getUserBarHeight();
         refreshBodyPaddingTop();
         onScroll(lastKnownScrollPosition);
+
+        if (window.innerWidth >= 1200 && menuToggle.getAttribute('aria-expanded') === 'true') {
+            menuToggle.click();
+        }
     }
 
     window.addEventListener('resize', function() {
