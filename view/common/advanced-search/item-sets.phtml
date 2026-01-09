@@ -42,7 +42,10 @@ if ($this->status()->isSiteRequest()) {
     <div class="field-meta">
         <span id="by-item-set-label" class="label"><?php echo $translate('Search by item set'); ?></span>
         <div class="tooltip">
-            <span class="tooltiptext"><?php echo $translate('Searches for items that are assigned to any of these item sets.'); ?></span>
+            <button class="tooltip-button" type="button" aria-describedby="tooltip-item-sets">?</button>
+            <div class="tooltip-text" id="tooltip-item-sets" role="tooltip">
+                <?php echo $translate('Searches for items that are assigned to any of these item sets.'); ?>
+            </div>
         </div>
     </div>
     <div class="inputs">

@@ -12,7 +12,10 @@ if (isset($query['id'])) {
     <div class="field-meta">
         <label for="id"><?php echo $translate('Search by ID'); ?></label>
         <div class="tooltip">
-            <span class="tooltiptext"><?php echo $translate('Searches for resources by Omeka S ID. You can search for more than one ID by separating them by commas.'); ?></span>
+            <button class="tooltip-button" type="button" aria-describedby="tooltip-id">?</button>
+            <div class="tooltip-text" id="tooltip-id" role="tooltip">
+                <?php echo $translate('Searches for resources by Omeka S ID. You can search for more than one ID by separating them by commas.'); ?>
+            </div>
         </div>
     </div>
     <div class="inputs">

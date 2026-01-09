@@ -23,7 +23,10 @@ if ($this->status()->isSiteRequest()) {
     <div class="field-meta">
         <span id="by-resource-class-label" class="label"><?php echo $translate('Search by class'); ?></span>
         <div class="tooltip">
-            <span class="tooltiptext"><?php echo $translate('Searches for resources that are any of these classes.'); ?></span>
+            <button class="tooltip-button" type="button" aria-describedby="tooltip-resource-class">?</button>
+            <div class="tooltip-text" id="tooltip-resource-class" role="tooltip">
+                <?php echo $translate('Searches for resources that are any of these classes.'); ?>
+            </div>
         </div>
     </div>
     <div class="inputs">

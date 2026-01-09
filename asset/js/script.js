@@ -111,6 +111,37 @@ const freedomScripts = () => {
             }
         }
     });
+
+    // Tooltips
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            document
+                .querySelectorAll('.tooltip.is-visible')
+                .forEach(el => el.classList.remove('is-visible'));
+        }
+    });
+
+    document.querySelectorAll('.tooltip').forEach(tooltip => {
+        const button = tooltip.querySelector('.tooltip-button');
+
+        if (!button) {
+            return;
+        }
+
+        button.addEventListener('mouseenter', () =>
+            tooltip.classList.add('is-visible')
+        );
+        button.addEventListener('focus', () =>
+            tooltip.classList.add('is-visible')
+        );
+
+        button.addEventListener('mouseleave', () =>
+            tooltip.classList.remove('is-visible')
+        );
+        button.addEventListener('blur', () =>
+            tooltip.classList.remove('is-visible')
+        );
+    });
 }
 
 if (document.readyState === 'loading') {

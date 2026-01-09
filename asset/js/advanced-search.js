@@ -1,11 +1,23 @@
 const advancedSearchScripts = () => {
     const propertyQueries = document.getElementById('property-queries');
-    const addRowBtn = propertyQueries.querySelector('.add-value');
+    const advancedSearch = document.getElementById('advanced-search');
+    const addRowBtns = advancedSearch.querySelectorAll('.add-value');
     let subFields;
     let removeRowBtns;
 
-    const placeLabels = () => {
+    const placeLabels = (e = null) => {
         setTimeout(() => {
+            if (e && e.target.classList.contains('add-value')) {
+                const inputsGroup = e.target.previousElementSibling;
+                if (!inputsGroup) return;
+
+                const lastSelectAdded = inputsGroup.querySelector(
+                    '.value:last-child select'
+                );
+
+                lastSelectAdded?.focus();
+            }
+
             subFields = propertyQueries.querySelectorAll('.sub-field');
             subFields.forEach((subField) => {
                 const prev = subField.previousElementSibling;
@@ -25,7 +37,9 @@ const advancedSearchScripts = () => {
 
     placeLabels();
 
-    addRowBtn.addEventListener('click', placeLabels);
+    addRowBtns.forEach(btn => {
+        btn.addEventListener('click', placeLabels);
+    });
 
     window.onresize = placeLabels;
 }
