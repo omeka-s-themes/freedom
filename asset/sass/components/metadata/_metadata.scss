@@ -32,15 +32,22 @@
             }
     
             dt {
+                line-height: 1.2;
                 margin-bottom: 0.5rem;
                 padding-right: 15px;
+                word-wrap: break-word;
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {
                         margin-bottom: 0;
                         float: left;
-                        width: 160px;
+                        width: 170px;
                     }
+                }
+
+                .field-term {
+                    font-size: $font__sm-size;
+                    font-weight: 500;
                 }
             }
     
@@ -56,7 +63,7 @@
 
                 &:not(.sidebar-region &) {
                     @media (min-width: $md) {
-                        margin-left: 160px;
+                        margin-left: 170px;
                     }
                 }
 
