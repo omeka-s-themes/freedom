@@ -176,14 +176,11 @@
         .numeric-toggle-time {
             align-self: center;
             background-color: $color__white;
-            border-radius: 50%;
-            border: 1px solid $color__hr;
             color: $color__buttons;
             cursor: pointer;
             height: 35px;
             margin: 0.5rem 0 0 0.3rem;
             padding: 5px 9px;
-            width: 35px;
 
             &:hover {
                 background-color: $color__buttons;
@@ -191,7 +188,7 @@
             }
 
             input[type="checkbox"] {
-                display: none;
+                margin: 0 !important;
             }
         }
     }

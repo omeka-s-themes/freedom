@@ -34,7 +34,7 @@ select {
     }
 }
 
-input[type="checkbox"] {
+input[type="checkbox"]:not(input[name="numeric-toggle-time-checkbox"]) {
     border: 2px solid $color__field-border;
     -webkit-appearance: none;
     appearance: none;
