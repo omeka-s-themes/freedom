@@ -4,23 +4,21 @@ const advancedSearchScripts = () => {
     const addRowBtns = advancedSearch.querySelectorAll('.add-value');
     let subFields;
 
-    const placeLabels = (e = null) => {
-        if (e && e.target.classList.contains('remove-value')) {
-            const inputsGroup = e.target.parentElement.parentElement;
-            if (!inputsGroup || !inputsGroup.classList.contains('inputs')) {
-                return;
-            }
+    const onAddOrRemoveFormRows = (e = null) => {
+        // Handle focus when removing a row
+        if (e && e.type !== 'resize' && e.target.classList.contains('remove-value')) {
+            const inputGroup = e.target.parentElement;
 
-            const nextAddValueBtn = inputsGroup.nextElementSibling;
-            if (!nextAddValueBtn && !nextAddValueBtn.classList.contains('add-value')) {
-                return;
+            if (e.target.closest('#property-queries') && inputGroup === inputGroup.parentNode.firstElementChild) { // First Delete button
+                focusNextElement(2);
+            } else {
+                focusNextElement();
             }
-
-            nextAddValueBtn.focus();
         }
 
         setTimeout(() => {
-            if (e && e.target.classList.contains('add-value')) {
+            // Focus the last added select element
+            if (e && e.type !== 'resize' && e.target.classList.contains('add-value')) {
                 const inputsGroup = e.target.previousElementSibling;
                 if (!inputsGroup || !inputsGroup.classList.contains('inputs')) {
                     return;
@@ -33,6 +31,7 @@ const advancedSearchScripts = () => {
                 lastSelectAdded.focus();
             }
 
+            // Relocate labels for property queries
             subFields = propertyQueries.querySelectorAll('.sub-field');
             subFields.forEach((subField) => {
                 const prev = subField.previousElementSibling;
@@ -43,20 +42,43 @@ const advancedSearchScripts = () => {
                 }
             });
 
+            // Add newly added remove buttons event listeners
             const removeRowBtns = advancedSearch.querySelectorAll('.remove-value');
             removeRowBtns.forEach(btn => {
-                btn.addEventListener('click', placeLabels);
+                btn.addEventListener('click', onAddOrRemoveFormRows);
             });
         }, 10);
     }
 
-    placeLabels();
+    onAddOrRemoveFormRows();
 
     addRowBtns.forEach(btn => {
-        btn.addEventListener('click', placeLabels);
+        btn.addEventListener('click', onAddOrRemoveFormRows);
     });
 
-    window.onresize = placeLabels;
+    window.onresize = onAddOrRemoveFormRows;
+
+    function focusNextElement(offset = 1) {
+        const focusableSelectors = [
+            'a[href]',
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])'
+        ];
+
+        const focusable = Array.from(
+            document.querySelectorAll(focusableSelectors.join(','))
+        ).filter(el => el.offsetParent !== null); // visible only
+
+        const index = focusable.indexOf(document.activeElement);
+        const targetIndex = index + offset;
+
+        if (index !== -1 && targetIndex >= 0 && targetIndex < focusable.length) {
+            focusable[targetIndex].focus();
+        }
+    }
 }
 
 if (document.readyState === 'loading') {
