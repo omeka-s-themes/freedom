@@ -1,21 +1,32 @@
 .hierarchy-module {
-	.hierarchy-itemset-metadata {
-		padding: 15px;
-		width: 100%;
+    .hierarchy-sidebar-content {
+        padding-bottom: 50px;
+    }
 
-		.resource-link {
-			display: flex;
-			align-items: center;
-			font-size: 1.2rem;
-			width: 100%;
-		}
+    .hierarchy-main-content {
+        @media (max-width: $md) {
+            border-left: none;
+            padding-left: 0;
+        }
+    }
 
-		img {
-			height: 100px;
-			margin-left: auto;
-			object-fit: cover;
-			order: 1;
-			width: 100px;
-		}
-	}
+    .hierarchy-itemset-metadata {
+        padding: 15px;
+        width: 100%;
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        img {
+            height: 100px;
+            margin-left: auto;
+            object-fit: cover;
+            order: 1;
+            width: 100px;
+        }
+    }
 }
