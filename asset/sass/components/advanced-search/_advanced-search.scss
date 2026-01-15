@@ -182,13 +182,18 @@
             margin: 0.5rem 0 0 0.3rem;
             padding: 5px 9px;
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 background-color: $color__buttons;
                 color: $color__white;
             }
 
             input[type="checkbox"] {
                 margin: 0 !important;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
     }
