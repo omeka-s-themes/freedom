@@ -15,6 +15,10 @@
         margin-bottom: 8px !important;
     }
 
+    .field-meta {
+        margin: .25rem 0;
+    }
+
     button[type="submit"] {
         float: right;
     }
@@ -68,7 +72,7 @@
     
             .value {
                 align-items: center;
-                flex-wrap: wrap;
+                flex-wrap: wrap !important;
                 gap: 15px;
     
                 &:first-child .logical-operator:first-child {
@@ -153,10 +157,8 @@
                     > .numeric-datetime-inputs {
                         flex-wrap: wrap;
 
-                        > div {
-                            @media (min-width: $md) {
-                                flex-wrap: nowrap;
-                            }
+                        input:not([type="checkbox"]) {
+                            width: 8em;
                         }
                     }
                 }
@@ -171,6 +173,15 @@
 
         .numeric-datetime-inputs div {
             margin-top: 0 !important;
+        }
+
+        .numeric-date-inputs > * {
+            flex-grow: 0;
+        }
+
+        .numeric-date-inputs,
+        .numeric-time-inputs {
+            gap: 4px;
         }
 
         .numeric-toggle-time {
@@ -270,6 +281,12 @@
             padding: 10px;
             text-align: center;
             width: 120px;
+        }
+    }
+
+    #mapping-geographic-location {
+        .inputs label {
+            font-size: $font__sm-size;
         }
     }
 }
