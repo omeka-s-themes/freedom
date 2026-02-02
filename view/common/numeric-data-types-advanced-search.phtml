@@ -3,33 +3,106 @@ use NumericDataTypes\Form\Element\Timestamp as TimestampElement;
 use NumericDataTypes\Form\Element\Duration as DurationElement;
 use NumericDataTypes\Form\Element\Integer as IntegerElement;
 
-$translate = $this->plugin('translate');
-
 $this->headScript()->appendFile($this->assetUrl('js/numeric-data-types.js', 'NumericDataTypes'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css', 'NumericDataTypes'));
+
+$tsGteSelect = $this->numericPropertySelect([
+    'name' => 'numeric[ts][gte][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'id' => 'timestamp-on-after-pid',
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['ts']['gte']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'timestamp',
+    ],
+]);
+
+$tsLteSelect = $this->numericPropertySelect([
+    'name' => 'numeric[ts][lte][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'id' => 'timestamp-on-before-pid',
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['ts']['lte']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'timestamp',
+    ],
+]);
+
+$durGtSelect = $this->numericPropertySelect([
+    'name' => 'numeric[dur][gt][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['dur']['gt']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'duration',
+    ],
+]);
+
+$durLtSelect = $this->numericPropertySelect([
+    'name' => 'numeric[dur][lt][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['dur']['lt']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'duration',
+    ],
+]);
+
+$ivlPidSelect = $this->numericPropertySelect([
+    'name' => 'numeric[ivl][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'id' => 'interval-pid',
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['ivl']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'interval',
+    ],
+]);
+
+$intGtSelect = $this->numericPropertySelect([
+    'name' => 'numeric[int][gt][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['int']['gt']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'integer',
+    ],
+]);
+
+$intLtSelect = $this->numericPropertySelect([
+    'name' => 'numeric[int][lt][pid]',
+    'attributes' => [
+        'aria-label' => $this->translate('Property'),
+        'class' => 'chosen-select',
+        'value' => $query['numeric']['int']['lt']['pid'] ?? null,
+    ],
+    'options' => [
+        'numeric_data_type' => 'integer',
+    ],
+]);
 ?>
 
+<?php if ($tsGteSelect): ?>
 <div class="field" id="numeric-timestamp-on-after">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Date comes on or after'); ?></span>
+        <span class="label"><?php echo $this->translate('Date comes on or after'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[ts][gte][pid]',
-                'attributes' => [
-                    'id' => 'timestamp-on-after-pid',
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['ts']['gte']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'timestamp',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $tsGteSelect; ?>
         </label>
-
         <?php
         $element = new TimestampElement('numeric[ts][gte][val]');
         $element->setValue($query['numeric']['ts']['gte']['val'] ?? null);
@@ -37,26 +110,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($tsLteSelect): ?>
 <div class="field" id="numeric-timestamp-on-before">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Date comes on or before'); ?></span>
+        <span class="label"><?php echo $this->translate('Date comes on or before'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[ts][lte][pid]',
-                'attributes' => [
-                    'id' => 'timestamp-on-before-pid',
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['ts']['lte']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'timestamp',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $tsLteSelect; ?>
         </label>
         <?php
         $element = new TimestampElement('numeric[ts][lte][val]');
@@ -65,25 +128,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($durGtSelect): ?>
 <div class="field" id="numeric-duration-gt">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Duration is greater than'); ?></span>
+        <span class="label"><?php echo $this->translate('Duration is greater than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[dur][gt][pid]',
-                'attributes' => [
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['dur']['gt']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'duration',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $durGtSelect; ?>
         </label>
         <?php
         $element = new DurationElement('numeric[dur][gt][val]');
@@ -92,25 +146,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($durLtSelect): ?>
 <div class="field" id="numeric-duration-lt">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Duration is less than'); ?></span>
+        <span class="label"><?php echo $this->translate('Duration is less than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[dur][lt][pid]',
-                'attributes' => [
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['dur']['lt']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'duration',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $durLtSelect; ?>
         </label>
         <?php
         $element = new DurationElement('numeric[dur][lt][val]');
@@ -119,26 +164,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($ivlPidSelect): ?>
 <div class="field" id="numeric-interval">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Date in interval'); ?></span>
+        <span class="label"><?php echo $this->translate('Date in interval'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[ivl][pid]',
-                'attributes' => [
-                    'id' => 'interval-pid',
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['ivl']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'interval',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $ivlPidSelect; ?>
         </label>
         <?php
         $element = new TimestampElement('numeric[ivl][val]');
@@ -147,25 +182,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($intGtSelect): ?>
 <div class="field" id="numeric-greater-than">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Value is greater than'); ?></span>
+        <span class="label"><?php echo $this->translate('Number is greater than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[int][gt][pid]',
-                'attributes' => [
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['int']['gt']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'integer',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $intGtSelect; ?>
         </label>
         <?php
         $element = new IntegerElement('numeric[int][gt][val]');
@@ -174,25 +200,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
 
+<?php if ($intLtSelect): ?>
 <div class="field" id="numeric-less-than">
     <div class="field-meta">
-        <span class="label"><?php echo $translate('Value is less than'); ?></span>
+        <span class="label"><?php echo $this->translate('Number is less than'); ?></span>
     </div>
     <div class="inputs">
-        <label class="sub-label"><?php echo $translate('Property'); ?>
-            <?php
-            echo $this->numericPropertySelect([
-                'name' => 'numeric[int][lt][pid]',
-                'attributes' => [
-                    'class' => 'chosen-select',
-                    'value' => $query['numeric']['int']['lt']['pid'] ?? null,
-                ],
-                'options' => [
-                    'numeric_data_type' => 'integer',
-                ],
-            ]);
-            ?>
+        <label class="sub-label"><?php echo $this->translate('Property'); ?>
+            <?php echo $intLtSelect; ?>
         </label>
         <?php
         $element = new IntegerElement('numeric[int][lt][val]');
@@ -201,3 +218,4 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/numeric-data-types.css'
         ?>
     </div>
 </div>
+<?php endif; ?>
