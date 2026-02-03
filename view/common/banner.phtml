@@ -42,7 +42,7 @@ if ($bannerHeading || $bannerDescription) {
                 <h2 class="banner__heading"><?php echo $escHtml($bannerHeading); ?></h2>
             <?php endif; ?>
             <?php if($bannerDescription) : ?>
-                <p class="banner__description"><?php echo $escHtml($bannerDescription); ?></p>
+                <p class="banner__description"><?php echo nl2br($escHtml($bannerDescription)); ?></p>
             <?php endif; ?>
         </div>
     </div>
