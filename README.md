@@ -12,7 +12,7 @@ For more advanced use, such as customizing the theme with Sass, you'll need to i
 ## Theme settings
 
 ### Theme's Primary Color
-The color to be used as the theme's primary color. The default value is #e77f11 (RGB 231, 127, 17).
+The color to be used as the theme's primary color. The default value is #cb4b06 (RGB 203, 75, 6).
 
 ### Header Layout
 - Inline logo and menu
