@@ -253,8 +253,9 @@
 
     #page-actions {
         display: flex;
-        background-color: $color__secondary;
+        background-color: $color__white;
         bottom: 0;
+        box-shadow: 0px -2px 10px 0px rgba($color__black, 0.4);
         gap: 20px;
         justify-content: center;
         margin-left: calc((100vw - 100%) / -2);
@@ -267,6 +268,7 @@
             align-items: flex-end;
             background-color: transparent;
             bottom: 15px;
+            box-shadow: none;
             flex-direction: column;
             gap: 15px;
             justify-content: initial;
