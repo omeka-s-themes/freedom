@@ -300,13 +300,24 @@
     margin-bottom: 2rem;
 
     .filter {
+        display: flex;
         background-color: $color__secondary-dark;
         border-radius: 3px;
         color: $color__secondary-contrast;
+        gap: 0;
         padding: 2px 10px;
     }
 
     .filter-label::after {
         content: ":";
+    }
+
+    .filter-value {
+        margin: 0;
+        padding: 0 10px;
+
+        &:not(:last-child) {
+            border-right: 1px solid rgba($color__white, 0.5);
+        }
     }
 }
