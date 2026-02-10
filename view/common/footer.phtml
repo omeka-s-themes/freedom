@@ -5,7 +5,7 @@ $escAttr = $this->plugin('escapeHtmlAttr');
 $footerLogo      = $this->themeSetting( 'footer_logo' );
 $footerSiteInfo  = $this->themeSetting( 'footer_site_info' );
 $footerMenu      = $this->themeSetting( 'footer_menu' );
-$footerMenuDepth = $this->themeSetting('footer_menu_depth');
+$footerMenuDepth = (int) $this->themeSetting('footer_menu_depth') ? (int) $this->themeSetting('footer_menu_depth') -1 : -1;
 $footerContent   = $this->themeSetting( 'footer_content' );
 $socialNetworks  = array( 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'mastodon' );
 
@@ -68,7 +68,7 @@ foreach ( $socialNetworks as $social_network ) {
 					<div class="main-footer__col2">
 						<?php
 							echo $site->publicNav()->menu()->renderMenu(null, [
-								'maxDepth' => $footerMenuDepth - 1
+								'maxDepth' => $footerMenuDepth
 							]);
 						?>
 					</div>
