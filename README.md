@@ -5,6 +5,7 @@
 [![PHP v8.1+](https://img.shields.io/badge/PHP-v8.1+-605F8E?logo=php)](https://github.com/omeka-s-themes/freedom)
 
 An Omeka S theme offering a variety of customization options and a clean design, built using modular styling and a mobile-first approach, with a modern and accessible UX/UI.
+
 ![Freedom Theme](https://github.com/omeka-s-themes/freedom/blob/master/theme.jpg?raw=true)
 
 ## Installation
