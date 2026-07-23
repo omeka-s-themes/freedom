@@ -53,6 +53,7 @@ button.remove-value {
     -webkit-appearance: none;
     -moz-appearance: none;
     flex-shrink: 0;
+    position: static !important;
 
     &:hover,
     &:focus {
