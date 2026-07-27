@@ -1,6 +1,5 @@
 <?php
 $escHtml = $this->plugin('escapeHtml');
-$escUrl = $this->plugin('escapeUrl');
 $decoration = $this->themeSetting('image_decoration');
 ?>
 
@@ -19,7 +18,7 @@ $decoration = $this->themeSetting('image_decoration');
             <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'large', ['alt' => $altText]) : ''; ?>
             <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
             <?php if ($page): ?>
-                <a href="<?php echo $escUrl($page->siteUrl()); ?>">
+                <a href="<?php echo $escHtml($page->siteUrl()); ?>">
                     <?php echo $assetImage; ?>
                     <?php $altLinkTitle = ($attachment['alt_link_title'] !== '') ? $escHtml($attachment['alt_link_title']) : false; ?>
                     <span class="link-title"><?php echo ($altLinkTitle) ? $altLinkTitle : $escHtml($page->title()); ?></span>
