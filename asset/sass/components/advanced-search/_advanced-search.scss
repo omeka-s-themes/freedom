@@ -150,8 +150,6 @@
                 }
 
                 .numeric-timestamp {
-                    gap: 0;
-
                     @media (min-width: $md) {
                         flex: 1 1 350px !important;
                     }
@@ -166,11 +164,15 @@
                 }
 
                 .numeric-duration {
-                    gap: 0;
-
                     @media (min-width: $md) {
                         flex: 1 1 330px !important;
                     }
+                }
+
+                .numeric-timestamp,
+                .numeric-duration,
+                .numeric-integer {
+                    gap: 0;
                 }
             }
         }
