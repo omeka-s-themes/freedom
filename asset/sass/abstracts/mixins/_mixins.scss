@@ -59,11 +59,6 @@
         color: $color__white;
     }
     
-    &:focus {
-        color: $color__white;
-        outline: 5px auto Highlight;
-    }
-    
     &:disabled,
     &[disabled]
     &.disabled {
@@ -85,10 +80,6 @@
     &:hover:not(.disabled) {
         background-color: $color__buttons;
         color: $color__white;
-    }
-    
-    &:focus {
-        outline: 5px auto Highlight;
     }
     
     &:disabled,
