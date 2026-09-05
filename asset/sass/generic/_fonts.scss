@@ -1,0 +1,17 @@
+/* Open Sans
+--------------------------------------------- */
+@include font-face("Open Sans", "open-sans-300", 300);
+@include font-face("Open Sans", "open-sans-300italic", 300, italic);
+@include font-face("Open Sans", "open-sans-regular", 400);
+@include font-face("Open Sans", "open-sans-italic", 400, italic);
+@include font-face("Open Sans", "open-sans-600", 600);
+@include font-face("Open Sans", "open-sans-600italic", 600, italic);
+@include font-face("Open Sans", "open-sans-700", 700);
+@include font-face("Open Sans", "open-sans-700italic", 700, italic);
+
+/* Noto Serif
+--------------------------------------------- */
+@include font-face("Noto Serif", "noto-serif-regular", 400);
+@include font-face("Noto Serif", "noto-serif-italic", 400, italic);
+@include font-face("Noto Serif", "noto-serif-700", 700);
+@include font-face("Noto Serif", "noto-serif-700italic", 700, italic);
