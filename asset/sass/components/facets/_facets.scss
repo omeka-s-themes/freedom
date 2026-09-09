@@ -228,12 +228,17 @@
     }
 
 }
+
+.facet-pagination button {
+    background-color: var(--primary) !important;
+}
+
 .facets button.facet-button.expand {
-    background: var(--primary);
+    background-color: var(--primary);
 }
 .facets button.facet-button.collapse {
-    background: var(--primary);
+    background-color: var(--primary);
 }
 button.facet-see-more-or-less {
-    background: var(--primary);
+    background-color: var(--primary);
 }
