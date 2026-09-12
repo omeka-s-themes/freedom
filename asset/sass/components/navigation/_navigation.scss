@@ -24,7 +24,9 @@
             display: none;
         }
 
-        &:hover {
+        &:hover,
+        &:focus,
+        &:active {
             background-color: transparent !important;
         }
 
