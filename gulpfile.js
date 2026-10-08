@@ -9,8 +9,9 @@ gulp.task('css', function () {
 
     return gulp.src('./asset/sass/*.scss')
         .pipe(sass({
-            outputStyle: 'compressed',
-            includePaths: ['node_modules/sass']
+            style: 'compressed',
+            charset: false,
+            loadPaths: ['node_modules/sass']
         }).on('error', sass.logError))
         .pipe(postcss([
             autoprefixer()
