@@ -1,7 +1,7 @@
 {
   "name": "freedom-theme",
-  "version": "1.0.7",
-  "description": "An Omeka S Theme.",
+  "version": "1.2.0",
+  "description": "An Omeka S Theme based on modular styling and mobile first approach, with a modern and accessible UX/UI.",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
