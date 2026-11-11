@@ -18,6 +18,17 @@ $this->headTitle($siteTitle)->setSeparator(' · ');
 $this->headTitle()->append($this->setting('installation_title', 'Omeka S'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
+// Preload the Latin webfonts. The URLs are unversioned to match the ones
+// style.css requests, so browsers don't download the fonts twice.
+foreach (['open-sans-latin', 'noto-serif-latin'] as $font) {
+    $this->headLink([
+        'rel' => 'preload',
+        'href' => $this->assetUrl("fonts/$font.woff2", null, false, false),
+        'as' => 'font',
+        'type' => 'font/woff2',
+        'crossorigin' => 'anonymous',
+    ], 'PREPEND');
+}
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->jsTranslate();

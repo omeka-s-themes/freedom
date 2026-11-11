@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Center block
 @mixin center-block {
     display: block;
@@ -36,15 +38,20 @@
     font-weight: 900;
 }
 
-// Self-hosted webfonts.
-@mixin font-face($family, $file, $weight, $style: normal) {
-    @font-face {
-        font-family: $family;
-        font-style: $style;
-        font-weight: $weight;
-        font-display: swap;
-        src: url("../fonts/#{$file}.woff2") format("woff2"),
-             url("../fonts/#{$file}.woff") format("woff");
+// Self-hosted variable webfonts, split into script subsets. Browsers only
+// download a subset when the page uses characters in its unicode-range.
+@mixin font-face($family, $file, $weights, $subsets, $style: normal) {
+    @each $weight in $weights {
+        @each $subset in $subsets {
+            @font-face {
+                font-family: $family;
+                font-style: $style;
+                font-weight: $weight;
+                font-display: swap;
+                src: url("../fonts/#{$file}-#{$subset}.woff2") format("woff2");
+                unicode-range: #{map.get($font__subsets, $subset)};
+            }
+        }
     }
 }
 
